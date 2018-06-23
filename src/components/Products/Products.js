@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Card, CardTitle, Col } from 'react-materialize'
-import "./Cards.css";
+import "./Products.css";
 
-const Cards = props => (
+const Product = props => (
   <div>
     <Row>
       <Col s={12} m={3}>
@@ -99,4 +99,4 @@ const Cards = props => (
   </div>
 );
 
-export default Cards;
+export default Product;
