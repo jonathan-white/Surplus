@@ -5,7 +5,7 @@ const apiRoutes = require("./api");
 // API Routes
 router.use("/api", apiRoutes);
 
-app.get('/api/hello', (req, res) => {
+router.get('/api/hello', (req, res) => {
 	res.send({ express: 'The server is up and running!' });
 });
 

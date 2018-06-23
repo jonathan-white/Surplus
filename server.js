@@ -17,11 +17,6 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static('public'));
   app.use(express.static(path.join(__dirname, 'client/build')));
-
-  // If no API routes are hit, send the React app
-  router.use("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../build/index.html"));
-  });
 }
 
 app.use(routes);
