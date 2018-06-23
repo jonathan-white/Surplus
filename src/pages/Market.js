@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Products from "../components/Products";
+import ProductList from "../components/ProductList";
 import Favorites from "../components/Favorites";
 import Companies from "../components/Companies";
 import Search from "../components/Search";
@@ -7,12 +7,14 @@ import Search from "../components/Search";
 
 
 class Market extends Component {
-
-state = {
-  products: [],
-  user: {
-  },
-}
+	constructor(props){
+		super(props);
+		this.state = {
+      products: [],
+      user: {
+      },
+    }
+	}
 
 //this will fire when the component mounts (similar to doc.ready)
 
@@ -42,7 +44,7 @@ state = {
         <Search/>
         <Favorites/>
         <Companies/>
-        <Products/>
+        <ProductList/>
         {/* //this is a for loop for ES6 */}
         {/* {this.state.products.map(product=>{
           return <Products nonsense = {product}/>
