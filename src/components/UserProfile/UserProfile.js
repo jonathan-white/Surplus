@@ -29,20 +29,34 @@ class UserProfile extends Component {
 		return (
 
 			<div className="profile">
-				<div>
-					<img className="profile-img" src="images/chase.jpg" />
+				<div className="profile-img">
+					<img src="images/chase.jpg" />
+					{/* <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> */}
 				</div>
 				<form className="row">
 					<Input 
 						s={12} 
-						placeholder="Company" 
+						type="text"
 						label="Company" 
 						value={this.state.company}
 						name="company"
 						onChange={this.handleInputChange}
 					/>
-					<Input s={12} type="email" label="Email" />
-					<Input s={12} type="tel" label="Phone" />
+					<Input 
+						s={12} 
+						type="email" 
+						label="Email" 
+						value={this.state.email}
+						onChange={this.handleInputChange}
+					/>
+					<Input 
+						s={12} 
+						type="tel" 
+						label="Phone" 
+						value={this.state.phone}
+						onChange={this.handleInputChange}
+					/>
+					<button className="btn">Submit</button>
 				</form>
 			</div>
 		)
