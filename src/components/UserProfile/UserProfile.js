@@ -39,7 +39,7 @@ class UserProfile extends Component {
 					<Input 
 						s={12} 
 						type="text"
-						label="Company" 
+						label="Company (required)" 
 						value={this.state.company}
 						name="company"
 						onChange={this.handleInputChange}
@@ -47,7 +47,7 @@ class UserProfile extends Component {
 					<Input 
 						s={12} 
 						type="email" 
-						label="Email" 
+						label="Email (required)" 
 						value={this.state.email}
 						onChange={this.handleInputChange}
 					/>
