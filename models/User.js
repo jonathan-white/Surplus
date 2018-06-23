@@ -3,11 +3,14 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // Create article schema
-var CompanySchema = new Schema({
+var UserSchema = new Schema({
 	name: {type: String, unique: true},
 	description: String,
 	CEO: String,
 	industry: String,
+	rating: Number,
+	responseTime: String,
+	itemsSold: Number,
 	products: [
 	    {
 	      type: Schema.Types.ObjectId,
@@ -16,6 +19,6 @@ var CompanySchema = new Schema({
 	],
 });
 
-var Company = mongoose.model('Company', CompanySchema);
+var User = mongoose.model('User', UserSchema);
 
-module.exports = Company;
+module.exports = User;
