@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardTitle } from 'react-materialize'
+// import { Card, CardTitle } from 'react-materialize'
 import "./UserProfile.css";
 import Input from "react-materialize/lib/Input";
 
@@ -8,6 +8,8 @@ class UserProfile extends Component {
 		super(props);
 		this.state = {
 			company: "",
+			email: "",
+			phone: "",
 			// user: {
 			// 	name: ""
 			// },
@@ -30,8 +32,8 @@ class UserProfile extends Component {
 
 			<div className="profile">
 				<div className="profile-img">
-					<img src="images/chase.jpg" />
-					{/* <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> */}
+					<img src="images/chase.jpg" alt="company logo" />
+					<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
 				</div>
 				<form className="row">
 					<Input 
