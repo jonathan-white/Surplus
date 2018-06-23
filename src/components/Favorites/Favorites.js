@@ -6,18 +6,18 @@ import "./Favorites.css";
 const Favorites = props => (
     <Slider>
         <Slide
-        src="http://lorempixel.com/580/250/nature/1"
+        src="./Images/OfficeRoom.jpg"
         title="This is our big Tagline!">
         Here's our small slogan.
         </Slide>
         <Slide
-        src="http://lorempixel.com/580/250/nature/2"
+        src="./Images/projector.jpg"
         title="Left aligned Caption"
         placement="left">
         Here's our small slogan.
         </Slide>
         <Slide
-        src="http://lorempixel.com/580/250/nature/3"
+        src="./Images/pens.jpg"
         title="Right aligned Caption"
         placement="right">
         Here's our small slogan.
