@@ -1,22 +1,52 @@
-import React from "react";
-import { Row, Card, CardTitle, Col } from 'react-materialize'
+import React, { Component } from "react";
+import { Card, CardTitle } from 'react-materialize'
 import "./UserProfile.css";
 import Input from "react-materialize/lib/Input";
 
-const UserProfile = props => (
-    <div>
-        <Card title='Add an Item'>
-            <div>Picture goes here</div>
-            <form>
-                <Input
-                    value={this.state.title}
-                    onChange={this.handleInputChange}
-                    name="title"
-                    placeholder="Title (required)"
-                />
-            </form>
-        </Card>
-    </div>
-)
+class UserProfile extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			company: "",
+			// user: {
+			// 	name: ""
+			// },
+			// product: {
+			// 	title: 
+			// }
+		}
+	}
+
+	handleInputChange = event => {
+		const {name, value} = event.target;
+
+		this.setState({
+			[name]: value
+		});
+	}
+
+	render() {
+		return (
+
+			<div className="profile">
+				<div>
+					<img className="profile-img" src="images/chase.jpg" />
+				</div>
+				<form className="row">
+					<Input 
+						s={12} 
+						placeholder="Company" 
+						label="Company" 
+						value={this.state.company}
+						name="company"
+						onChange={this.handleInputChange}
+					/>
+					<Input s={12} type="email" label="Email" />
+					<Input s={12} type="tel" label="Phone" />
+				</form>
+			</div>
+		)
+	}
+} 
 
 export default UserProfile;

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Card, CardTitle, Col } from 'react-materialize'
+import { Row, Col } from 'react-materialize'
 import NewProduct from "../components/NewProduct";
 import UserProfile from  "../components/UserProfile";
 import Cart from "../components/Cart";
-import API from "../utils/API"
 
 class Profile extends Component {
 	constructor(props){
@@ -14,13 +13,13 @@ class Profile extends Component {
 	}
 
   render() {
-    return (    
+    return (   
         <Row>
-            <Col>
+            <Col s={6}>
                 <UserProfile />
                 <NewProduct />
             </Col>
-            <Col>
+            <Col s={6}>
                 <Cart />
             </Col>
         </Row>

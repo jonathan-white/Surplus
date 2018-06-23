@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Card, CardTitle, Col } from 'react-materialize'
+import { Row } from 'react-materialize'
 import "./ProductList.css";
 import Product from '../Product';
 
