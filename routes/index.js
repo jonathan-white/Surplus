@@ -5,6 +5,10 @@ const apiRoutes = require("./api");
 // API Routes
 router.use("/api", apiRoutes);
 
+app.get('/api/hello', (req, res) => {
+	res.send({ express: 'The server is up and running!' });
+});
+
 // If no API routes are hit, send the React app
 router.use("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "../build/index.html"));
