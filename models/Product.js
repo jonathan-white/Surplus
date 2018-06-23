@@ -6,13 +6,13 @@ var Schema = mongoose.Schema;
 var ProductSchema = new Schema({
 	title: {type: String, unique: true},
 	description: String,
+	price: Number,
 	weight: Number,
-	weightScale: String,
+	unitOfMeasure: String,
 	quantity: Number,
 	rating: Number,
-	price: Number,
 	inStock: Boolean,
-	dateAdded: Date,
+	dateAdded: { type: Date, default: Date.now },
 });
 
 var Product = mongoose.model('Product', ProductSchema);
