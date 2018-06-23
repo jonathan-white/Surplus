@@ -11,6 +11,7 @@ var UserSchema = new Schema({
 	rating: Number,
 	responseTime: String,
 	itemsSold: Number,
+	hasProducts: Boolean,
 	products: [
 	    {
 	      type: Schema.Types.ObjectId,
