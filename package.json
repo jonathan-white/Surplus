@@ -1,5 +1,5 @@
 {
-  "name": "Surplus",
+  "name": "surplus",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,8 +15,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "Start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon\" \"npm run start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3000",
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "nodemon": "^1.17.5"
   }
 }

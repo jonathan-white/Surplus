@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Card, CardTitle } from 'react-materialize'
 import "./UserProfile.css";
 import Input from "react-materialize/lib/Input";
+import API from "../../utils/API";
 
 class UserProfile extends Component {
 	constructor(props){
@@ -10,14 +11,22 @@ class UserProfile extends Component {
 			company: "",
 			email: "",
 			phone: "",
-			// user: {
-			// 	name: ""
-			// },
-			// product: {
-			// 	title: 
-			// }
 		}
-	}
+	};
+
+	handleFormSubmit = event => {
+		event.preventDefault();
+
+		const newCompany = {
+			name: this.state.company,
+			email: this.state.email,
+			phone: this.state.phone
+		}
+
+		API.createAccount(newCompany)
+			.then(res => console.log(res.data))
+			.catch(err => console.log(err));
+	};
 
 	handleInputChange = event => {
 		const {name, value} = event.target;
@@ -25,7 +34,7 @@ class UserProfile extends Component {
 		this.setState({
 			[name]: value
 		});
-	}
+	};
 
 	render() {
 		return (
@@ -33,7 +42,7 @@ class UserProfile extends Component {
 			<div className="profile">
 				<div className="profile-img">
 					<img src="images/chase.jpg" alt="company logo" />
-					<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+					<a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
 				</div>
 				<form className="row">
 					<Input 
@@ -49,6 +58,7 @@ class UserProfile extends Component {
 						type="email" 
 						label="Email (required)" 
 						value={this.state.email}
+						name="email"
 						onChange={this.handleInputChange}
 					/>
 					<Input 
@@ -56,9 +66,15 @@ class UserProfile extends Component {
 						type="tel" 
 						label="Phone" 
 						value={this.state.phone}
+						name="phone"
 						onChange={this.handleInputChange}
 					/>
-					<button className="btn">Submit</button>
+					<button 
+						className="btn center-align" 
+						onClick={this.handleFormSubmit}
+					>
+					Submit
+					</button>
 				</form>
 			</div>
 		)
