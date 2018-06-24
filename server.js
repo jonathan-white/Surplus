@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 require("dotenv").config();
 
 app.use(logger("dev"));
@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 
 // Use Static Public
 if (process.env.NODE_ENV === "production") {
-  // app.use(express.static('public'));
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static('public'));
+  // app.use(express.static(path.join(__dirname, 'client/build')));
 }
 
 app.use(routes);
