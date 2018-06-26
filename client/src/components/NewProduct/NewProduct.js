@@ -11,8 +11,8 @@ class NewProduct extends Component {
 			title: "",
 			description: "",
 			price: "",
-			quantity: ""
-
+			quantity: "",
+			image: "",
 		}
 	};
 
@@ -40,17 +40,28 @@ class NewProduct extends Component {
 		});
 	};
 
+	handleUpload = event => {
+		// event.preventDefault();
+		// let data = new FormData();
+
+		// API.uploadProductPic()
+		// 	.then(res => console.log(res.data))
+		// 	.catch(err => console.log(err));
+		// // event.preventDefault();
+	};
+
 	render() {
 		return (
-
 			<div className="profile">
 				<div className="profile-img">
-					<img src="images/chase.jpg" alt="company logo" />
-					<a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+					<img src={this.state.image || "images/chase.jpg"} alt="company logo" />
+					<a className="btn-floating btn-large waves-effect waves-light red">
+						<i className="material-icons">add</i>
+					</a>
 				</div>
-				<form id="frmUploader" method="post" encType="multipart/form-data" action="api/uploads/">
+				<form method="post" encType="multipart/form-data" action="api/uploads/">
 					<input type="file" name="fileUpload" />
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Submit"/>
 				</form>
 				<form className="row">
 					<Input 
