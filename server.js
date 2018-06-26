@@ -20,11 +20,27 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, 'client/build')));
 }
 
+// app.all("/*", function(req, res, next) {
+//   // CORS headers
+//   res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
+//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+//   // Set custom headers for CORS
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Content-type,Accept,X-Access-Token,X-Key"
+//   );
+//   if (req.method == "OPTIONS") {
+//     res.status(200).end();
+//   } else {
+//     next();
+//   }
+// });
+
 app.use(routes);
 
 // If deployed, use the deployed database. Otherwise use the local nytreact database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/surplusDB");
 
 app.listen(PORT, function() {
-  console.log("App listening on port http://localhost:" + PORT);
+  console.log("Server listening on port http://localhost:" + PORT);
 });
