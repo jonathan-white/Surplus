@@ -1,10 +1,10 @@
 const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./api");
+// const apiRoutes = require("./api");
 const db = require("../models");
 
 // API Routes
-router.use("/api", apiRoutes);
+// router.use("/api", apiRoutes);
 
 router.post('/api/users', (req, res) => {
     db.Account

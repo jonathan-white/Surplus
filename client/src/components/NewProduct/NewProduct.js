@@ -73,7 +73,6 @@ class NewProduct extends Component {
 						name="price"
 						onChange={this.handleInputChange}
 					/>
-
 					<Input 
 						s={12} 
 						type="number" 

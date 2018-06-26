@@ -19,7 +19,7 @@ class Profile extends Component {
                 <NewProduct />
             </Col>
             <Col s={6}>
-
+                {/* <ListOfProducts /> */}
             </Col>
         </Row>
     );
