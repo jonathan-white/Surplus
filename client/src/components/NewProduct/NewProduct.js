@@ -48,6 +48,10 @@ class NewProduct extends Component {
 					<img src="images/chase.jpg" alt="company logo" />
 					<a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
 				</div>
+				<form id="frmUploader" method="post" encType="multipart/form-data" action="api/uploads/">
+					<input type="file" name="fileUpload" />
+					<input type="submit" value="Submit" />
+				</form>
 				<form className="row">
 					<Input 
 						s={12} 
