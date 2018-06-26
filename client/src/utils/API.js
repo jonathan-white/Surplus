@@ -12,6 +12,9 @@ export default {
   createAccount: (companyData) => {
     return axios.post("/api/users", companyData);
   },
+  createProduct: (productData) => {
+    return axios.post("/api/products", productData);
+  },
   getUser: (id) => {
     return axios.get("/api/users/" + id);
   }
