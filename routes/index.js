@@ -13,6 +13,13 @@ router.post('/api/users', (req, res) => {
       .catch(err => res.status(422).json(err));
 });
 
+router.post('/api/products', function(req, res) {
+  db.Product
+    .create(req.body)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+});
+
 // If no API routes are hit, send the React app
 router.use("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "../build/index.html"));
