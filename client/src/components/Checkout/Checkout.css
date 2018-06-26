@@ -1,9 +1,9 @@
-.CartBox {
+.CheckoutBox {
     margin: 40px;
     border: 5px solid gray;
   }
-    
-  .Cart_content {
+
+  .Checkout_content {
     font-size: 15px;
-    text-align: center;
+    text-align: Left;
   }
