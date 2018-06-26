@@ -1,5 +1,4 @@
-
-export default NewProduct;import React, { Component } from "react";
+import React, { Component } from "react";
 // import { Card, CardTitle } from 'react-materialize'
 import "./NewProduct.css";
 import Input from "react-materialize/lib/Input";
@@ -61,7 +60,7 @@ class NewProduct extends Component {
 					<Input 
 						s={12} 
 						type="textarea" 
-						label="description" 
+						label="Description" 
 						value={this.state.description}
 						name="description"
 						onChange={this.handleInputChange}
@@ -69,7 +68,7 @@ class NewProduct extends Component {
 					<Input 
 						s={12} 
 						type="text" 
-						label="price" 
+						label="Price" 
 						value={this.state.price}
 						name="price"
 						onChange={this.handleInputChange}
@@ -78,17 +77,9 @@ class NewProduct extends Component {
 					<Input 
 						s={12} 
 						type="number" 
-						label="quantity" 
+						label="Quantity" 
 						value={this.state.quantity}
 						name="quantity"
-						onChange={this.handleInputChange}
-					/>
-					<Input 
-						s={12} 
-						type="tel" 
-						label="Phone" 
-						value={this.state.phone}
-						name="phone"
 						onChange={this.handleInputChange}
 					/>
 					<button 
