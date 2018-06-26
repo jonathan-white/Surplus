@@ -8,9 +8,9 @@ const Product = props => (
 			<Card header={<CardTitle reveal image={"img/office.jpg"} waves='light' />}
 				// this is accessing through props the market.js state for cards
 				// title= {props.nonsense.title}
-				title="Card Title"
-				reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-				<p><a href="/">This is a link</a></p>
+				title={props.product.title || 'Product Title'}
+				reveal={<p>{props.product.description || 'Description of Product'}</p>}>
+				<p><a href="/">Add to Cart</a></p>
 			</Card>
 		</Col>
 	</div>
