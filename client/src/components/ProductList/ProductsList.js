@@ -1,9 +1,8 @@
 import React from "react";
 import { Row } from 'react-materialize'
-import "./ProductList.css";
 import Product from '../Product';
 
-const ProductList = props => (
+const ProductsList = props => (
   <div>
     <Row>
       <Product />
@@ -26,4 +25,4 @@ const ProductList = props => (
   </div>
 );
 
-export default ProductList;
+export default ProductsList;

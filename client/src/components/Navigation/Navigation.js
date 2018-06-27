@@ -14,7 +14,7 @@ const Navigation = props => (
         <NavItem href='/favorites'>
 					<Icon>favorite</Icon>
 				</NavItem>
-        <NavItem href='/cart'>
+        <NavItem href='/checkout'>
 					<Icon>shopping_cart</Icon>
 				</NavItem>
     </Navbar>

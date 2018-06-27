@@ -3,7 +3,7 @@ import { Row, Col } from 'react-materialize'
 import Cart from "../components/Cart";
 import Checkout from "../components/Checkout";
 
-class Profile extends Component {
+class ShoppingCart extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -26,5 +26,4 @@ class Profile extends Component {
   }
 }
 
-
-export default Profile;
+export default ShoppingCart;
