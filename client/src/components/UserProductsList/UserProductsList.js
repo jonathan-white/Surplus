@@ -6,9 +6,9 @@ import "./UserProductsList.css";
 const ProductsList = props => (
   <div>
     <Row>
-      <h3>Your Products</h3>
+      <h4>Your Products</h4>
     </Row>
-    <Row className="user_productlist">
+    <Row className="productslist">
       {props.products.map(product => (
           <Product key={product._id} product={product} />
       ))}

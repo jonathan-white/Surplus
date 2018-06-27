@@ -4,7 +4,7 @@ import Product from '../Product';
 
 const MarketProductList = props => (
   <div>
-    <Row>
+    <Row className="productslist">
       {props.products.map(product => (
           <Product key={product._id} product={product} />
       ))}

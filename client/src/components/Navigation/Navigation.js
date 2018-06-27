@@ -11,9 +11,9 @@ const Navigation = props => (
         <NavItem href='/profile'>
 					<Icon>person</Icon>
 				</NavItem>
-        <NavItem href='/favorites'>
+        {/* <NavItem href='/favorites'>
 					<Icon>favorite</Icon>
-				</NavItem>
+				</NavItem> */}
         <NavItem href='/checkout'>
 					<Icon>shopping_cart</Icon>
 				</NavItem>

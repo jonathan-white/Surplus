@@ -38,44 +38,50 @@ class UserProfile extends Component {
 
 	render() {
 		return (
-
-			<div className="profile">
-				<div className="profile-img">
-					<img src="images/chase.jpg" alt="company logo" />
-					<a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+			<div>
+				<div className="row">
+					<h4>Your Profile</h4>
 				</div>
-				<form className="row">
-					<Input 
-						s={12} 
-						type="text"
-						label="Company (required)" 
-						value={this.state.company}
-						name="company"
-						onChange={this.handleInputChange}
-					/>
-					<Input 
-						s={12} 
-						type="email" 
-						label="Email (required)" 
-						value={this.state.email}
-						name="email"
-						onChange={this.handleInputChange}
-					/>
-					<Input 
-						s={12} 
-						type="tel" 
-						label="Phone" 
-						value={this.state.phone}
-						name="phone"
-						onChange={this.handleInputChange}
-					/>
-					<button 
-						className="btn center-align" 
-						onClick={this.handleFormSubmit}
-					>
-					Submit
-					</button>
-				</form>
+				<div className="row"> 
+					<div className="profile">
+						<div className="profile-img">
+							<img src="images/chase.jpg" alt="company logo" />
+							<a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+						</div>
+						<form className="row">
+							<Input 
+								s={12} 
+								type="text"
+								label="Company (required)" 
+								value={this.state.company}
+								name="company"
+								onChange={this.handleInputChange}
+							/>
+							<Input 
+								s={12} 
+								type="email" 
+								label="Email (required)" 
+								value={this.state.email}
+								name="email"
+								onChange={this.handleInputChange}
+							/>
+							<Input 
+								s={12} 
+								type="tel" 
+								label="Phone" 
+								value={this.state.phone}
+								name="phone"
+								onChange={this.handleInputChange}
+							/>
+							<button 
+								className="btn center-align" 
+								onClick={this.handleFormSubmit}
+							>
+							Submit
+							</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		)
 	}
