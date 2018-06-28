@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 // Create article schema
 var ProductSchema = new Schema({
-	title: {type: String, unique: true, required: true},
+	title: {type: String, required: true},
 	description: String,
 	price: {type: Number, default: 0.00},
 	quantity: Number,
