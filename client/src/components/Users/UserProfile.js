@@ -23,7 +23,7 @@ class UserProfile extends Component {
 			phone: this.state.phone
 		}
 
-		API.createAccount(newCompany)
+		API.createCompany(newCompany)
 			.then(res => console.log(res.data))
 			.catch(err => console.log(err));
 	};

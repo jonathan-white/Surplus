@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "react-materialize/lib/Input";
+import API from '../../utils/API';
 
 class Login extends Component {
   constructor(props) {
@@ -8,31 +9,25 @@ class Login extends Component {
       isLoggedIn: false,
       username: "",
       password: "",
-      mode: "login",
     }
   };
 
   handleFormSubmit = (event) => {
 		event.preventDefault();
-    const action = event.target.id;
-
-    this.setState({
-      mode: action
-    });
 
     const userData = {
       username: this.state.username,
       password: this.state.password
     }
 
-    if(action === "login"){
+    if(event.target.id === "login"){
       // API.loginAccount(userData)
   		// 	.then(res => console.log(res.data))
   		// 	.catch(err => console.log(err));
     } else {
-      // API.createAccount(userData)
-  		// 	.then(res => console.log(res.data))
-  		// 	.catch(err => console.log(err));
+      API.createAccount(userData)
+  			.then(res => console.log(res.data))
+  			.catch(err => console.log(err));
     }
 
 	};

@@ -13,4 +13,9 @@ router
   .put(accountsController.update)
   .delete(accountsController.remove);
 
+// Matches with "/api/users/login"
+// router
+//     .route("/login")
+//     .post(accountsController.login);
+
 module.exports = router;

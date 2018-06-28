@@ -25,7 +25,13 @@ export default {
     return axios.delete("/api/products/" + id);
   },
   // Account APIs
-  createAccount: (companyData) => {
+  createAccount: (userData) => {
+    return axios.post("/api/users", userData);
+  },
+  loginAccount: (userData) => {
+    return axios.post("/api/users/login", userData);
+  },
+  createCompany: (companyData) => {
     return axios.post("/api/users", companyData);
   },
   getUser: (id) => {
