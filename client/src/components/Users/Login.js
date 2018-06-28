@@ -7,20 +7,28 @@ class Login extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
+      company: "",
       username: "",
       password: "",
+      mode: "login",
     }
   };
 
   handleFormSubmit = (event) => {
 		event.preventDefault();
 
+    const action = event.target.id;
+
+    this.setState({
+      mode: action
+    })
+
     const userData = {
       username: this.state.username,
       password: this.state.password
     }
 
-    if(event.target.id === "login"){
+    if(action === "login"){
       // API.loginAccount(userData)
   		// 	.then(res => console.log(res.data))
   		// 	.catch(err => console.log(err));
@@ -39,6 +47,10 @@ class Login extends Component {
 			[name]: value
 		});
 	};
+
+  doNothing = event => {
+    event.preventDefault();
+  }
 
   render() {
     return (
@@ -60,6 +72,16 @@ class Login extends Component {
             name="password"
             onChange={this.handleInputChange}
           />
+          {this.state.mode === "signup" && (
+            <Input
+              s={12}
+              type="text"
+              label="Company (required)"
+              value={this.state.company}
+              name="company"
+              onChange={this.handleInputChange}
+            />
+          )}
           <div className="login-signup-buttons">
             <button id="login" className="btn" onClick={this.handleFormSubmit}>Login</button>
             <button id="signup" className="btn btn-flat" onClick={this.handleFormSubmit}>Signup</button>
