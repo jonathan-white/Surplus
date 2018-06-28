@@ -3,3 +3,7 @@
     margin: 20px;
     background-color: #ddd;
 }
+
+.product:hover {
+  transform: scale(1.02);
+}

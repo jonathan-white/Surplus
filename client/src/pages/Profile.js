@@ -22,13 +22,13 @@ class Profile extends Component {
 	componentWillMount(){
 		this.pageLoadData();
 	};
-	
+
 	pageLoadData = () => {
 		API.getProducts()
 			.then(results=> this.setState({ products: results.data }))
 			.catch(err => console.log(err));
 	};
-		
+
 	handleFormSubmit = event => {
 		event.preventDefault();
 
@@ -37,7 +37,7 @@ class Profile extends Component {
 			description: this.state.description,
 			price: this.state.price,
 			quantity: this.state.quantity,
-			image: this.state.product_image,
+			image_url: this.state.product_image,
 		}
 
 		API.createProduct(newProduct)
@@ -57,7 +57,7 @@ class Profile extends Component {
 			})
 			.catch(err => console.log(err));
 	};
-	
+
 	handleInputChange = event => {
 		const {name, value} = event.target;
 
@@ -70,33 +70,48 @@ class Profile extends Component {
 		event.preventDefault();
 		let data = new FormData(event.target);
 
-		console.log(event.target);
+		// console.log('event.target: ',event.target);
 
-		console.log(data);
-		
+		// console.log('data: ',data);
+
 		API.uploadProductPic(data)
 			.then(res => this.setState({ product_image: res.data.url }))
 			.catch(err => console.log(err));
 	};
 
+	handleProductDelete = (id) => {
+		console.log('Deleting product: ',id);
+		API.deleteProduct(id)
+			.then(res => {
+				console.log(`Successfully deleted Product: ${id}`);
+				API.getProducts()
+					.then(results=> this.setState({ products: results.data }))
+					.catch(err => console.log(err));
+			})
+			.catch(err => console.log(err));
+	};
+
   render() {
-    return (   
+    return (
 			<Row>
 				<Col s={6}>
 					<UserProfile/>
-					<NewProduct 
+					<NewProduct
 						title={this.state.title}
 						description={this.state.description}
 						price={this.state.price}
 						quantity={this.state.quantity}
 						image={this.state.product_image}
-						handleInputChange={this.handleInputChange} 
+						handleInputChange={this.handleInputChange}
 						handleFormSubmit={this.handleFormSubmit}
 						handleUpload={this.handleUpload}
 					/>
 				</Col>
 				<Col s={6}>
-					<UserProductsList products={this.state.products}/>
+					<UserProductsList
+						products={this.state.products}
+						handleProductDelete={this.handleProductDelete}
+					/>
 				</Col>
 			</Row>
     );
