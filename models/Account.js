@@ -11,6 +11,7 @@ var AccountSchema = new Schema({
 	name: {type: String, unique: true, required: true},
 	description: String,
 	email: {type: String, match: /.+\@.+\..+/, unique: true},
+	password: {type: String}, //TODO: Make this required
 	phone: String,
 	creditCardNumber: { type: String, get: obfuscate },
 	dateJoined: { type: Date, default: Date.now },
