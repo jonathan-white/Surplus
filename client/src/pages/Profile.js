@@ -67,13 +67,16 @@ class Profile extends Component {
 	};
 
 	handleUpload = event => {
-		// event.preventDefault();
-		// let data = new FormData();
+		event.preventDefault();
+		let data = new FormData(event.target);
 
-		// API.uploadProductPic()
-		// 	.then(res => console.log(res.data))
-		// 	.catch(err => console.log(err));
-		// // event.preventDefault();
+		console.log(event.target);
+
+		console.log(data);
+		
+		API.uploadProductPic(data)
+			.then(res => this.setState({ product_image: res.data.url }))
+			.catch(err => console.log(err));
 	};
 
   render() {
@@ -89,6 +92,7 @@ class Profile extends Component {
 						image={this.state.product_image}
 						handleInputChange={this.handleInputChange} 
 						handleFormSubmit={this.handleFormSubmit}
+						handleUpload={this.handleUpload}
 					/>
 				</Col>
 				<Col s={6}>

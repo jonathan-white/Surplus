@@ -8,14 +8,17 @@ const NewProduct = props => (
 		</div>
 		<div className="row">
 			<div className="profile">
-				<div className="profile-img">
-					<img src={props.image || "images/chase.jpg"} alt="company logo" />
-					<a className="btn-floating btn-large waves-effect waves-light red">
-						<i className="material-icons">add</i>
-					</a>
-				</div>
-				<form method="post" encType="multipart/form-data" action="api/uploads/">
-					<input type="file" name="fileUpload" />
+				
+				<form className="row" method="post" encType="multipart/form-data" action="api/uploads/" onSubmit={props.handleUpload}>
+					<label htmlFor="fileUpload">
+						<div className="profile-img">
+							<img src={props.image || "images/chase.jpg"} alt="company logo" />
+							<a className="btn-floating btn-large waves-effect waves-light red">
+								<i className="material-icons">add</i>
+							</a>
+						</div>
+					</label>
+					<input id="fileUpload" type="file" name="fileUpload" onChange={props.handleUpload} />
 					<input type="submit" value="Submit"/>
 				</form>
 				<form className="row">

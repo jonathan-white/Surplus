@@ -18,7 +18,11 @@ export default {
   getUser: (id) => {
     return axios.get("/api/users/" + id);
   },
-  uploadProductPic: () => {
-    return axios.post("/api/uploads");
+  uploadProductPic: (data) => {
+    return axios.post("/api/uploads",data,{
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
   },
 };
