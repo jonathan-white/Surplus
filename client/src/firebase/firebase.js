@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const config = {
-  apiKey: "AIzaSyBIdkCMFwpKfN9PPB_oJwIvIEDKZxPdWpc",
-  authDomain: "surplus-6507a.firebaseapp.com",
-  databaseURL: "https://surplus-6507a.firebaseio.com",
-  projectId: "surplus-6507a",
-  storageBucket: "surplus-6507a.appspot.com",
-  messagingSenderId: "461179512586"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
 };
 
 if(!firebase.apps.length) {

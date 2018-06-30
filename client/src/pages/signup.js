@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
 import Input from "react-materialize/lib/Input";
-import API from '../utils/API';
+// import API from '../utils/API';
 
 const SignUpPage = ({history}) => (
   <div>
@@ -45,22 +45,22 @@ class SignUpForm extends Component {
 
         console.log('Logged in user: ', authUser);
 
-        const userData = {
-          name: name,
-          email: email,
-          password: passwordOne,
-        };
+        // const userData = {
+        //   name: name,
+        //   email: email,
+        //   password: passwordOne,
+        // };
 
-        API.createAccount(userData)
-        .then(res => {
-          console.log(res.data);
-
-          // Redirect the user to the homepage
-          window.location.href = "/";
-
-          this.setState({ isLoggedIn: true });
-        })
-        .catch(err => console.log(err));
+        // API.createAccount(userData)
+        // .then(res => {
+        //   console.log(res.data);
+        //
+        //   // Redirect the user to the homepage
+        //   window.location.href = "/";
+        //
+        //   this.setState({ isLoggedIn: true });
+        // })
+        // .catch(err => console.log(err));
       })
       .catch(error => this.setState({ error: error }));
 
