@@ -7,8 +7,8 @@ class Login extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      company: "",
-      username: "",
+      name: "",
+      email: "",
       password: "",
       mode: "login",
     }
@@ -21,36 +21,43 @@ class Login extends Component {
 
     this.setState({
       mode: action
-    })
+    });
 
-    const userData = {
-      username: this.state.username,
-      password: this.state.password
+    if(this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0) {
+      const userData = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+      }
+
+      if(action === "login"){
+        API.loginAccount(userData)
+        .then(res => {
+          console.log(res.data);
+          console.log('Welcome',res.data.name);
+          this.setState({ isLoggedIn: true });
+        })
+        .catch(err => console.log(err));
+      } else {
+        API.createAccount(userData)
+        .then(res => {
+          console.log(res.data);
+          this.setState({ isLoggedIn: true });
+        })
+        .catch(err => console.log(err));
+      }
     }
-
-    if(action === "login"){
-      // API.loginAccount(userData)
-  		// 	.then(res => console.log(res.data))
-  		// 	.catch(err => console.log(err));
-    } else {
-      API.createAccount(userData)
-  			.then(res => console.log(res.data))
-  			.catch(err => console.log(err));
-    }
-
 	};
 
 	handleInputChange = event => {
 		const {name, value} = event.target;
 
+    console.log(value);
+
 		this.setState({
 			[name]: value
 		});
 	};
-
-  doNothing = event => {
-    event.preventDefault();
-  }
 
   render() {
     return (
@@ -59,9 +66,9 @@ class Login extends Component {
           <Input
             s={12}
             type="text"
-            label="Username"
-            value={this.state.username}
-            name="username"
+            label="Email"
+            value={this.state.email}
+            name="email"
             onChange={this.handleInputChange}
           />
           <Input
@@ -77,8 +84,8 @@ class Login extends Component {
               s={12}
               type="text"
               label="Company (required)"
-              value={this.state.company}
-              name="company"
+              value={this.state.name}
+              name="name"
               onChange={this.handleInputChange}
             />
           )}

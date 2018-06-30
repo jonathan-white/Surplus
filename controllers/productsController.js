@@ -18,6 +18,9 @@ module.exports = {
   create: function(req, res) {
     db.Product
       .create(req.body)
+      .then(dbProduct => {
+        return db.Account.findOneAndUpdate({_id: req.body.accountId}, { $push: { products: dbProduct._id } }, { new: true });
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

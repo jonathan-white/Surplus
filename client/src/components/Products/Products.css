@@ -65,6 +65,10 @@
   margin-bottom: 0;
 }
 
+.item-container .add-to-cart-btn {
+  font-size: .875rem;
+}
+
 .item-container .add-to-cart-btn:hover {
   transform: scale(1.03);
 }

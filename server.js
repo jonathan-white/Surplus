@@ -23,7 +23,15 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // If deployed, use the deployed database. Otherwise use the local nytreact database
+mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/surplusDB");
+
+// Connect to MongoDB &
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(){
+	console.log('Connection to database is active');
+});
 
 app.listen(PORT, function() {
   console.log(`Server listening on port http://localhost:${PORT}`);

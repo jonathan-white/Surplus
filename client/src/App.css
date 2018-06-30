@@ -1,0 +1,8 @@
+.carousel .carousel-item {
+  width: 500px;
+  height: 300px;
+}
+
+.carousel .carousel-item img {
+  height: 100%;
+}

@@ -14,6 +14,7 @@ class Profile extends Component {
 			quantity: "",
 			product_image: "",
 			user_image: "",
+			user_id: "",
 		}
   }
 
@@ -36,6 +37,7 @@ class Profile extends Component {
 			price: this.state.price,
 			quantity: this.state.quantity,
 			image_url: this.state.product_image,
+			accountId: this.state.user_id,
 		}
 
 		API.createProduct(newProduct)
@@ -93,7 +95,8 @@ class Profile extends Component {
     return (
 			<Row>
 				<Col s={6}>
-					<UserProfile/>
+					<UserProfile
+						userId={this.state.user_id}/>
 					<NewProduct
 						title={this.state.title}
 						description={this.state.description}
@@ -107,6 +110,7 @@ class Profile extends Component {
 				</Col>
 				<Col s={6}>
 					<UserProductsList
+						userId={this.state.user_id}
 						products={this.state.products}
 						handleProductDelete={this.handleProductDelete}
 					/>
