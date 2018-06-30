@@ -1,4 +1,5 @@
 module.exports = {
 	Product: require("./Product"),
-	Account: require("./Account")
+	Account: require("./Account"),
+	Cart: require("./Cart")
 };

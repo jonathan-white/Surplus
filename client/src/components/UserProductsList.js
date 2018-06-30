@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from 'react-materialize'
-import ProductCard from './ProductCard';
+import UserProduct from './UserProduct';
 
 const ProductsList = props => (
   <div>
@@ -9,7 +9,7 @@ const ProductsList = props => (
     </Row>
     <Row className="productslist">
       {props.products.map(product => (
-        <ProductCard key={product._id} product={product} handleProductDelete={props.handleProductDelete} />
+        <UserProduct key={product._id} product={product} handleProductDelete={props.handleProductDelete} />
       ))}
     </Row>
   </div>

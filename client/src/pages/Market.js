@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MarketProductList from "../components/MarketProductList";
 import Favorites from "../components/Favorites";
 import Companies from "../components/Companies";
-import Search from "../components/Search";
 import API from "../utils/API"
 
 class Market extends Component {

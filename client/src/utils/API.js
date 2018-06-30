@@ -38,4 +38,14 @@ export default {
     return axios.get("/api/users/" + id);
   },
 
+  // Cart APIs
+  getCart: (id) => {
+    return axios.get("/api/cart/" + id);
+  },
+  createCart: (cartData) => {
+    return axios.post("/api/cart", cartData);
+  },
+  deleteProduct: (id) => {
+    return axios.delete("/api/cart/" + id);
+  },
 };

@@ -1,28 +1,44 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Profile from "../pages/Profile";
 import Market from "../pages/Market";
 import ShoppingCart from "../pages/ShoppingCart";
 import NoMatch from '../pages/404';
 import Navigation from "./Navigation";
-import Login from "./Login";
+import Signin from "../pages/signin";
+import Signup from "../pages/signup";
+import Signout from "../pages/signout";
 import Footer from "./Footer";
 import './App.css';
 
-const App = () => (
-  <Router>
-    <div>
-      <Navigation />
-      <Switch>
-        <Route exact path="/" component={Market} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/checkout" component={ShoppingCart} />
-        <Route exact path="/login" component={Login} />
-        <Route component={NoMatch} />
-      </Switch>
-      <Footer />
-    </div>
-  </Router>
-);
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isLoggedIn: true,
+      cartId: 1,
+    }
+  };
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navigation isLoggedIn={this.state.isLoggedIn} />
+          <Switch>
+            <Route exact path="/" component={Market} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/checkout" component={ShoppingCart} />
+            <Route exact path="/signin" component={Signin} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signout" component={Signout} />
+            <Route component={NoMatch} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    );
+  };
+};
 
 export default App;
