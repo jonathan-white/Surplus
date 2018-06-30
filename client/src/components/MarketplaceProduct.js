@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ProductCard extends Component {
+class MarketplaceProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -50,14 +50,9 @@ class ProductCard extends Component {
 					<div className="rating">Rating</div>
 					<button className="btn green add-to-cart-btn" onClick={() => this.shoppingCartHandler(this.props.product)}>Add to Cart</button>
 				</div>
-				{this.state.ownedByUser && (
-					<div className="close" title="Remove Product" onClick={() => this.props.handleProductDelete(this.props.product._id)}>
-						<i className="fas fa-window-close fa-2x"></i>
-					</div>
-				)}
 			</div>
 		);
 	};
 };
 
-export default ProductCard;
+export default MarketplaceProduct;

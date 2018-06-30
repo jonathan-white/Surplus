@@ -79,16 +79,14 @@ class Login extends Component {
             name="password"
             onChange={this.handleInputChange}
           />
-          {this.state.mode === "signup" && (
-            <Input
-              s={12}
-              type="text"
-              label="Company (required)"
-              value={this.state.name}
-              name="name"
-              onChange={this.handleInputChange}
-            />
-          )}
+          <Input
+            s={12}
+            type="text"
+            label="Company (required)"
+            value={this.state.name}
+            name="name"
+            onChange={this.handleInputChange}
+          />
           <div className="login-signup-buttons">
             <button id="login" className="btn" onClick={this.handleFormSubmit}>Login</button>
             <button id="signup" className="btn btn-flat" onClick={this.handleFormSubmit}>Signup</button>

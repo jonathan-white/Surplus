@@ -7,15 +7,23 @@ const Navigation = props => (
       <NavItem href='/search'>
         <Icon>search</Icon>
       </NavItem>
-      <NavItem href='/profile'>
-        <Icon>person</Icon>
-      </NavItem>
+      {props.isLoggedIn && (
+        <NavItem href='/profile'>
+          <Icon>person</Icon>
+        </NavItem>
+      )}
       <NavItem href='/checkout'>
         <Icon>shopping_cart</Icon>
       </NavItem>
-      <NavItem href='/login'>
-        Login
-      </NavItem>
+      {props.isLoggedIn ? (
+        <NavItem href='/signout'>
+          Sign out
+        </NavItem>
+      ) : (
+        <NavItem href='/signin'>
+          Sign in
+        </NavItem>
+      )}
     </Navbar>
 );
 
