@@ -7,8 +7,18 @@ class ProductCard extends Component {
 		this.state = {
 			rating_img: "images/star-ratings.png",
 			ownedByUser: true,
+			shoppingCart: []
 		}
 	};
+
+	shoppingCartHandler = (item) =>{
+		const newCart = [...this.state.shoppingCart]
+		newCart.push(item)
+		this.setState({
+			shoppingCart: newCart
+		})
+	}
+
 
 	render() {
 		return (
@@ -39,7 +49,7 @@ class ProductCard extends Component {
 						</div>
 					</div>
 					<div className="rating">Rating</div>
-					<button className="btn green add-to-cart-btn">Add to Cart</button>
+					<button className="btn green add-to-cart-btn" onClick={() => this.shoppingCartHandler(this.props.product)}>Add to Cart</button>
 				</div>
 				{this.state.ownedByUser && (
 					<div className="close" title="Remove Product" onClick={() => this.props.handleProductDelete(this.props.product._id)}>
