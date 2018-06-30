@@ -5,7 +5,11 @@ import Wrapper from "../Wrapper";
 
 const Companies = props => (
     <Wrapper>
-      <Parallax className="imageSize" imageSrc="./images/OfficeBuilding.jpg" />
+      <Parallax
+        className="imageSize s200"
+        imageSrc="./images/OfficeBuilding.jpg"
+        overlayText="Participating Businesses"
+      />
       <div className="section white">
         <div className="row container">
           <Carousel images={[
@@ -17,7 +21,11 @@ const Companies = props => (
           ]} />
         </div>
       </div>
-      <Parallax className="imageSize" imageSrc="./images/inventoryManage.jpg" />
+      <Parallax
+        className="imageSize s200"
+        imageSrc="./images/inventoryManage.jpg"
+        overlayText="Marketplace Products"
+      />
     </Wrapper>
 );
 

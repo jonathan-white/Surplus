@@ -28,11 +28,11 @@ export default {
   createAccount: (userData) => {
     return axios.post("/api/users", userData);
   },
-  loginAccount: (userData) => {
-    return axios.post("/api/users/login", userData);
-  },
   createCompany: (companyData) => {
     return axios.post("/api/users", companyData);
+  },
+  loginAccount: (userData) => {
+    return axios.post("/api/users/login", userData);
   },
   getUser: (id) => {
     return axios.get("/api/users/" + id);

@@ -4,23 +4,23 @@ import { Slide, Slider } from 'react-materialize'
 import "./Favorites.css";
 
 const Favorites = props => (
-    <Slider>
-        <Slide
+    <Slider className="slider">
+      <Slide
         src="./Images/OfficeRoom.jpg"
-        title="This is our big Tagline!">
-        Here's our small slogan.
-        </Slide>
-        <Slide
+      title="Office Furniture">
+        Tables, desks, chairs, and more...
+      </Slide>
+      <Slide
         src="./Images/projector.jpg"
-        title="Left aligned Caption"
-        placement="left">
-        Here's our small slogan.
-        </Slide>
-        <Slide
+        title="Electronics"
+      placement="left">
+        Projectors and more!
+      </Slide>
+      <Slide
         src="./Images/pens.jpg"
-        title="Right aligned Caption"
-        placement="right">
-        Here's our small slogan.
+        title="Office Supplies"
+      placement="right">
+        Ballpoint Pens, Gel Pens, Fountain Pens and more...
         </Slide>
     </Slider>
 );
