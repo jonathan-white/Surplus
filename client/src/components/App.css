@@ -47,8 +47,9 @@
 
 /*Favorites*/
 .slider .caption h3 {
-  color: #f00;
-  text-shadow: 2px 2px 10px rgba(0,0,0,.7);
+  color: #00f;
+  text-shadow: 2px 2px 10px rgba(0,0,0,.9);
+	font-weight: 800;
 }
 
 .slider .caption h5 {

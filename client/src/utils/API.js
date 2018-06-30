@@ -48,7 +48,7 @@ export default {
   updateCart: (cartId, cartData) => {
     return axios.put("/api/cart/" + cartId, cartData);
   },
-  deleteProduct: (id) => {
+  deleteCart: (id) => {
     return axios.delete("/api/cart/" + id);
   },
 };

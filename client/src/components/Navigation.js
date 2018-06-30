@@ -17,13 +17,13 @@ class Navigation extends Component {
               <input type="text" placeholder="search for products"/>
             </form>
           </NavItem>
-          <NavItem href='/profile'>
+          <NavItem href={routes.ACCOUNT}>
             <Icon>person</Icon>
           </NavItem>
-          <NavItem href='/checkout'>
+          <NavItem href={routes.CHECKOUT}>
             <Icon>shopping_cart</Icon>
           </NavItem>
-          <NavItem href='/signin'>
+          <NavItem href={routes.SIGN_IN}>
             Login
         </NavItem>
         </Navbar>

@@ -63,7 +63,7 @@ class Signin extends Component {
             onChange={this.handleInputChange}
           />
           <div className="login-signup-buttons">
-            <button id="login" className="btn" onClick={this.handleFormSubmit}>Signin</button>
+            <button id="login" className="btn" onClick={this.handleFormSubmit}>Sign In</button>
           </div>
           <div><Link to="/pw-forget">Forgot Password?</Link></div>
         </form>

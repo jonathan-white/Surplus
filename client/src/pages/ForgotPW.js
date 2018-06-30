@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Input from "react-materialize/lib/Input";
-import API from '../utils/API';
 
 class ForgotPW extends Component {
   constructor(props) {

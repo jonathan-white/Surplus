@@ -1,39 +1,70 @@
 import React, { Component } from "react";
+import { Link, withRouter } from  'react-router-dom';
+
+import { auth } from '../firebase';
+import * as routes from '../constants/routes';
+
 import Input from "react-materialize/lib/Input";
 import API from '../utils/API';
 
-class Signup extends Component {
+const SignUpPage = ({history}) => (
+  <div>
+    <SignUpForm history={history} />
+  </div>
+)
+
+const INITIAL_STATE = {
+  name: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  error: null,
+};
+
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false,
-      name: "",
-      email: "",
-      password: "",
-    }
+    this.state = { ...INITIAL_STATE };
   };
 
   handleFormSubmit = (event) => {
-		event.preventDefault();
+    const {
+      name,
+      email,
+      passwordOne,
+    } = this.state;
 
-    if(this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0) {
-      const userData = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-      }
+    const {
+      history,
+    } = this.props;
 
-      API.createAccount(userData)
-      .then(res => {
-        console.log(res.data);
+    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+        this.setState(() => ({ ...INITIAL_STATE }));
+        history.push(routes.HOME);
 
-        // Redirect the user to the homepage
-        window.location.href = "/";
+        console.log('Logged in user: ', authUser);
 
-        this.setState({ isLoggedIn: true });
+        const userData = {
+          name: name,
+          email: email,
+          password: passwordOne,
+        };
+
+        API.createAccount(userData)
+        .then(res => {
+          console.log(res.data);
+
+          // Redirect the user to the homepage
+          window.location.href = "/";
+
+          this.setState({ isLoggedIn: true });
+        })
+        .catch(err => console.log(err));
       })
-      .catch(err => console.log(err));
-    }
+      .catch(error => this.setState({ error: error }));
+
+    event.preventDefault();
 	};
 
 	handleInputChange = event => {
@@ -45,14 +76,37 @@ class Signup extends Component {
 	};
 
   render() {
+    const {
+      name,
+      email,
+      passwordOne,
+      passwordTwo,
+      error,
+    } = this.state;
+
+    const isInvalid = (
+      passwordOne !== passwordTwo ||
+      passwordOne === '' ||
+      email === '' ||
+      name === ''
+    );
+
     return (
       <div className="login-form">
-        <form >
+        <form onSubmit={this.handleFormSubmit}>
+          <Input
+            s={12}
+            type="text"
+            label="Company Name (required)"
+            value={name}
+            name="name"
+            onChange={this.handleInputChange}
+          />
           <Input
             s={12}
             type="text"
             label="Email"
-            value={this.state.email}
+            value={email}
             name="email"
             onChange={this.handleInputChange}
           />
@@ -60,25 +114,37 @@ class Signup extends Component {
             s={12}
             type="password"
             label="Password"
-            value={this.state.password}
-            name="password"
+            value={passwordOne}
+            name="passwordOne"
             onChange={this.handleInputChange}
           />
           <Input
             s={12}
-            type="text"
-            label="Company (required)"
-            value={this.state.name}
-            name="name"
+            type="password"
+            label="Confirm Password"
+            value={passwordTwo}
+            name="passwordTwo"
             onChange={this.handleInputChange}
           />
-          <div className="login-signup-buttons">
-            <button id="signup" className="btn" onClick={this.handleFormSubmit}>Signup</button>
-          </div>
+          <button disabled={isInvalid} className="btn" type="submit">Sign Up</button>
+          {error && <p>{error.message}</p>}
         </form>
       </div>
     )
   }
 };
 
-export default Signup;
+const SignUpLink = () => (
+  <p>
+    Don't have an account?
+    {' '}
+    <Link to={routes.SIGN_UP}>Sign Up</Link>
+  </p>
+);
+
+export default withRouter(SignUpPage);
+
+export {
+  SignUpForm,
+  SignUpLink,
+};
