@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 // import { Card, CardTitle } from 'react-materialize'
-import "./Users.css";
 import Input from "react-materialize/lib/Input";
-import API from "../../utils/API";
+import API from "../utils/API";
 
 class UserProfile extends Component {
 	constructor(props){

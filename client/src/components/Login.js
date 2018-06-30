@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Input from "react-materialize/lib/Input";
-import API from '../../utils/API';
+import API from '../utils/API';
 
 class Login extends Component {
   constructor(props) {

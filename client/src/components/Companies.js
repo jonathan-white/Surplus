@@ -1,7 +1,6 @@
 import React from "react";
 import { Parallax, Carousel } from 'react-materialize'
-import "./Companies.css";
-import Wrapper from "../Wrapper";
+import Wrapper from "./Wrapper";
 
 const Companies = props => (
     <Wrapper>

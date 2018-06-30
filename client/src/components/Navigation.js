@@ -1,7 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import { Navbar, NavItem, Icon } from 'react-materialize'
-import "./Navigation.css";
 
 const Navigation = props => (
     <Navbar brand='Surplus Market' right>

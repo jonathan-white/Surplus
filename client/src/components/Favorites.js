@@ -1,7 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import { Slide, Slider } from 'react-materialize'
-import "./Favorites.css";
 
 const Favorites = props => (
     <Slider className="slider">

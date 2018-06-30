@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Profile from "./pages/Profile";
-import Market from "./pages/Market";
-import ShoppingCart from "./pages/ShoppingCart";
-import Navigation from "./components/Navigation";
-import { Login } from "./components/Users";
-import NoMatch from './pages/404';
-import Footer from "./components/Footer";
+import Profile from "../pages/Profile";
+import Market from "../pages/Market";
+import ShoppingCart from "../pages/ShoppingCart";
+import NoMatch from '../pages/404';
+import Navigation from "./Navigation";
+import Login from "./Login";
+import Footer from "./Footer";
 import './App.css';
 
 const App = () => (

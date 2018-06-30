@@ -1,7 +1,6 @@
 import React from "react";
 import { Row } from 'react-materialize'
-import ProductCard from '../Products';
-import "./Users.css";
+import ProductCard from './ProductCard';
 
 const ProductsList = props => (
   <div>

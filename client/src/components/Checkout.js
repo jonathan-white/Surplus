@@ -1,8 +1,5 @@
 import React from "react";
 // import { Row, Col } from 'react-materialize'
-import "./Checkout.css";
-
-
 
 const Checkout = () => (
     <div className="CheckoutBox">
