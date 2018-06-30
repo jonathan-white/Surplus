@@ -7,6 +7,7 @@ import NoMatch from '../pages/404';
 import Navigation from "./Navigation";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
+import Signout from "../pages/signout";
 import Footer from "./Footer";
 import './App.css';
 
@@ -14,7 +15,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoggedIn: true
+      isLoggedIn: true,
+      cartId: 1,
     }
   };
 
@@ -29,6 +31,7 @@ class App extends Component {
             <Route exact path="/checkout" component={ShoppingCart} />
             <Route exact path="/signin" component={Signin} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signout" component={Signout} />
             <Route component={NoMatch} />
           </Switch>
           <Footer />

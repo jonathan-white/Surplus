@@ -10,18 +10,11 @@ class Signin extends Component {
       name: "",
       email: "",
       password: "",
-      mode: "login",
     }
   };
 
   handleFormSubmit = (event) => {
 		event.preventDefault();
-
-    const action = event.target.id;
-
-    this.setState({
-      mode: action
-    });
 
     if(this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0) {
       const userData = {
@@ -30,29 +23,18 @@ class Signin extends Component {
         password: this.state.password,
       }
 
-      if(action === "login"){
-        API.loginAccount(userData)
-        .then(res => {
-          console.log(res.data);
-          console.log('Welcome',res.data.name);
-          this.setState({ isLoggedIn: true });
-        })
-        .catch(err => console.log(err));
-      } else {
-        API.createAccount(userData)
-        .then(res => {
-          console.log(res.data);
-          this.setState({ isLoggedIn: true });
-        })
-        .catch(err => console.log(err));
-      }
+      API.loginAccount(userData)
+      .then(res => {
+        console.log(res.data);
+        console.log('Welcome',res.data.name);
+        this.setState({ isLoggedIn: true });
+      })
+      .catch(err => console.log(err));
     }
 	};
 
 	handleInputChange = event => {
 		const {name, value} = event.target;
-
-    console.log(value);
 
 		this.setState({
 			[name]: value
@@ -79,19 +61,8 @@ class Signin extends Component {
             name="password"
             onChange={this.handleInputChange}
           />
-          {this.state.mode === "signup" && (
-            <Input
-              s={12}
-              type="text"
-              label="Company (required)"
-              value={this.state.name}
-              name="name"
-              onChange={this.handleInputChange}
-            />
-          )}
           <div className="login-signup-buttons">
             <button id="login" className="btn" onClick={this.handleFormSubmit}>Signin</button>
-            <button id="signup" className="btn btn-flat" onClick={this.handleFormSubmit}>Signup</button>
           </div>
         </form>
       </div>

@@ -39,26 +39,13 @@ export default {
   },
 
   // Cart APIs
-  getUser: (id) => {
-    return axios.get("/api/users/" + id);
+  getCart: (id) => {
+    return axios.get("/api/cart/" + id);
   },
-  getProducts: () => {
-    return axios.get("/api/products");
-  },
-  getProduct: (id) => {
-    return axios.get("/api/products/" + id);
-  },
-  createProduct: (productData) => {
-    return axios.post("/api/products", productData);
-  },
-  uploadProductPic: (data) => {
-    return axios.post("/api/uploads",data,{
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
+  createCart: (cartData) => {
+    return axios.post("/api/cart", cartData);
   },
   deleteProduct: (id) => {
-    return axios.delete("/api/products/" + id);
+    return axios.delete("/api/cart/" + id);
   },
 };
