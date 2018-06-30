@@ -7,11 +7,9 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {searchTerms: ''};
-
-<<<<<<< HEAD
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }; 
+  };
 
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -25,58 +23,26 @@ class Navigation extends Component {
     // the results and creates a SearchResult component for each.
   }
 
-
-=======
-  };
->>>>>>> e20f6b0661a5288f66e25d1b8fd37ef210feef19
   render() {
     return (
-        <Navbar brand='Surplus Market' right style={{height: '75px'}}>
-          <NavItem href="#">
-            <form onSubmit={this.handleSubmit}>
-              <input value={this.state.searchTerms} type="text" placeholder="search for products"/>
-            </form>
-          </NavItem>
-          <NavItem href={routes.ACCOUNT}>
-            <Icon>person</Icon>
-          </NavItem>
-          <NavItem href={routes.CHECKOUT}>
-            <Icon>shopping_cart</Icon>
-          </NavItem>
-          <NavItem href={routes.SIGN_IN}>
-            Login
+      <Navbar brand='Surplus Market' right style={{height: '75px'}}>
+        <NavItem href="#">
+          <form onSubmit={this.handleSubmit}>
+            <input value={this.state.searchTerms} type="text" placeholder="search for products"/>
+          </form>
         </NavItem>
-        </Navbar>
-
-      );
+        <NavItem href={routes.ACCOUNT}>
+          <Icon>person</Icon>
+        </NavItem>
+        <NavItem href={routes.CHECKOUT}>
+          <Icon>shopping_cart</Icon>
+        </NavItem>
+        <NavItem href={routes.SIGN_IN}>
+          Login
+        </NavItem>
+      </Navbar>
+    );
   };
 };
-
-
-// const Navigation = props => (
-//     <Navbar brand='Surplus Market' right>
-//       <NavItem href='/search'>
-//         <Icon>search</Icon>
-//       </NavItem>
-//       {props.isLoggedIn && (
-//         <NavItem href='/profile'>
-//           <Icon>person</Icon>
-//         </NavItem>
-//       )}
-//       <NavItem href='/checkout'>
-//         <Icon>shopping_cart</Icon>
-//       </NavItem>
-//       {props.isLoggedIn ? (
-//         <NavItem href='/signout'>
-//           Sign out
-//         </NavItem>
-//       ) : (
-//         <NavItem href='/signin'>
-//           Sign in
-//         </NavItem>
-//       )}
-//     </Navbar>
-// );
-
 
 export default Navigation;
