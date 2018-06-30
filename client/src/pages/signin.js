@@ -1,37 +1,67 @@
 import React, { Component } from "react";
-import Input from "react-materialize/lib/Input";
-import { Link } from "react-router-dom";
-import API from '../utils/API';
+import { Link, withRouter } from  'react-router-dom';
 
-class Signin extends Component {
+import { SignUpLink } from './Signup';
+import { auth } from '../firebase';
+import * as routes from '../constants/routes';
+
+import Input from "react-materialize/lib/Input";
+// import API from '../utils/API';
+
+const SignInPage = ({ history }) => (
+  <div>
+    <SignInForm history={history} />
+  </div>
+);
+
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+  error: null,
+};
+
+class SignInForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false,
-      name: "",
-      email: "",
-      password: "",
-    }
+    this.state = { ...INITIAL_STATE };
   };
 
   handleFormSubmit = (event) => {
-		event.preventDefault();
+    const {
+      email,
+      password,
+    } = this.state;
 
-    if(this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0) {
-      const userData = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-      }
+    const {
+      history,
+    } = this.props;
 
-      API.loginAccount(userData)
-      .then(res => {
-        console.log(res.data);
-        console.log('Welcome',res.data.name);
-        this.setState({ isLoggedIn: true });
+    auth.doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState(() => ({ ...INITIAL_STATE }));
+        history.push(routes.HOME);
       })
-      .catch(err => console.log(err));
-    }
+      .catch(error => {
+        this.setState({error: error});
+      });
+
+      event.preventDefault();
+
+    // if(this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0) {
+    //   const userData = {
+    //     name: this.state.name,
+    //     email: this.state.email,
+    //     password: this.state.password,
+    //   }
+    //
+    //   API.loginAccount(userData)
+    //   .then(res => {
+    //     console.log(res.data);
+    //     console.log('Welcome',res.data.name);
+    //     this.setState({ isLoggedIn: true });
+    //   })
+    //   .catch(err => console.log(err));
+    // }
 	};
 
 	handleInputChange = event => {
@@ -43,14 +73,25 @@ class Signin extends Component {
 	};
 
   render() {
+    const {
+      email,
+      password,
+      error,
+    } = this.state;
+
+    const isInvalid = (
+      password === '' ||
+      email === ''
+    );
+
     return (
       <div className="login-form">
-        <form >
+        <form onSubmit={this.handleFormSubmit}>
           <Input
             s={12}
             type="text"
             label="Email"
-            value={this.state.email}
+            value={email}
             name="email"
             onChange={this.handleInputChange}
           />
@@ -58,18 +99,22 @@ class Signin extends Component {
             s={12}
             type="password"
             label="Password"
-            value={this.state.password}
+            value={password}
             name="password"
             onChange={this.handleInputChange}
           />
-          <div className="login-signup-buttons">
-            <button id="login" className="btn" onClick={this.handleFormSubmit}>Sign In</button>
-          </div>
+          <button disabled={isInvalid} className="btn" type="submit">Sign In</button>
+          {error && <p>{error.message}</p>}
           <div><Link to="/pw-forget">Forgot Password?</Link></div>
+          <div><SignUpLink /></div>
         </form>
       </div>
     )
   }
 };
 
-export default Signin;
+export default withRouter(SignInPage);
+
+export {
+  SignInForm,
+};

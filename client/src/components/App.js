@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Navigation from "./Navigation";
+import Navigation from "./NavigationNew";
 import LandingPage from "../pages/Landing";
 import SignupPage from "../pages/Signup";
 import SigninPage from "../pages/Signin";
-import SignoutPage from "../pages/Signout";
+// import SignoutPage from "../pages/Signout";
 import ForgotPasswordPage from "../pages/ForgotPW";
 import HomePage from "../pages/Home";
 import AccountPage from "../pages/Profile";
@@ -17,21 +17,31 @@ import NoMatch from '../pages/404';
 import './App.css';
 
 import * as routes from '../constants/routes';
+import { firebase } from '../firebase';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoggedIn: false,
+      authUser: null,
       cartId: 1,
     }
+  };
+
+  // Check if the user's auth state changes
+  componentDidMount() {
+    firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState({ authUser: authUser })
+        : this.setState({ authUser: null });
+    });
   };
 
   render() {
     return (
       <Router>
         <div>
-          <Navigation isLoggedIn={this.state.isLoggedIn} />
+          <Navigation authUser={this.state.authUser} />
           <Switch>
             <Route
               exact path={routes.LANDING}
@@ -57,10 +67,10 @@ class App extends Component {
               exact path={routes.SIGN_UP}
               component={() => <SignupPage />}
             />
-            <Route
+            {/* <Route
               exact path={routes.SIGN_OUT}
               component={() => <SignoutPage />}
-            />
+            /> */}
             <Route
               exact path={routes.PASSWORD_FORGET}
               component={() => <ForgotPasswordPage />}

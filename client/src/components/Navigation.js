@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import { Navbar, NavItem, Icon } from 'react-materialize';
+
 import * as routes from '../constants/routes';
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.state = {searchTerms: ''};
+    this.state = {
+      searchTerms: '',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
