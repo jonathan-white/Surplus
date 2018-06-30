@@ -26,7 +26,6 @@ class Market extends Component {
   render() {
     return (
       <div className="App">
-        <Search/>
         <Favorites/>
         <Companies/>
         <MarketProductList products={this.state.products}/>
