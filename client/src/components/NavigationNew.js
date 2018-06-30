@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Navbar, NavItem, Icon } from 'react-materialize';
 
-import SignOutButton from './Signout';
 import * as routes from '../constants/routes';
+import { auth } from '../firebase';
 
 const Navigation = ({ authUser }) => (
   <div>
@@ -47,8 +46,8 @@ class NavigationAuth extends Component {
         <NavItem href={routes.CHECKOUT}>
           <Icon>shopping_cart</Icon>
         </NavItem>
-        <NavItem href="#">
-          <SignOutButton />
+        <NavItem onClick={auth.doSignOut}>
+          Sign Out
         </NavItem>
       </Navbar>
     );

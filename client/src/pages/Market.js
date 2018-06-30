@@ -12,7 +12,7 @@ class Market extends Component {
     }
 	};
 
-  componentWillMount(){
+  componentDidMount(){
     this.pageLoadData();
   };
 

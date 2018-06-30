@@ -12,12 +12,8 @@ class Home extends Component {
     }
 	};
 
-  componentWillMount(){
-    this.pageLoadData();
-  };
-
-  pageLoadData = () => {
-    API.getProducts()
+  componentDidMount(){
+		API.getProducts()
       .then(results=> this.setState({ products: results.data }))
       .catch(err => console.log(err));
   };

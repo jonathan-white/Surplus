@@ -21,7 +21,7 @@ class Profile extends Component {
 		}
   }
 
-	componentWillMount(){
+	componentDidMount(){
 		this.pageLoadData();
 	};
 
