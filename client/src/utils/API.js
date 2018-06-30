@@ -39,11 +39,14 @@ export default {
   },
 
   // Cart APIs
-  getCart: (id) => {
-    return axios.get("/api/cart/" + id);
-  },
   createCart: (cartData) => {
     return axios.post("/api/cart", cartData);
+  },
+  getCart: (cartId) => {
+    return axios.get("/api/cart/" + cartId);
+  },
+  updateCart: (cartId, cartData) => {
+    return axios.put("/api/cart/" + cartId, cartData);
   },
   deleteProduct: (id) => {
     return axios.delete("/api/cart/" + id);

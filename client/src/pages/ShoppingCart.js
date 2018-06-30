@@ -50,7 +50,11 @@ class ShoppingCart extends Component {
       <Row>
 				<Col s={8}>
 					{this.state.shoppingCart ? (
+                        <div>
 						<Cart cartItems={this.state.shoppingCart}/>
+                        <Cart cartItems={this.state.shoppingCart}/>
+                        <Cart cartItems={this.state.shoppingCart}/>
+                        </div>
 					) : (
 						<div>No Items in Shopping Cart</div>
 					)}

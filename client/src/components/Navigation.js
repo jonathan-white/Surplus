@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import { Navbar, NavItem, Icon } from 'react-materialize'
+import { Navbar, NavItem, Icon } from 'react-materialize';
+import * as routes from '../constants/routes';
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {searchTerms: ''};
 
+<<<<<<< HEAD
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }; 
@@ -24,6 +26,9 @@ class Navigation extends Component {
   }
 
 
+=======
+  };
+>>>>>>> e20f6b0661a5288f66e25d1b8fd37ef210feef19
   render() {
     return (
         <Navbar brand='Surplus Market' right style={{height: '75px'}}>
@@ -35,17 +40,17 @@ class Navigation extends Component {
           <NavItem href='/profile'>
             <Icon>person</Icon>
           </NavItem>
-            <NavItem href='/checkout'>
+          <NavItem href='/checkout'>
             <Icon>shopping_cart</Icon>
-        </NavItem>
-        <NavItem href='/login'>
-        Login
+          </NavItem>
+          <NavItem href='/signin'>
+            Login
         </NavItem>
         </Navbar>
- 
+
       );
   };
-}; 
+};
 
 
 // const Navigation = props => (

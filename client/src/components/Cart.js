@@ -2,16 +2,14 @@ import React from "react";
 // import { Row, Col } from 'react-materialize'
 
 const Cart = (props) => (
-    <div className="item-container">
-				{/* <div className="row img-holder">
-					{props.product.image_url ? (
-						<img className="product-img"  />
-					) : (
-						<i class="fas fa-spinner fa-spin fa-3x"></i>
-					)}
-				</div> */}
-				<div className="row 12">
-					<div>
+    <div className="cart-item">
+			
+				<div className="row">
+
+                    <div className="col s4">
+						<img className="product-image" src="" alt="Product Img"/> 
+					</div>
+					<div className="col">
 						<span className="product-title">title</span>
 					</div>
 				</div>

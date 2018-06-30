@@ -235,3 +235,15 @@
   min-height: 100%;
   padding-bottom: 100px;
 }
+
+.cart-item {
+  border: 1px solid gray;
+  padding: 20px 15px;
+  margin: 35px 20px;
+}
+
+.cart-item .product-image {
+  border: 1px solid gray;
+  height: 100px;
+  width: 100px; 
+}

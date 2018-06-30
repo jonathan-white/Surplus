@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Input from "react-materialize/lib/Input";
-import { Link } from "react-router-dom";
 import API from '../utils/API';
 
 class Signup extends Component {

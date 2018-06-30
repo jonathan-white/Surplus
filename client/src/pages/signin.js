@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "react-materialize/lib/Input";
+import { Link } from "react-router-dom";
 import API from '../utils/API';
 
 class Signin extends Component {
@@ -64,6 +65,7 @@ class Signin extends Component {
           <div className="login-signup-buttons">
             <button id="login" className="btn" onClick={this.handleFormSubmit}>Signin</button>
           </div>
+          <div><Link to="/pw-forget">Forgot Password?</Link></div>
         </form>
       </div>
     )
