@@ -26,6 +26,12 @@ var AccountSchema = new Schema({
 	      ref: "Product"
 	    }
 	],
+	shoppingCart: [
+	    {
+	      type: Schema.Types.ObjectId,
+	      ref: "Product"
+	    }
+	],
 });
 
 var Account = mongoose.model('Account', AccountSchema);
