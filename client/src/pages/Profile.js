@@ -15,7 +15,8 @@ class Profile extends Component {
 			description: "",
 			price: "",
 			quantity: "",
-			product_image: "",
+			img_local: "",
+			img_cloud: "",
 			user_image: "",
 			user_id: "",
 		}
@@ -39,7 +40,8 @@ class Profile extends Component {
 			description: this.state.description,
 			price: this.state.price,
 			quantity: this.state.quantity,
-			image_url: this.state.product_image,
+			img_local: this.state.img_local,
+			img_cloud: this.state.img_cloud,
 			accountId: this.state.user_id,
 		}
 
@@ -50,7 +52,8 @@ class Profile extends Component {
 					description: "",
 					price: "",
 					quantity: "",
-					product_image: "",
+					img_local: "",
+					img_cloud: "",
 					user_image: "",
 				})
 				console.log(res.data);
@@ -73,12 +76,11 @@ class Profile extends Component {
 		event.preventDefault();
 		let data = new FormData(event.target);
 
-		// console.log('event.target: ',event.target);
-
-		// console.log('data: ',data);
-
 		API.uploadProductPic(data)
-			.then(res => this.setState({ product_image: res.data.url }))
+			.then(res => this.setState({
+				img_local: res.data.local_url,
+				img_cloud: res.data.cloud_url,
+			}))
 			.catch(err => console.log(err));
 	};
 
@@ -105,7 +107,7 @@ class Profile extends Component {
 						description={this.state.description}
 						price={this.state.price}
 						quantity={this.state.quantity}
-						image={this.state.product_image}
+						image={this.state.img_local}
 						handleInputChange={this.handleInputChange}
 						handleFormSubmit={this.handleFormSubmit}
 						handleUpload={this.handleUpload}

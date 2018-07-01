@@ -23,8 +23,8 @@ class MarketplaceProduct extends Component {
 		return (
 			<div className="item-container">
 				<div className="row img-holder">
-					{this.props.product.image_url ? (
-						<img className="product-img" src={this.props.product.image_url || "images/placeholder.png"} alt={this.props.product.title} />
+					{this.props.product.img_cloud ? (
+						<img className="product-img" src={this.props.product.img_cloud || "images/placeholder.png"} alt={this.props.product.title} />
 					) : (
 						<i class="fas fa-spinner fa-spin fa-3x"></i>
 					)}

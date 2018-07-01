@@ -27,14 +27,16 @@ router.route("/")
           console.log(err);
             return res.end("Something went wrong!");
         }
-        req.file.url = `/api/uploads/${req.file.filename}`;
-        console.log(req.file); //TODO: Remove
 
 				const bucketName = process.env.BUCKET;
 				const filename = path.join(__dirname, "../../uploads/" + req.file.filename);
 
 				console.log('filename:',filename);
 				uploadFile(bucketName, filename);
+
+				req.file.local_url = `/api/uploads/${req.file.filename}`;
+				req.file.cloud_url = `https://storage.googleapis.com/surplus-6507a.appspot.com/${req.file.filename}`;
+				console.log(req.file); //TODO: Remove
 
         return res.json(req.file);
         // return res.end("File uploaded sucessfully!.");
