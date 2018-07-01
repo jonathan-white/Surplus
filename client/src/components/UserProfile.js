@@ -44,8 +44,13 @@ class UserProfile extends Component {
 				<div className="row">
 					<div className="profile">
 						<div className="profile-img">
-							<img src="images/placeholder.png" alt="company logo" />
-							<a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+							<img
+								src="https://storage.googleapis.com/surplus-6507a.appspot.com/placeholder.png"
+								alt="company logo"
+							/>
+							<a className="btn-floating btn-large waves-effect waves-light red">
+								<i className="material-icons">add</i>
+							</a>
 						</div>
 						<form className="row">
 							<Input

@@ -2,6 +2,14 @@
   "name": "surplus",
   "version": "0.1.0",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:jonathan-white/Surplus.git"
+  },
+  "bugs" : {
+    "url": "https://github.com:jonathan-white/Surplus/issues"
+  },
+  "homepage": "https://github.com:jonathan-white/Surplus#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",

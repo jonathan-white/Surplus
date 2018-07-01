@@ -9,10 +9,19 @@ const NewProduct = props => (
 		<div className="row">
 			<div className="profile">
 
-				<form className="row" method="post" encType="multipart/form-data" action="api/uploads/" onSubmit={props.handleUpload}>
+				<form
+					className="row"
+					method="post"
+					encType="multipart/form-data"
+					action="api/uploads/"
+					onSubmit={props.handleUpload}
+				>
 					<label htmlFor="fileUpload">
 						<div className="profile-img">
-							<img src={props.image || "images/placeholder.png"} alt="company logo" />
+							<img
+								src={props.image || "https://storage.googleapis.com/surplus-6507a.appspot.com/placeholder.png"}
+								alt="company logo"
+							/>
 							<a className="btn-floating btn-large waves-effect waves-light red">
 								<i className="material-icons">add</i>
 							</a>
