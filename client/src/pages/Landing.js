@@ -12,7 +12,7 @@ class Landing extends Component {
     }
 	};
 
-  componentWillMount(){
+  componentDidMount = () => {
 		API.getProducts()
       .then(results=> this.setState({ products: results.data }))
       .catch(err => console.log(err));
@@ -22,8 +22,8 @@ class Landing extends Component {
     return (
       <div className="App">
         <Favorites/>
+				<MarketProductList products={this.state.products} addToCard={this.props.addToCard}/>
         <Companies/>
-        <MarketProductList products={this.state.products}/>
       </div>
     );
   };

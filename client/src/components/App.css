@@ -78,6 +78,16 @@
     background-color: rgb(51, 139, 0);
 }
 
+.navitem-shopping-cart {
+	position: relative;
+}
+
+.navitem-shopping-cart .cart-badge {
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #12c7ff;
+}
 
 /* Product Card */
 .item-container {

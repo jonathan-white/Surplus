@@ -66,8 +66,8 @@ export default {
   createCart: (cartData) => {
     return axios.post("/api/cart", cartData);
   },
-  getCart: (cartId) => {
-    return axios.get("/api/cart/" + cartId);
+  getCart: (sessionId) => {
+    return axios.get("/api/cart/" + sessionId);
   },
   updateCart: (cartId, cartData) => {
     return axios.put("/api/cart/" + cartId, cartData);
@@ -77,5 +77,9 @@ export default {
   },
   verifyReCaptcha: (data) => {
     return axios.post('https://www.google.com/recaptcha/api/siteverify',data);
+  },
+
+  getSessionID: () => {
+    return axios.get("/api/session");
   }
 };

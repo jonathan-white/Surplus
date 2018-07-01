@@ -4,18 +4,17 @@ var Schema = mongoose.Schema;
 
 // Create article schema
 var CartSchema = new Schema({
-  sessionID: String,
+  sessionId: {type: String, unique: true, required: true},
   products: [
 	    {
 	      type: Schema.Types.ObjectId,
-	      ref: "Product",
-        quantity: 0,
+	      ref: "Product"
 	    }
 	],
-  subtotal: Number,
-  savings: Number,
-  shipping: Number,
-  total: Number,
+  subtotalCost: {type: Number, default: 0},
+  savings: {type: Number, default: 0},
+  shippingCost: {type: Number, default: 0},
+  totalCost: {type: Number, default: 0},
 });
 
 var Cart = mongoose.model('Cart', CartSchema);

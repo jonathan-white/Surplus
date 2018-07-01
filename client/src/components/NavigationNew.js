@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem, Icon } from 'react-materialize';
+import { Navbar, NavItem, Icon, Badge } from 'react-materialize';
 
 import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
@@ -19,6 +19,7 @@ class NavigationAuth extends Component {
     super(props);
     this.state = {
       searchTerms: '',
+      cartSize: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +41,6 @@ class NavigationAuth extends Component {
   };
 
   render() {
-    console.log(this.props.authUser);
     return (
       <Navbar brand='Surplus Market' right style={{height: '75px'}}>
         <NavItem href="#">
@@ -51,8 +51,9 @@ class NavigationAuth extends Component {
         <NavItem href={routes.ACCOUNT}>
           <Icon>person</Icon>
         </NavItem>
-        <NavItem href={routes.CHECKOUT}>
+        <NavItem href={routes.CHECKOUT} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
+          <Badge className="cart-badge">{this.state.cartSize}</Badge>
         </NavItem>
         <NavItem onClick={auth.doSignOut}>
           Sign Out

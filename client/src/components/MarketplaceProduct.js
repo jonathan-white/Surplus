@@ -1,23 +1,41 @@
 import React, { Component } from "react";
+import API from "../utils/API";
 
 class MarketplaceProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			rating_img: "images/star-ratings.png",
-			ownedByUser: true,
-			shoppingCart: []
+			ownerId: '',
 		}
 	};
 
-	shoppingCartHandler = (item) =>{
-		const newCart = [...this.state.shoppingCart]
-		newCart.push(item)
-		this.setState({
-			shoppingCart: newCart
-		})
-	}
+	addToCard = (product) => {
+		// Add to the session's cart
+		let cartData = [];
+		const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
+		if(sessionData) {
+			if(sessionData.shoppingCart.includes(product)){
+				cartData = sessionData.shoppingCart;
+			} else {
+				cartData = [...sessionData.shoppingCart, product];
+			}
+		} else {
+			cartData.push(product);
+		}
+
+		// Update the cart in localstorage
+		API.getSessionID()
+		.then(res => {
+			localStorage.setItem('sessionData',JSON.stringify({
+				sessionId: res.data,
+				shoppingCart: cartData,
+			}));
+		})
+		.catch(err => console.log(err));
+
+	};
 
 	render() {
 		return (
@@ -48,7 +66,7 @@ class MarketplaceProduct extends Component {
 						</div>
 					</div>
 					<div className="rating">Rating</div>
-					<button className="btn green add-to-cart-btn" onClick={() => this.shoppingCartHandler(this.props.product)}>Add to Cart</button>
+					<button className="btn green add-to-cart-btn" onClick={() => this.addToCard(this.props.product)}>Add to Cart</button>
 				</div>
 			</div>
 		);

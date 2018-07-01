@@ -6,7 +6,7 @@ const MarketProductList = props => (
   <div>
     <Row className="productslist">
       {props.products.map(product => (
-        <MarketplaceProduct key={product._id} product={product} />
+        <MarketplaceProduct key={product._id} product={product} addToCard={props.addToCard}/>
       ))}
     </Row>
   </div>

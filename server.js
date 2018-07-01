@@ -5,6 +5,7 @@ const logger = require("morgan");
 const routes = require("./routes");
 const path = require("path");
 const app = express();
+const session = require("express-session");
 const PORT = process.env.PORT || 3001;
 require("dotenv").config();
 
@@ -13,6 +14,14 @@ app.use(logger("dev"));
 // Setup data parsing Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Configure Sessions
+app.use(session({
+    secret: 'mynock blue',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+})); // session secret
 
 // Use Static Public
 if (process.env.NODE_ENV === "production") {

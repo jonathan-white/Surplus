@@ -10,4 +10,9 @@ router.use("/users", accountRoutes);
 router.use("/uploads",uploadRoutes);
 router.use("/cart",cartRoutes);
 
+router.get("/session", (req, res) => {
+  console.log('Session:',req.sessionID);
+  res.json(req.sessionID);
+});
+
 module.exports = router;

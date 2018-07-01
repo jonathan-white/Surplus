@@ -18,17 +18,20 @@ module.exports = {
   create: function(req, res) {
     db.Cart
       .create(req.body)
-      .then(dbProduct => {
-        return db.Account.findOneAndUpdate({_id: req.body.accountId}, { $push: { products: dbProduct._id } }, { new: true });
-      })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log('Cannot create Cart:', err);
+        res.status(422).json(err);
+      });
   },
   update: function(req, res) {
     db.Cart
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ sessionId: req.params.id }, { $set: {sessionId: req.body }}, { upsert: true })
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log('Cannot Update Cart:', err);
+        res.status(422).json(err);
+      });
   },
   remove: function(req, res) {
     db.Cart

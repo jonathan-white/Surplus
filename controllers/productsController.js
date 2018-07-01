@@ -22,7 +22,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log('Inside create products:',req.body);
     db.Product
       .create(req.body)
       .then(dbProduct => {
