@@ -11,7 +11,7 @@ var AccountSchema = new Schema({
 	name: {type: String, unique: true, required: true},
 	description: String,
 	email: {type: String, match: /.+\@.+\..+/, unique: true},
-	password: {type: String}, //TODO: Make this required
+	// password: {type: String}, //TODO: Make this required
 	phone: String,
 	creditCardNumber: { type: String, get: obfuscate },
 	dateJoined: { type: Date, default: Date.now },
@@ -19,6 +19,7 @@ var AccountSchema = new Schema({
 	rating: Number,
 	responseTime: String,
 	itemsSold: {type: Number, default: 0},
+	itemsPurchased: {type: Number, default: 0},
 	hasProducts: {type: Boolean, default: false},
 	products: [
 	    {
