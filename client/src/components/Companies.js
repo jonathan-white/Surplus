@@ -12,9 +12,9 @@ const Companies = props => (
       <div className="section white">
         <div className="row container">
           <Carousel images={[
-            './images/chase.jpg',
+            'https://storage.googleapis.com/surplus-6507a.appspot.com/chase.jpg',
             './images/ibm.jpg',
-            './images/clevelandClinic.jpg',
+            'https://storage.googleapis.com/surplus-6507a.appspot.com/clevelandClinic.jpg',
             './images/mercedes.jpg',
             './images/LAfitness.jpg'
           ]} />
