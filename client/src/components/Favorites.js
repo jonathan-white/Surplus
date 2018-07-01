@@ -5,18 +5,18 @@ import { Slide, Slider } from 'react-materialize'
 const Favorites = props => (
     <Slider className="slider">
       <Slide
-        src="./Images/OfficeRoom.jpg"
+        src="https://storage.googleapis.com/surplus-6507a.appspot.com/OfficeRoom.jpg"
       title="Office Furniture">
         Tables, desks, chairs, and more...
       </Slide>
       <Slide
-        src="./Images/projector.jpg"
+        src="https://storage.googleapis.com/surplus-6507a.appspot.com/projector.jpg"
         title="Electronics"
       placement="left">
         Projectors and more!
       </Slide>
       <Slide
-        src="./Images/pens.jpg"
+        src="https://storage.googleapis.com/surplus-6507a.appspot.com/pens.jpg"
         title="Office Supplies"
       placement="right">
         Ballpoint Pens, Gel Pens, Fountain Pens and more...
