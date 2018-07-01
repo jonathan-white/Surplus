@@ -14,7 +14,7 @@ const NewProduct = props => (
 					method="post"
 					encType="multipart/form-data"
 					action="api/uploads/"
-					onSubmit={props.handleUpload}
+					onSubmit={props.handlePicUpload}
 				>
 					<label htmlFor="fileUpload">
 						<div className="profile-img">

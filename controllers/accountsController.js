@@ -11,11 +11,15 @@ module.exports = {
   },
   findById: function(req, res) {
     db.Account
-      .findById(req.params.id)
+      // .findById(req.params.id)
+      .find({userId: req.params.id})
+      .populate("products")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    // console.log(req.connection.remoteAddress); //IP address
+    // console.log(req.headers['x-forwarded-for']);
     db.Account
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -41,3 +45,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   }
 };
+
+// API.verifyReCaptcha({
+//   secret: process.env.RECAPTCHA_SECRET,
+//   response: '',
+//   remoteip: req.connection.remoteAddress
+// })
+//   .then(res => console.log(res.data))
+//   .catch(err => console.log(err));

@@ -12,12 +12,12 @@ class Landing extends Component {
     }
 	};
 
-  componentDidMount(){
+  componentWillMount(){
 		API.getProducts()
       .then(results=> this.setState({ products: results.data }))
       .catch(err => console.log(err));
   };
-	
+
   render() {
     return (
       <div className="App">

@@ -4,5 +4,6 @@ export const LANDING = '/';
 export const HOME = '/home';
 export const ACCOUNT = '/profile';
 export const PASSWORD_FORGET = '/pw-forget';
+export const PASSWORD_CHANGE = '/pw-change';
 export const CHECKOUT = '/checkout';
 export const USER = '/users/:id';

@@ -1,28 +1,50 @@
 import axios from "axios";
 
 // Export an object containing methods we'll use for accessing the API
-
 export default {
 
   // Product APIs
+
+  // Returns all products
   getProducts: () => {
     return axios.get("/api/products");
   },
+
+  // Returns only products added by the specified user
+  getProductsForUser: (userId) => {
+    return axios.get("/api/products/user/"+ userId);
+  },
+
+  // Returns a specific product
   getProduct: (id) => {
     return axios.get("/api/products/" + id);
   },
+
+  // Creates a new product
   createProduct: (productData) => {
     return axios.post("/api/products", productData);
   },
-  uploadProductPic: (data) => {
+
+  // Creates a new product for a specific user
+  addProductToSell: (userId,productData) => {
+    return axios.post(`/api/products/${userId}`, productData);
+  },
+
+  // Uploads a Picture locally and to Google Cloud Storage
+  uploadPic: (data) => {
     return axios.post("/api/uploads",data,{
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
   },
+
+  // Removes a product from the database (pic remains)
   deleteProduct: (id) => {
     return axios.delete("/api/products/" + id);
+  },
+  deleteProductPic: (id) => {
+    return axios.delete("/api/uploads/",id);
   },
   // Account APIs
   createAccount: (userData) => {
@@ -34,7 +56,9 @@ export default {
   loginAccount: (userData) => {
     return axios.post("/api/users/login", userData);
   },
-  getUser: (id) => {
+
+  // Returns a single user account with product details
+  getAccount: (id) => {
     return axios.get("/api/users/" + id);
   },
 
@@ -51,4 +75,7 @@ export default {
   deleteCart: (id) => {
     return axios.delete("/api/cart/" + id);
   },
+  verifyReCaptcha: (data) => {
+    return axios.post('https://www.google.com/recaptcha/api/siteverify',data);
+  }
 };

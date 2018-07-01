@@ -15,6 +15,7 @@ var ProductSchema = new Schema({
 	rating: Number,
 	inStock: {type: Boolean, default: true},
 	dateAdded: { type: Date, default: Date.now },
+	userId: String,
 });
 
 var Product = mongoose.model('Product', ProductSchema);

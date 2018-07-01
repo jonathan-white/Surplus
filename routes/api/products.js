@@ -13,4 +13,9 @@ router
   .put(productsController.update)
   .delete(productsController.remove);
 
+// Matches with "/api/products/user/:id"
+router
+  .route("/user/:id")
+  .get(productsController.findByUser);
+
 module.exports = router;

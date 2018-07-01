@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
 import Input from "react-materialize/lib/Input";
-// import API from '../utils/API';
+import API from '../utils/API';
 
 const SignUpPage = ({history}) => (
   <div>
@@ -28,6 +28,7 @@ class SignUpForm extends Component {
   };
 
   handleFormSubmit = (event) => {
+
     const {
       name,
       email,
@@ -40,27 +41,24 @@ class SignUpForm extends Component {
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
-
-        console.log('Logged in user: ', authUser);
-
+        console.log('Logged in user: ', authUser.user);
         // const userData = {
         //   name: name,
         //   email: email,
-        //   password: passwordOne,
         // };
 
-        // API.createAccount(userData)
-        // .then(res => {
-        //   console.log(res.data);
-        //
-        //   // Redirect the user to the homepage
-        //   window.location.href = "/";
-        //
-        //   this.setState({ isLoggedIn: true });
-        // })
-        // .catch(err => console.log(err));
+        API.createAccount({
+          userId: authUser.user.uid,
+          name: name,
+          email: email,
+        })
+        .then(res => {
+          console.log('After createAccount:',res.data);
+          this.setState(() => ({ ...INITIAL_STATE }));
+          // Redirect the user to the homepage
+          history.push(routes.ACCOUNT);
+        })
+        .catch(error => this.setState({ error: error }));
       })
       .catch(error => this.setState({ error: error }));
 
@@ -93,7 +91,7 @@ class SignUpForm extends Component {
 
     return (
       <div className="login-form">
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} method="post">
           <Input
             s={12}
             type="text"
@@ -126,6 +124,7 @@ class SignUpForm extends Component {
             name="passwordTwo"
             onChange={this.handleInputChange}
           />
+          <div className="g-recaptcha" data-sitekey="6Lc-omEUAAAAAHb0j9_cStOCYvYktrenZci4zghk"></div>
           <button disabled={isInvalid} className="btn" type="submit">Sign Up</button>
           {error && <p>{error.message}</p>}
         </form>

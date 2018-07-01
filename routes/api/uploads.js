@@ -41,23 +41,28 @@ router.route("/")
         return res.json(req.file);
         // return res.end("File uploaded sucessfully!.");
     });
-  });
+  })
+	.delete(function(req, res) {
+
+		const bucketName = process.env.BUCKET;
+		const filename = path.join(__dirname, "../../uploads/" + req.file.filename);
+
+		deleteFile(bucketName, filename);
+		return res.send('Delete complete');
+	});
 
 // Displays images at "/api/uploads/{filename}" from uploads folder
 router.get("/:filename", (req, res) => {
     res.sendFile(path.join(__dirname, "../../uploads/" + req.params.filename));
 });
 
-// =========================
-// Google Cloud Integration
-// =========================
+// Upload a file to Google Cloud Storage
 const uploadFile = (bucketName, filename) => {
 	// Imports the Google Cloud client library
 	const Storage = require('@google-cloud/storage');
 
 	// Creates a client
 	const projectId = process.env.PROJECT_ID;
-
 	const storage = new Storage({ projectId });
 
 	// Uploads a local file to the bucket
@@ -70,7 +75,30 @@ const uploadFile = (bucketName, filename) => {
 	.catch(err => {
 		console.error('ERROR:', err);
 	});
+}
 
+// Delete a file from Google Cloud Storage
+function deleteFile(bucketName, filename) {
+  // [START storage_delete_file]
+  // Imports the Google Cloud client library
+  const Storage = require('@google-cloud/storage');
+
+	// Creates a client
+	const projectId = process.env.PROJECT_ID;
+	const storage = new Storage({ projectId });
+
+  // Deletes the file from the bucket
+  storage
+    .bucket(bucketName)
+    .file(filename)
+    .delete()
+    .then(() => {
+      console.log(`gs://${bucketName}/${filename} deleted.`);
+    })
+    .catch(err => {
+      console.error('ERROR:', err);
+    });
+  // [END storage_delete_file]
 }
 
 module.exports = router;

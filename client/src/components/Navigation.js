@@ -15,7 +15,10 @@ class Navigation extends Component {
   };
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(event) {

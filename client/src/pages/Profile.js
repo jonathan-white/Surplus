@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-materialize';
-// import { NewProduct, UserProfile, UserProductsList } from '../components/Users';
-import NewProduct from '../components/NewProduct';
+import AuthUserContext from '../components/AuthUserContext';
+import PasswordChangeForm from './PasswordChange';
+
 import UserProfile from '../components/UserProfile';
+import NewProduct from '../components/NewProduct';
 import UserProductsList from '../components/UserProductsList';
 import API from "../utils/API";
+
+import withAuthorization from '../components/withAuthorization';
+
+const AccountPage = () => (
+	<AuthUserContext.Consumer>
+		{authUser =>
+			<div>
+				<Profile authUser={authUser} />
+			</div>
+		}
+	</AuthUserContext.Consumer>
+)
 
 class Profile extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			user: this.props.authUser,
 			products: [],
 			title: "",
 			description: "",
@@ -18,7 +32,7 @@ class Profile extends Component {
 			img_local: "",
 			img_cloud: "",
 			user_image: "",
-			user_id: "",
+			user_id: this.props.authUser.uid,
 		}
   }
 
@@ -27,7 +41,11 @@ class Profile extends Component {
 	};
 
 	pageLoadData = () => {
-		API.getProducts()
+		API.getAccount(this.state.user_id)
+			.then(res => console.log('found account:',res.data))
+			.catch(err => console.log(err));
+
+		API.getProductsForUser(this.state.user_id)
 			.then(results=> this.setState({ products: results.data }))
 			.catch(err => console.log(err));
 	};
@@ -42,8 +60,10 @@ class Profile extends Component {
 			quantity: this.state.quantity,
 			img_local: this.state.img_local,
 			img_cloud: this.state.img_cloud,
-			accountId: this.state.user_id,
+			userId: this.state.user_id,
 		}
+
+		// API.addProductToSell()
 
 		API.createProduct(newProduct)
 			.then(res => {
@@ -56,8 +76,7 @@ class Profile extends Component {
 					img_cloud: "",
 					user_image: "",
 				})
-				console.log(res.data);
-				API.getProducts()
+				API.getProductsForUser(this.state.user_id)
 					.then(results=> this.setState({ products: results.data }))
 					.catch(err => console.log(err));
 			})
@@ -72,24 +91,25 @@ class Profile extends Component {
 		});
 	};
 
-	handleUpload = event => {
-		event.preventDefault();
-		let data = new FormData(event.target);
+	handlePicUpload = event => {
+		const data = new FormData(event.target);
 
-		API.uploadProductPic(data)
+		API.uploadPic(data)
 			.then(res => this.setState({
 				img_local: res.data.local_url,
 				img_cloud: res.data.cloud_url,
 			}))
 			.catch(err => console.log(err));
+		event.preventDefault();
 	};
 
 	handleProductDelete = (id) => {
 		console.log('Deleting product: ',id);
+		// delete product from DB and remove product image from google cloud
 		API.deleteProduct(id)
 			.then(res => {
 				console.log(`Successfully deleted Product: ${id}`);
-				API.getProducts()
+				API.getProductsForUser(this.state.user_id)
 					.then(results=> this.setState({ products: results.data }))
 					.catch(err => console.log(err));
 			})
@@ -98,10 +118,13 @@ class Profile extends Component {
 
   render() {
     return (
-			<Row>
-				<Col s={6}>
-					<UserProfile
-						userId={this.state.user_id}/>
+			<div className="row">
+				<div className="col s6">
+					<AuthUserContext.Consumer>
+						{authUser => authUser ?	<UserProfile
+							authUser={authUser}
+							userId={this.state.user_id}/> : null}
+					</AuthUserContext.Consumer>
 					<NewProduct
 						title={this.state.title}
 						description={this.state.description}
@@ -110,20 +133,22 @@ class Profile extends Component {
 						image={this.state.img_local}
 						handleInputChange={this.handleInputChange}
 						handleFormSubmit={this.handleFormSubmit}
-						handleUpload={this.handleUpload}
+						handlePicUpload={this.handlePicUpload}
 					/>
-				</Col>
-				<Col s={6}>
+					<PasswordChangeForm />
+				</div>
+				<div className="col s6">
 					<UserProductsList
 						userId={this.state.user_id}
 						products={this.state.products}
 						handleProductDelete={this.handleProductDelete}
 					/>
-				</Col>
-			</Row>
+				</div>
+			</div>
     );
   }
 }
 
+const authCondition = (authUser) => !!authUser;
 
-export default Profile;
+export default withAuthorization(authCondition)(AccountPage);

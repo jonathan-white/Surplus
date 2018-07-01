@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem, Icon } from 'react-materialize';
 
+import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import { auth } from '../firebase';
 
-const Navigation = ({ authUser }) => (
-  <div>
-    { authUser
+const Navigation = () => (
+  <AuthUserContext.Consumer>
+    { authUser => authUser
       ? <NavigationAuth authUser={authUser} />
       : <NavigationNonAuth />
     }
-  </div>
+  </AuthUserContext.Consumer>
 );
 
 class NavigationAuth extends Component {
@@ -24,11 +25,18 @@ class NavigationAuth extends Component {
   };
 
   handleChange = (event) => {
-
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   handleSubmit = (event) => {
-
+    event.preventDefault();
+    // this.context.history.push('/search') OR this.props.history.push('/search')
+    // pass this.state.searchTerms to the route
+    // the search route has a component that makes the db request and loops through
+    // the results and creates a SearchResult component for each.
   };
 
   render() {
@@ -65,11 +73,18 @@ class NavigationNonAuth extends Component {
   };
 
   handleChange = (event) => {
-
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   handleSubmit = (event) => {
-
+    event.preventDefault();
+    // this.context.history.push('/search') OR this.props.history.push('/search')
+    // pass this.state.searchTerms to the route
+    // the search route has a component that makes the db request and loops through
+    // the results and creates a SearchResult component for each.
   };
 
   render() {

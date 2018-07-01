@@ -39,7 +39,7 @@ class UserProfile extends Component {
 		return (
 			<div>
 				<div className="row">
-					<h4>Your Profile</h4>
+					<h4>Profile: {this.props.authUser.email}</h4>
 				</div>
 				<div className="row">
 					<div className="profile">

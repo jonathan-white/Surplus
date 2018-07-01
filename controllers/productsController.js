@@ -3,8 +3,6 @@ const db = require("../models");
 // Defining methods for the productsController
 module.exports = {
   findAll: function(req, res) {
-    // console.log(req.connection.remoteAddress); //IP address
-    // console.log(req.headers['x-forwarded-for']);
     db.Product
       .find(req.query)
       .sort({ dateAdded: -1 })
@@ -17,12 +15,19 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByUser: function(req, res) {
+    db.Product
+      .find({userId: req.params.id})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
+    console.log('Inside create products:',req.body);
     db.Product
       .create(req.body)
-      // .then(dbProduct => {
-      //   return db.Account.findOneAndUpdate({_id: req.body.accountId}, { $push: { products: dbProduct._id } }, { new: true });
-      // })
+      .then(dbProduct => {
+        return db.Account.findOneAndUpdate({userId: req.body.userId}, { $push: { products: dbProduct._id } }, { new: true });
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

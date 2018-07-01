@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link, withRouter } from  'react-router-dom';
+import { withRouter } from  'react-router-dom';
 
 import { SignUpLink } from './AppSignUp';
+import { PasswordForgetLink } from  './ForgotPW';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
@@ -40,7 +41,7 @@ class SignInForm extends Component {
       .then((resp) => {
         console.log(resp);
         this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
+        history.push(routes.ACCOUNT);
       })
       .catch(error => {
         this.setState({error: error});
@@ -103,7 +104,7 @@ class SignInForm extends Component {
           />
           <button disabled={isInvalid} className="btn" type="submit">Sign In</button>
           {error && <p>{error.message}</p>}
-          <div><Link to="/pw-forget">Forgot Password?</Link></div>
+          <PasswordForgetLink />
           <div><SignUpLink /></div>
         </form>
       </div>

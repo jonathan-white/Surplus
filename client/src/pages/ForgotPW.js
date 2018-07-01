@@ -1,47 +1,78 @@
 import React, { Component } from "react";
-import Input from "react-materialize/lib/Input";
+import { Link } from 'react-router-dom';
+import { Input } from "react-materialize/lib";
 
-class ForgotPW extends Component {
+import { auth } from '../firebase';
+
+const PasswordForgetPage = () => (
+  <div>
+    <PasswordForgetForm />
+  </div>
+)
+
+const INITIAL_STATE = {
+  email: '',
+  error: null,
+};
+
+class PasswordForgetForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-    }
+
+    this.state = { ...INITIAL_STATE };
   };
 
   handleFormSubmit = (event) => {
-		event.preventDefault();
+    const { email } = this.state;
 
+    auth.doPasswordReset(email)
+      .then(() => this.setState({ ...INITIAL_STATE }))
+      .catch(error => this.setState({ error }));
+
+    event.preventDefault();
 	};
 
 	handleInputChange = event => {
 		const {name, value} = event.target;
-
-		this.setState({
-			[name]: value
-		});
+		this.setState({	[name]: value });
 	};
 
   render() {
+    const {
+      email,
+      error,
+    } = this.state;
+
+    const isInvalid = email === '';
+
     return (
       <div className="login-form">
-        <form >
+        <form onSubmit={this.handleFormSubmit}>
           <Input
             s={12}
             type="text"
-            label="Email"
+            label="Email Address"
             value={this.state.email}
             name="email"
             onChange={this.handleInputChange}
           />
-
-          <div className="login-signup-buttons">
-            <button id="signup" className="btn" onClick={this.handleFormSubmit}>Reset My Password</button>
-          </div>
+          <button disabled={isInvalid} className="btn">Reset My Password</button>
+          { error && <p>{error.message}</p>}
         </form>
       </div>
     )
   }
 };
 
-export default ForgotPW;
+const PasswordForgetLink = () => (
+  <div>
+    <Link to="/pw-forget">Forgot Password?</Link>
+  </div>
+);
+
+export default PasswordForgetPage;
+
+export {
+  PasswordForgetForm,
+  PasswordForgetLink,
+};

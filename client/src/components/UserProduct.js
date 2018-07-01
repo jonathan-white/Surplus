@@ -47,7 +47,7 @@ class UserProduct extends Component {
 							<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
 						</div>
 					</div>
-					<div className="rating">Rating</div>
+					{/* <div className="rating">Rating</div> */}
 
 				</div>
 				{this.state.ownedByUser && (
