@@ -45,7 +45,7 @@ class UserProfile extends Component {
 					<div className="profile">
 						<div className="profile-img">
 							<img
-								src="https://storage.googleapis.com/surplus-6507a.appspot.com/placeholder.png"
+								src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"
 								alt="company logo"
 							/>
 							<a className="btn-floating btn-large waves-effect waves-light red">

@@ -37,7 +37,8 @@ class SignInForm extends Component {
     } = this.props;
 
     auth.doSignInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((resp) => {
+        console.log(resp);
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.HOME);
       })
@@ -79,10 +80,7 @@ class SignInForm extends Component {
       error,
     } = this.state;
 
-    const isInvalid = (
-      password === '' ||
-      email === ''
-    );
+    const isInvalid = password === '' || email === '';
 
     return (
       <div className="login-form">

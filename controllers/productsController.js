@@ -3,6 +3,8 @@ const db = require("../models");
 // Defining methods for the productsController
 module.exports = {
   findAll: function(req, res) {
+    // console.log(req.connection.remoteAddress); //IP address
+    // console.log(req.headers['x-forwarded-for']);
     db.Product
       .find(req.query)
       .sort({ dateAdded: -1 })

@@ -19,7 +19,7 @@ const NewProduct = props => (
 					<label htmlFor="fileUpload">
 						<div className="profile-img">
 							<img
-								src={props.image || "https://storage.googleapis.com/surplus-6507a.appspot.com/placeholder.png"}
+								src={props.image || "https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
 								alt="company logo"
 							/>
 							<a className="btn-floating btn-large waves-effect waves-light red">
