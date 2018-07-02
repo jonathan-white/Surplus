@@ -32,16 +32,18 @@ class ShoppingCart extends Component {
 
     return (
       <div className="row">
-				<div className="col s8">
-					<h5>Shopping Cart</h5>
-					{this.state.shoppingCart.length
-						?	this.state.shoppingCart.map((cartItem, index) => <Cart product={cartItem} key={index}/>)
-						: <div>No Items in Shopping Cart</div>
-					}
-				</div>
-				<div className="col s4">
-					<Checkout />
-					{/* <PaypalExpressBtn client={client} currency={'USD'} total={1.00} env={'sandbox'} onError={onError} onSuccess={onSuccess} onCancel={onCancel} /> */}
+				<h5 className="page-title">Shopping Cart</h5>
+				<div className="row">
+					<div className="col s8">
+						{this.state.shoppingCart.length
+							?	this.state.shoppingCart.map((cartItem, index) => <Cart product={cartItem} key={index}/>)
+							: <div>No Items in Shopping Cart</div>
+						}
+					</div>
+					<div className="col s4">
+						<Checkout cartSize={this.state.shoppingCart.length} />
+						{/* <PaypalExpressBtn client={client} currency={'USD'} total={1.00} env={'sandbox'} onError={onError} onSuccess={onSuccess} onCancel={onCancel} /> */}
+					</div>
 				</div>
 			</div>
     );

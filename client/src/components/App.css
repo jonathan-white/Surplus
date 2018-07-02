@@ -8,26 +8,33 @@
 }
 
 /*Cart*/
-.CartBox {
+.cartBox {
 	margin: 40px;
-	border: 1px solid gray;
+	border: 1px solid #bbb;
 }
 
-.Cart_content {
+.cart_content {
 	font-size: 20px;
 	text-align: left;
 }
 
 /*Checkout*/
-.CheckoutBox {
+.checkoutBox {
 	margin: 40px;
-  border: 1px solid gray;
-  padding: 10px
+  border: 1px solid #bbb;
+  padding: 10px;
+	color: #626669;
+	font-size: 12px;
 }
 
-.Checkout_content {
+.checkout_content {
 	font-size: 15px;
 	text-align: Left;
+}
+
+.pp-button {
+	margin: 40px;
+	padding: 10px;
 }
 
 /*Companies*/
@@ -295,7 +302,7 @@
 }
 
 .cart-item .item-title {
-	color: #2F3337;
+	color: #0172A0;
 	margin-bottom: 10px;
 	font-weight: 600;
 }
@@ -314,4 +321,40 @@
 .cart-item .item-price {
 	font-weight: 800;
 	text-align: right;
+}
+
+.nav-wrapper .material-icons:hover {
+	transform: translateY(-5px);
+}
+
+.cart-item .product-image:hover {
+	transform: scale(1.02);
+}
+
+.page-title {
+	padding: 0 20px;
+}
+
+.total-label {
+	float: left;
+}
+
+.total-value {
+	float: right;
+}
+
+.totals-item {
+	margin: 0 0 5px;
+	height: 20px;
+}
+
+.totals-item.total-type-subtotal {
+	font-weight: 700;
+	color: #626669;
+}
+
+.totals-item.total-type-grandtotal {
+	font-weight: 700;
+	font-size: 20px;
+	color: #626669;
 }

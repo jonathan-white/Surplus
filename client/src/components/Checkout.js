@@ -28,21 +28,39 @@ class Checkout extends Component {
     }
 
     return (
-        <div className="CheckoutBox">
-          <p className="Checkout_content">Items: Chairs</p>
-          <p className="Checkout_content">Subtotal: $0.00</p>
-          <p className="Checkout_content">Shipping: $0.00</p>
-          <p className="CheckoutBox Checkout_content">
-            {/* <PaypalExpressBtn
-                client={client}
-                currency={'USD'}
-                total={1.00}
-                env={'sandbox'}
-                onError={onError}
-                onSuccess={onSuccess}
-                onCancel={onCancel}
-            /> */}
-          </p>
+        <div className="checkoutBox">
+          <div className="totals-item">
+            <span className="total-label">Items ({this.props.cartSize}):</span>
+            <span className="total-value">$0.00</span>
+          </div>
+          <div className="totals-item">
+            <span className="total-label">Shipping:</span>
+            <span className="total-value">$0.00</span>
+          </div>
+          <hr />
+          <div className="totals-item total-type-subtotal">
+            <span className="total-label">Subtotal:</span>
+            <span className="total-value">$0.00</span>
+          </div>
+          <div className="totals-item">
+            <span className="total-label">Estimated tax:</span>
+            <span className="total-value">$0.00</span>
+          </div>
+          <div className="totals-item total-type-grandtotal">
+            <span className="total-label">Order Total:</span>
+            <span className="total-value">$0.00</span>
+          </div>
+          <div className="pp-button">
+            <PaypalExpressBtn
+              client={client}
+              currency={'USD'}
+              total={1.00}
+              env={'sandbox'}
+              onError={onError}
+              onSuccess={onSuccess}
+              onCancel={onCancel}
+            />
+          </div>
         </div>
     )
   }
