@@ -20,7 +20,6 @@ app.use(session({
     secret: 'mynock blue',
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
 })); // session secret
 
 // Use Static Public

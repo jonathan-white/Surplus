@@ -16,14 +16,14 @@ class MarketplaceProduct extends Component {
 		const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
 		if(sessionData) {
-			if(sessionData.shoppingCart.includes(product)){
-				cartData = sessionData.shoppingCart;
-			} else {
-				cartData = [...sessionData.shoppingCart, product];
-			}
+			cartData = [...sessionData.shoppingCart, product];
 		} else {
 			cartData.push(product);
 		}
+
+		console.log('cartData:',cartData);
+
+		// this.props.updateCartSize(cartData.length);
 
 		// Update the cart in localstorage
 		API.getSessionID()

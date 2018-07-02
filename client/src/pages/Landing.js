@@ -22,7 +22,7 @@ class Landing extends Component {
     return (
       <div className="App">
         <Favorites/>
-				<MarketProductList products={this.state.products} addToCard={this.props.addToCard}/>
+				<MarketProductList products={this.state.products} />
         <Companies/>
       </div>
     );

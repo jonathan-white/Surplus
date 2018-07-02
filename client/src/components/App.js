@@ -24,29 +24,21 @@ class App extends React.Component {
     this.state = {
       sessionId: '',
       shoppingCart: [],
+      cartSize: 0,
     }
-    // this.addToCard = this.addToCard.bind(this);
+    this.updateCartSize = this.updateCartSize.bind(this);
   };
 
-  // componentDidMount = () => {
-  //
-  //
-  //   API.getSessionID()
-  //   .then(res => {
-  //     const sessionData = {
-  //       sessionId: res.data,
-  //       shoppingCart: this.state.shoppingCart,
-  //     };
-  //
-  //     localStorage.setItem('sessionData',JSON.stringify(sessionData));
-  //
-  //   })
-  //   .catch(err => console.log(err));
-  // }
+  componentDidMount = () => {
+    const sessionData = JSON.parse(localStorage.getItem('sessionData'));
+		if(sessionData){
+			this.setState({shoppingCart: sessionData.shoppingCart});
+		}
+  };
 
-  // componentWillUnmount = () => {
-  //   localStorage.removeItem('sessionData');
-  // }
+  updateCartSize = (size) => {
+    this.setState({ cartSize: size });
+  }
 
   addToCard = (product) => {
     // Add to the session's cart
@@ -63,7 +55,6 @@ class App extends React.Component {
         }));
       })
       .catch(err => console.log(err));
-
   };
 
   render() {
@@ -71,10 +62,14 @@ class App extends React.Component {
     return(
       <Router>
         <div>
-          <Navigation />
+          <Navigation cartSize={this.state.cartSize} />
           <Switch>
-            <Route exact path={routes.LANDING} component={() => <LandingPage addToCard={this.addToCard} />}/>
-            <Route exact path={routes.HOME} component={() => <HomePage addToCard={this.addToCard} />}/>
+            <Route exact path={routes.LANDING}
+              component={() => <LandingPage updateCartSize={this.updateCartSize} />}
+            />
+            <Route exact path={routes.HOME}
+              component={() => <HomePage updateCartSize={this.updateCartSize} />}
+            />
             <Route exact path={routes.ACCOUNT} component={() => <AccountPage />}/>
             <Route exact path={routes.CHECKOUT} component={() => <ShoppingCart />}/>
             <Route exact path={routes.SIGN_IN} component={() => <SigninPage />}/>

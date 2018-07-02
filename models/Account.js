@@ -25,12 +25,6 @@ var AccountSchema = new Schema({
 	      type: Schema.Types.ObjectId,
 	      ref: "Product"
 	    }
-	],
-	shoppingCart: [
-	    {
-	      type: Schema.Types.ObjectId,
-	      ref: "Product"
-	    }
 	]
 });
 
