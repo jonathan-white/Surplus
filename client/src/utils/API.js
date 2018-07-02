@@ -81,5 +81,8 @@ export default {
 
   getSessionID: () => {
     return axios.get("/api/session");
+  },
+  searchFor: (query) => {
+    return axios.get(`/api/products/search?q=${query}`);
   }
 };

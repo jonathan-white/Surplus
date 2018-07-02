@@ -7,3 +7,4 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const PASSWORD_CHANGE = '/pw-change';
 export const CHECKOUT = '/checkout';
 export const USER = '/users/:id';
+export const SEARCH = '/search';

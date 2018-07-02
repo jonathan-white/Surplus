@@ -4,11 +4,8 @@ import Input from "react-materialize/lib/Input";
 const NewProduct = props => (
 	<div>
 		<div className="row">
-			<h4>New Product</h4>
-		</div>
-		<div className="row">
 			<div className="profile">
-
+				<h5>Add a product</h5>
 				<form
 					className="row"
 					method="post"
@@ -20,7 +17,7 @@ const NewProduct = props => (
 						<div className="profile-img">
 							<img
 								src={props.image || "https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
-								alt="company logo"
+								alt={props.title}
 							/>
 							<a className="btn-floating btn-large waves-effect waves-light red">
 								<i className="material-icons">add</i>
@@ -49,7 +46,7 @@ const NewProduct = props => (
 					/>
 					<Input
 						s={12}
-						type="text"
+						type="number"
 						label="Price per unit"
 						value={props.price}
 						name="price"

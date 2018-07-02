@@ -31,7 +31,7 @@ const Cart = (props) => (
           <div>{props.product.quantity === 1 && `Only 1 Left!`}</div>
         </div>
         <div className="item-buttons">
-          <button className="btn-item">Remove</button>
+          <button className="btn-item" onClick={() => props.handleRemoveItem(props.index)}>Remove</button>
           <button className="btn-item">Save For Later</button>
         </div>
       </div>

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { withRouter } from  'react-router-dom';
 import { Navbar, NavItem, Icon, Badge } from 'react-materialize';
 
 import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import { auth } from '../firebase';
 
-const Navigation = () => (
+const Navigation = ({history}) => (
   <AuthUserContext.Consumer>
     { authUser => authUser
-      ? <NavigationAuth authUser={authUser} />
-      : <NavigationNonAuth />
+      ? <NavigationAuth history={history} authUser={authUser} />
+      : <NavigationNonAuth history={history} />
     }
   </AuthUserContext.Consumer>
 );
@@ -34,6 +35,12 @@ class NavigationAuth extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    this.props.history.push({
+      pathname: routes.SEARCH,
+      search: `?q=${this.state.searchTerms}`
+    });
+
     // this.context.history.push('/search') OR this.props.history.push('/search')
     // pass this.state.searchTerms to the route
     // the search route has a component that makes the db request and loops through
@@ -45,7 +52,13 @@ class NavigationAuth extends Component {
       <Navbar brand='Surplus Market' right style={{height: '75px'}}>
         <NavItem href="#">
           <form onSubmit={this.handleSubmit}>
-            <input value={this.state.searchTerms} type="text" placeholder="search for products"/>
+            <input
+              value={this.state.searchTerms}
+              name="searchTerms"
+              type="text"
+              placeholder="search for products"
+              onChange={this.handleChange}
+            />
           </form>
         </NavItem>
         <NavItem href={routes.ACCOUNT}>
@@ -68,6 +81,7 @@ class NavigationNonAuth extends Component {
     super(props);
     this.state = {
       searchTerms: '',
+      cartSize: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -82,6 +96,9 @@ class NavigationNonAuth extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    this.props.history.push(routes.SEARCH);
+
     // this.context.history.push('/search') OR this.props.history.push('/search')
     // pass this.state.searchTerms to the route
     // the search route has a component that makes the db request and loops through
@@ -93,11 +110,18 @@ class NavigationNonAuth extends Component {
       <Navbar brand='Surplus Market' right style={{height: '75px'}}>
         <NavItem href='#'>
           <form onSubmit={this.handleSubmit}>
-            <input value={this.state.searchTerms} type="text" placeholder="search for products"/>
+            <input
+              value={this.state.searchTerms}
+              name="searchTerms"
+              type="text"
+              placeholder="search for products"
+              onChange={this.handleChange}
+            />
           </form>
         </NavItem>
-        <NavItem href={routes.CHECKOUT}>
+        <NavItem href={routes.CHECKOUT} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
+          <Badge className="cart-badge">{this.state.cartSize}</Badge>
         </NavItem>
         <NavItem href={routes.SIGN_IN}>
           Sign In
@@ -107,4 +131,4 @@ class NavigationNonAuth extends Component {
   };
 };
 
-export default Navigation;
+export default withRouter(Navigation);

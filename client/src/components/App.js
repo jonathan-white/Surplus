@@ -11,6 +11,7 @@ import HomePage from "../pages/Home";
 import AccountPage from "../pages/Profile";
 import Footer from "./Footer";
 import ShoppingCart from "../pages/ShoppingCart";
+import SearchResults from "../pages/Results";
 import NoMatch from '../pages/404';
 import './App.css';
 
@@ -58,7 +59,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('Shopping Cart:',this.state.shoppingCart);
+    // console.log('Shopping Cart:',this.state.shoppingCart);
     return(
       <Router>
         <div>
@@ -76,6 +77,7 @@ class App extends React.Component {
             <Route exact path={routes.SIGN_UP} component={() => <SignupPage />}/>
             <Route exact path={routes.PASSWORD_FORGET} component={() => <ForgotPasswordPage />}/>
             <Route exact path={routes.PASSWORD_CHANGE} component={() => <ChangePasswordPage />}/>
+            <Route exact path={routes.SEARCH} component={() => <SearchResults />}/>
             <Route component={NoMatch} />
           </Switch>
           <Footer />

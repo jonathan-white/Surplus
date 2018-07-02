@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AuthUserContext from '../components/AuthUserContext';
 import PasswordChangeForm from './PasswordChange';
 
-import UserProfile from '../components/UserProfile';
 import NewProduct from '../components/NewProduct';
 import UserProductsList from '../components/UserProductsList';
 import API from "../utils/API";
@@ -63,8 +62,6 @@ class Profile extends Component {
 			userId: this.state.user_id,
 		}
 
-		// API.addProductToSell()
-
 		API.createProduct(newProduct)
 			.then(res => {
 				this.setState({
@@ -120,11 +117,9 @@ class Profile extends Component {
     return (
 			<div className="row">
 				<div className="col s6">
-					<AuthUserContext.Consumer>
-						{authUser => authUser ?	<UserProfile
-							authUser={authUser}
-							userId={this.state.user_id}/> : null}
-					</AuthUserContext.Consumer>
+					<div className="row">
+						<h4>Account: {this.props.authUser.email}</h4>
+					</div>
 					<NewProduct
 						title={this.state.title}
 						description={this.state.description}
