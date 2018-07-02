@@ -28,22 +28,22 @@ class Checkout extends Component {
     }
 
     return (
-      <div className="CheckoutBox">
-        <p className="Checkout_content">Items: Chairs</p>
-        <p className="Checkout_content">Subtotal: $0.00</p>
-        <p className="Checkout_content">Shipping: $0.00</p>
-        <p className="CheckoutBox Checkout_content">
-          {/* <PaypalExpressBtn
-            client={client}
-            currency={'USD'}
-            total={1.00}
-            env={'sandbox'}
-            onError={onError}
-            onSuccess={onSuccess}
-            onCancel={onCancel}
-          /> */}
-        </p>
-      </div>
+        <div className="CheckoutBox">
+          <p className="Checkout_content">Items: Chairs</p>
+          <p className="Checkout_content">Subtotal: $0.00</p>
+          <p className="Checkout_content">Shipping: $0.00</p>
+          <p className="CheckoutBox Checkout_content">
+            {/* <PaypalExpressBtn
+                client={client}
+                currency={'USD'}
+                total={1.00}
+                env={'sandbox'}
+                onError={onError}
+                onSuccess={onSuccess}
+                onCancel={onCancel}
+            /> */}
+          </p>
+        </div>
     )
   }
 }

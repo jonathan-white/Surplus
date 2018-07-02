@@ -8,7 +8,8 @@ class ShoppingCart extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			shoppingCart: []
+			shoppingCart: [],
+			order: {},
 		}
 	}
 
@@ -16,7 +17,14 @@ class ShoppingCart extends Component {
 		const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 		if(sessionData){
 			this.setState({shoppingCart: sessionData.shoppingCart});
+
+			const cart = sessionData.shoppingCart;
+			let totalPrice = 0;
+			for (var i = 0; i < cart.length; i++) {
+				totalPrice += cart[i].price * 1;
+			}
 		}
+
 	}
 
 
