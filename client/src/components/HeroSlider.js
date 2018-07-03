@@ -1,8 +1,9 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Slide, Slider } from 'react-materialize'
+import * as routes from '../constants/routes';
 
-const Favorites = props => (
+const HeroSlider = props => (
     <Slider className="slider">
       <Slide
         src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/OfficeRoom.jpg"
@@ -20,8 +21,8 @@ const Favorites = props => (
         title="Office Supplies"
       placement="right">
         Ballpoint Pens, Gel Pens, Fountain Pens and more...
-        </Slide>
+      </Slide>
     </Slider>
 );
 
-export default Favorites;
+export default HeroSlider;

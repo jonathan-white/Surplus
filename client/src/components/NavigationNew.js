@@ -28,9 +28,7 @@ class NavigationAuth extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = (event) => {
@@ -90,15 +88,16 @@ class NavigationNonAuth extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.history.push(routes.SEARCH);
+    this.props.history.push({
+      pathname: routes.SEARCH,
+      search: `?q=${this.state.searchTerms}`
+    });
 
     // this.context.history.push('/search') OR this.props.history.push('/search')
     // pass this.state.searchTerms to the route
@@ -113,9 +112,10 @@ class NavigationNonAuth extends Component {
           <form onSubmit={this.handleSubmit}>
             <input
               value={this.state.searchTerms}
+              className="searchbox"
               name="searchTerms"
               type="text"
-              placeholder="search for products"
+              placeholder="Search..."
               onChange={this.handleChange}
             />
           </form>

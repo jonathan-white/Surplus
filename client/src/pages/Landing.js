@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import MarketProductList from "../components/MarketProductList";
-import Favorites from "../components/Favorites";
+import { MarketplaceProductList } from "../components/MarketplaceProduct";
+import { Parallax, Carousel } from 'react-materialize';
+import HeroSlider from "../components/HeroSlider";
 import Companies from "../components/Companies";
 import API from "../utils/API"
 
@@ -8,7 +9,7 @@ class Landing extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-      products: [],
+      products: null,
     }
 	};
 
@@ -21,9 +22,27 @@ class Landing extends Component {
   render() {
     return (
       <div className="App">
-        <Favorites/>
-				<MarketProductList products={this.state.products} />
-        <Companies/>
+        <HeroSlider/>
+				<MarketplaceProductList products={this.state.products} />
+				<Parallax
+					className="imageSize s200"
+					imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/officeBuilding.jpg"
+				/>
+				<div className="section white">
+					<div className="row container">
+						<Carousel images={[
+		            'https://storage.googleapis.com/surplus-6507a.appspot.com/assets/chase.jpg',
+		            'https://storage.googleapis.com/surplus-6507a.appspot.com/assets/ibm.jpg',
+		            'https://storage.googleapis.com/surplus-6507a.appspot.com/assets/clevelandClinic.jpg',
+		            'https://storage.googleapis.com/surplus-6507a.appspot.com/assets/mercedes.jpg',
+		            'https://storage.googleapis.com/surplus-6507a.appspot.com/assets/LAfitness.jpg'
+						]} />
+					</div>
+				</div>
+				<Parallax
+					className="imageSize s200"
+					imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/inventoryManage.jpg"
+				/>
       </div>
     );
   };

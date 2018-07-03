@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-function remove(array, index) {
-	return array.filter((e,i) => i !== index);
-}
-
 class MarketplaceProduct extends Component {
 	constructor(props) {
 		super(props);
@@ -18,7 +14,7 @@ class MarketplaceProduct extends Component {
 	handleClick = (product) => {
 		// Add to the session's cart
 		this.setState({isSelected: true});
-		
+
 		let cartData = [];
 		const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
@@ -50,11 +46,9 @@ class MarketplaceProduct extends Component {
 		return (
 			<div className="item-container">
 				<div className="row img-holder">
-					{this.props.product.img_cloud ? (
-						<img className="product-img" src={this.props.product.img_cloud || "images/placeholder.png"} alt={this.props.product.title} />
-					) : (
-						<i class="fas fa-spinner fa-spin fa-3x"></i>
-					)}
+					<img className="product-img" src={this.props.product.img_cloud ||
+					"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
+						alt={this.props.product.title} />
 				</div>
 				<div className="row">
 					<div>
@@ -88,4 +82,22 @@ class MarketplaceProduct extends Component {
 	};
 };
 
+const MarketplaceProductList = props => (
+  <div>
+    <div className="row productslist">
+			{!props.products
+				? <i className="fas fa-spinner fa-spin fa-3x"></i>
+				: props.products.length
+					? props.products.map(product =>
+						<MarketplaceProduct product={product} key={product._id} />)
+					: `We are currently adding more products. Check back later!`
+			}
+    </div>
+  </div>
+);
+
 export default MarketplaceProduct;
+
+export {
+	MarketplaceProductList,
+}

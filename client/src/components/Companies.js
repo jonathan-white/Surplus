@@ -1,9 +1,8 @@
 import React from "react";
 import { Parallax, Carousel } from 'react-materialize'
-import Wrapper from "./Wrapper";
 
 const Companies = props => (
-    <Wrapper>
+    <div>
       <Parallax
         className="imageSize s200"
         imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/officeBuilding.jpg"
@@ -23,7 +22,7 @@ const Companies = props => (
         className="imageSize s200"
         imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/inventoryManage.jpg"
       />
-    </Wrapper>
+    </div>
 );
 
 export default Companies;

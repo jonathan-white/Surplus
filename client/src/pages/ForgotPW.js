@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { Input } from "react-materialize/lib";
-
 import { auth } from '../firebase';
 
 const PasswordForgetPage = () => (
@@ -18,7 +17,6 @@ const INITIAL_STATE = {
 class PasswordForgetForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = { ...INITIAL_STATE };
   };
 
@@ -38,23 +36,14 @@ class PasswordForgetForm extends Component {
 	};
 
   render() {
-    const {
-      email,
-      error,
-    } = this.state;
-
+    const { email, error } = this.state;
     const isInvalid = email === '';
 
     return (
       <div className="login-form">
         <form onSubmit={this.handleFormSubmit}>
-          <Input
-            s={12}
-            type="text"
-            label="Email Address"
-            value={this.state.email}
-            name="email"
-            onChange={this.handleInputChange}
+          <Input s={12} type="text" onChange={this.handleInputChange}
+            label="Email Address"  value={this.state.email} name="email"
           />
           <button disabled={isInvalid} className="btn">Reset My Password</button>
           { error && <p>{error.message}</p>}

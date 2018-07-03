@@ -4,6 +4,7 @@ import axios from "axios";
 export default {
 
   // Product APIs
+  // ======================================
 
   // Returns all products
   getProducts: () => {
@@ -46,7 +47,9 @@ export default {
   deleteProductPic: (id) => {
     return axios.delete("/api/uploads/",id);
   },
+
   // Account APIs
+  // ======================================
   createAccount: (userData) => {
     return axios.post("/api/users", userData);
   },

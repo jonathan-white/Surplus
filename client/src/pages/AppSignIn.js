@@ -28,84 +28,41 @@ class SignInForm extends Component {
   };
 
   handleFormSubmit = (event) => {
-    const {
-      email,
-      password,
-    } = this.state;
-
-    const {
-      history,
-    } = this.props;
+    const { email, password } = this.state;
+    const { history } = this.props;
 
     auth.doSignInWithEmailAndPassword(email, password)
       .then((resp) => {
-        console.log(resp);
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.ACCOUNT);
       })
-      .catch(error => {
-        this.setState({error: error});
-      });
+      .catch(error => this.setState({error: error}));
 
       event.preventDefault();
-
-    // if(this.state.name.length > 0 && this.state.email.length > 0 && this.state.password.length > 0) {
-    //   const userData = {
-    //     name: this.state.name,
-    //     email: this.state.email,
-    //     password: this.state.password,
-    //   }
-    //
-    //   API.loginAccount(userData)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     console.log('Welcome',res.data.name);
-    //     this.setState({ isLoggedIn: true });
-    //   })
-    //   .catch(err => console.log(err));
-    // }
 	};
 
 	handleInputChange = event => {
-		const {name, value} = event.target;
-
-		this.setState({
-			[name]: value
-		});
+		const { name, value } = event.target;
+		this.setState({ [name]: value });
 	};
 
   render() {
-    const {
-      email,
-      password,
-      error,
-    } = this.state;
-
+    const { email, password, error } = this.state;
     const isInvalid = password === '' || email === '';
 
     return (
       <div className="login-form">
         <form onSubmit={this.handleFormSubmit}>
-          <Input
-            s={12}
-            type="text"
-            label="Email"
-            value={email}
-            name="email"
-            onChange={this.handleInputChange}
+          <Input s={12} type="text" onChange={this.handleInputChange}
+            label="Email" value={email} name="email"
           />
-          <Input
-            s={12}
-            type="password"
-            label="Password"
-            value={password}
-            name="password"
-            onChange={this.handleInputChange}
+          <Input s={12} type="password" onChange={this.handleInputChange}
+            label="Password" value={password} name="password"
           />
           <button disabled={isInvalid} className="btn" type="submit">Sign In</button>
           {error && <p>{error.message}</p>}
           <PasswordForgetLink />
-          <div><SignUpLink /></div>
+          <SignUpLink />
         </form>
       </div>
     )

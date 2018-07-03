@@ -32,7 +32,6 @@ class ShoppingCart extends Component {
 
 	handleRemoveItem = (index) => {
 		const newCart = remove(this.state.shoppingCart, index);
-
 		this.setState({shoppingCart: newCart});
 
 		API.getSessionID()

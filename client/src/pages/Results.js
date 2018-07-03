@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from  'react-router-dom';
 import API from "../utils/API";
-
-import AuthUserContext from '../components/AuthUserContext';
-import * as routes from '../constants/routes';
-import { auth } from '../firebase';
-
-const SearchPage = ({location}) => (
-  <AuthUserContext.Consumer>
-    <SearchResults location={location} />
-  </AuthUserContext.Consumer>
-);
+import MarketplaceProduct from '../components/MarketplaceProduct';
 
 class SearchResults extends Component {
   constructor(props){
@@ -22,24 +13,23 @@ class SearchResults extends Component {
   }
   componentDidMount() {
     const queryTerm = this.props.location.search.split("=")[1];
-    console.log(queryTerm);
     this.setState({query: queryTerm});
     this.runSearch(queryTerm);
   }
 
   runSearch = (query) => {
-    console.log('inside runSearch on Results page before API.searchFor');
     API.searchFor(query)
-      .then(res => {
-        console.log(res.data);
-        this.setState({ results: res.data });
-      })
+      .then(res => this.setState({ results: res.data }))
       .catch(err => console.log(err));
   }
 
   render() {
     return(
-      <div>Results will go here</div>
+      <div className="results-container">
+        {this.state.results.map(product =>
+          <MarketplaceProduct product={product} key={product._id} />)
+        }
+      </div>
     )
   }
 }

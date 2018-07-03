@@ -29,36 +29,17 @@ class SignUpForm extends Component {
 
   handleFormSubmit = (event) => {
 
-    const {
-      name,
-      email,
-      passwordOne,
-    } = this.state;
-
-    const {
-      history,
-    } = this.props;
+    const { name, email, passwordOne } = this.state;
+    const { history } = this.props;
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        console.log('Logged in user: ', authUser.user);
-        // const userData = {
-        //   name: name,
-        //   email: email,
-        // };
-
-        API.createAccount({
-          userId: authUser.user.uid,
-          name: name,
-          email: email,
-        })
-        .then(res => {
-          console.log('After createAccount:',res.data);
-          this.setState(() => ({ ...INITIAL_STATE }));
-          // Redirect the user to the homepage
-          history.push(routes.ACCOUNT);
-        })
-        .catch(error => this.setState({ error: error }));
+        API.createAccount({ userId: authUser.user.uid, name: name, email: email })
+          .then(res => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+            history.push(routes.ACCOUNT);
+          })
+          .catch(error => this.setState({ error: error }));
       })
       .catch(error => this.setState({ error: error }));
 
@@ -66,21 +47,12 @@ class SignUpForm extends Component {
 	};
 
 	handleInputChange = event => {
-		const {name, value} = event.target;
-
-		this.setState({
-			[name]: value
-		});
+		const { name, value } = event.target;
+		this.setState({ [name]: value });
 	};
 
   render() {
-    const {
-      name,
-      email,
-      passwordOne,
-      passwordTwo,
-      error,
-    } = this.state;
+    const { name, email, passwordOne, passwordTwo, error } = this.state;
 
     const isInvalid = (
       passwordOne !== passwordTwo ||
@@ -92,37 +64,17 @@ class SignUpForm extends Component {
     return (
       <div className="login-form">
         <form onSubmit={this.handleFormSubmit} method="post">
-          <Input
-            s={12}
-            type="text"
-            label="Company Name (required)"
-            value={name}
-            name="name"
-            onChange={this.handleInputChange}
+          <Input s={12} type="text" onChange={this.handleInputChange}
+            label="Company Name (required)" value={name} name="name"
           />
-          <Input
-            s={12}
-            type="text"
-            label="Email"
-            value={email}
-            name="email"
-            onChange={this.handleInputChange}
+          <Input s={12} type="text" onChange={this.handleInputChange}
+            label="Email" value={email} name="email"
           />
-          <Input
-            s={12}
-            type="password"
-            label="Password"
-            value={passwordOne}
-            name="passwordOne"
-            onChange={this.handleInputChange}
+          <Input s={12} type="password" onChange={this.handleInputChange}
+            label="Password" value={passwordOne} name="passwordOne"
           />
-          <Input
-            s={12}
-            type="password"
-            label="Confirm Password"
-            value={passwordTwo}
-            name="passwordTwo"
-            onChange={this.handleInputChange}
+          <Input s={12} type="password" onChange={this.handleInputChange}
+            label="Confirm Password" value={passwordTwo} name="passwordTwo"
           />
           <div className="g-recaptcha" data-sitekey="6Lc-omEUAAAAAHb0j9_cStOCYvYktrenZci4zghk"></div>
           <button disabled={isInvalid} className="btn" type="submit">Sign Up</button>
@@ -134,11 +86,13 @@ class SignUpForm extends Component {
 };
 
 const SignUpLink = () => (
-  <p>
-    Don't have an account?
-    {' '}
-    <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>
+  <div>
+    <p>
+      Don't have an account?
+      {' '}
+      <Link to={routes.SIGN_UP}>Sign Up</Link>
+    </p>
+  </div>
 );
 
 export default withRouter(SignUpPage);
