@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "react-materialize/lib";
+import { Input } from "react-materialize";
 
 const Cart = (props) => (
   <div className="row cart-item">

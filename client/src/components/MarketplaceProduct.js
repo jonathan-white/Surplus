@@ -5,8 +5,7 @@ class MarketplaceProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating_img: "images/star-ratings.png",
-			ownerId: '',
+			rating: '4-5',
 			isSelected: false,
 		}
 	};
@@ -41,7 +40,7 @@ class MarketplaceProduct extends Component {
 	};
 
 	render() {
-		const isSelected = this.state.isSelected;
+		const { isSelected, rating } = this.state;
 
 		return (
 			<div className="item-container">
@@ -65,10 +64,10 @@ class MarketplaceProduct extends Component {
 						<div className="price">${this.props.product.price}</div>
 						<div className="unit-qty">
 							<div className="unit">/unit</div>
-							<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
+							{/* <div>Stock: <span className="quantity">{this.props.product.quantity}</span></div> */}
 						</div>
 					</div>
-					<div className="rating">Rating</div>
+					<div className={`rating stars-${rating}`}></div>
 					<button
 						disabled={isSelected}
 						className={`btn green add-to-cart-btn`}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input } from "react-materialize/lib";
+import { Input } from "react-materialize";
 import { auth } from '../firebase';
 
 const INITIAL_STATE = {

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from  'react-router-dom';
 import API from "../utils/API";
-import MarketplaceProduct from '../components/MarketplaceProduct';
+import MarketplaceProduct, { MarketplaceProductList } from '../components/MarketplaceProduct';
 
 class SearchResults extends Component {
   constructor(props){
     super(props);
     this.state = {
       query: '',
-      results: [],
+      results: null,
     };
   }
   componentDidMount() {
@@ -26,9 +26,7 @@ class SearchResults extends Component {
   render() {
     return(
       <div className="results-container">
-        {this.state.results.map(product =>
-          <MarketplaceProduct product={product} key={product._id} />)
-        }
+        <MarketplaceProductList products={this.state.results} />
       </div>
     )
   }

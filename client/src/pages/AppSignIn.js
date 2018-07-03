@@ -6,7 +6,7 @@ import { PasswordForgetLink } from  './ForgotPW';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
-import Input from "react-materialize/lib/Input";
+import { Input } from "react-materialize";
 // import API from '../utils/API';
 
 const SignInPage = ({ history }) => (

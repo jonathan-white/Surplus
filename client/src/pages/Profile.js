@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input } from "react-materialize/lib";
+import { Input } from "react-materialize";
 import AuthUserContext from '../components/AuthUserContext';
 import PasswordChangeForm from './PasswordChange';
 
@@ -189,12 +189,12 @@ class UserProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating_img: "images/star-ratings.png",
-			ownedByUser: true,
+			rating: '5',
 		}
 	};
 
 	render() {
+		const { rating } = this.state;
 		return (
 			<div className="item-container">
 				<div className="row img-holder">
@@ -220,8 +220,7 @@ class UserProduct extends Component {
 							<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
 						</div>
 					</div>
-					{/* <div className="rating">Rating</div> */}
-
+					<div className={`rating stars-${rating}`}></div>
 				</div>
 				<div className="close" title="Remove Product" onClick={() => this.props.handleProductDelete(this.props.product._id)}>
 					<i className="fas fa-window-close fa-2x"></i>

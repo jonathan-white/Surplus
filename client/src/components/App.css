@@ -84,7 +84,7 @@
 /* Product Card */
 .item-container {
   position: relative;
-  width: 200px;
+  width: 250px;
   border: 1px solid #eee;
   background-color: #fff;
   margin: 0 0 12px 12px;
@@ -143,6 +143,7 @@
 
 .item-container .unit-qty {
   text-align: left;
+	padding-top: 20px;
 }
 
 .item-container .product-description {
@@ -203,6 +204,48 @@
 	text-align: center;
 	padding: 0 10px;
 	border-radius: 5px;
+}
+
+.item-container .rating {
+	background-image: url(https://storage.googleapis.com/surplus-6507a.appspot.com/assets/ratings.png);
+	background-position: 52% 10%;
+	height: 25px;
+	width: 100%;
+	margin: 5px;
+}
+
+.rating.stars-0 {
+	background-position-y: 10%;
+}
+.rating.stars-0-1 {
+	background-position-y: 18%;
+}
+.rating.stars-1 {
+	background-position-y: 26%;
+}
+.rating.stars-1-2 {
+	background-position-y: 34%;
+}
+.rating.stars-2 {
+	background-position-y: 42%;
+}
+.rating.stars-2-3 {
+	background-position-y: 50%;
+}
+.rating.stars-3 {
+	background-position-y: 58%;
+}
+.rating.stars-3-4 {
+	background-position-y: 66%;
+}
+.rating.stars-4 {
+	background-position-y: 74%;
+}
+.rating.stars-4-5 {
+	background-position-y: 82%;
+}
+.rating.stars-5 {
+	background-position-y: 90%;
 }
 
 /*Users*/
