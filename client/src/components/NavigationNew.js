@@ -54,9 +54,10 @@ class NavigationAuth extends Component {
           <form onSubmit={this.handleSubmit}>
             <input
               value={this.state.searchTerms}
+              className="searchbox"
               name="searchTerms"
               type="text"
-              placeholder="search for products"
+              placeholder="Search..."
               onChange={this.handleChange}
             />
           </form>

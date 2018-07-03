@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
+function remove(array, index) {
+	return array.filter((e,i) => i !== index);
+}
+
 class MarketplaceProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			rating_img: "images/star-ratings.png",
 			ownerId: '',
+			isSelected: false,
 		}
 	};
 
-	addToCard = (product) => {
+	handleClick = (product) => {
 		// Add to the session's cart
+		this.setState({isSelected: true});
+		
 		let cartData = [];
 		const sessionData = JSON.parse(localStorage.getItem('sessionData'));
 
@@ -38,6 +45,8 @@ class MarketplaceProduct extends Component {
 	};
 
 	render() {
+		const isSelected = this.state.isSelected;
+
 		return (
 			<div className="item-container">
 				<div className="row img-holder">
@@ -66,7 +75,13 @@ class MarketplaceProduct extends Component {
 						</div>
 					</div>
 					<div className="rating">Rating</div>
-					<button className="btn green add-to-cart-btn" onClick={() => this.addToCard(this.props.product)}>Add to Cart</button>
+					<button
+						disabled={isSelected}
+						className={`btn green add-to-cart-btn`}
+						onClick={() => this.handleClick(this.props.product)}
+					>
+						Add to Cart
+					</button>
 				</div>
 			</div>
 		);

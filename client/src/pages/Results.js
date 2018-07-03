@@ -28,6 +28,7 @@ class SearchResults extends Component {
   }
 
   runSearch = (query) => {
+    console.log('inside runSearch on Results page before API.searchFor');
     API.searchFor(query)
       .then(res => {
         console.log(res.data);
