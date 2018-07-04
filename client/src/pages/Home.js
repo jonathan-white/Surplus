@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { MarketplaceProductList } from "../components/MarketplaceProduct";
 import { Parallax, Carousel } from 'react-materialize';
 import HeroSlider from "../components/HeroSlider";
-import Companies from "../components/Companies";
-import API from "../utils/API"
+import API from "../utils/API";
 
 import withAuthorization from '../components/withAuthorization';
 
@@ -11,21 +10,27 @@ class Home extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			... this.props.cartData,
       products: null,
     }
 	};
 
-  componentDidMount = () => {
+	componentDidMount = () => {
+		this.loadProducts();
+  };
+
+	loadProducts = () => {
 		API.getProducts()
       .then(results=> this.setState({ products: results.data }))
       .catch(err => console.log(err));
-  };
+	}
 
   render() {
     return (
       <div className="App">
         <HeroSlider/>
-				<MarketplaceProductList products={this.state.products} />
+				<MarketplaceProductList products={this.state.products}
+					handleAddToCart={this.props.handleAddToCart}/> />
 				<Parallax
 					className="imageSize s200"
 					imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/officeBuilding.jpg"

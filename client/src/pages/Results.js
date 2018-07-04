@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from  'react-router-dom';
 import API from "../utils/API";
-import MarketplaceProduct, { MarketplaceProductList } from '../components/MarketplaceProduct';
+import { MarketplaceProductList } from '../components/MarketplaceProduct';
 
 class SearchResults extends Component {
   constructor(props){

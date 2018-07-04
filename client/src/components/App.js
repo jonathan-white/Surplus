@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Navigation from "./NavigationNew";
+import Navigation from "./Navigation";
 import LandingPage from "../pages/Landing";
 import SignupPage from "../pages/AppSignUp";
 import SigninPage from "../pages/AppSignIn";
@@ -19,60 +19,60 @@ import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
 import API from "../utils/API";
 
+function remove(array, index) {
+	return array.filter((e,i) => i !== index);
+}
+
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      sessionId: '',
-      shoppingCart: [],
-      cartSize: 0,
-    }
-    this.updateCartSize = this.updateCartSize.bind(this);
+    // sessionData = {
+    //   sessionId: ...
+    //   shoppingCart: ...
+    // }
+    this.state = { ...JSON.parse(localStorage.getItem('sessionData')) };
+    this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   };
 
-  componentDidMount = () => {
-    const sessionData = JSON.parse(localStorage.getItem('sessionData'));
-		if(sessionData){
-			this.setState({shoppingCart: sessionData.shoppingCart});
-		}
-  };
+  handleAddToCart = (product) => {
+    console.log('Adding product to the cart:', product);
+    this.setState((prevState) => ({
+      shoppingCart: [...prevState.shoppingCart, product]
+    }));
 
-  updateCartSize = (size) => {
-    this.setState({ cartSize: size });
+    localStorage.setItem('sessionData',JSON.stringify(this.state));
   }
 
-  addToCard = (product) => {
-    // Add to the session's cart
-    this.setState({
-      shoppingCart: [...this.state.shoppingCart, product]
-    });
+  handleRemoveFromCart = (index) => {
+		const newCart = remove(this.state.shoppingCart, index);
+		this.setState({shoppingCart: newCart});
 
-    // Update the cart
-    API.getSessionID()
+		API.getSessionID()
       .then(res => {
         localStorage.setItem('sessionData',JSON.stringify({
           sessionId: res.data,
-          shoppingCart: this.state.shoppingCart,
+          shoppingCart: newCart,
         }));
+				this.props.decreaseCartSize();
       })
       .catch(err => console.log(err));
-  };
+	}
 
   render() {
-    // console.log('Shopping Cart:',this.state.shoppingCart);
     return(
       <Router>
         <div>
-          <Navigation cartSize={this.state.cartSize} />
+          <Navigation cartSize={this.state.shoppingCart.length} />
           <Switch>
-            <Route exact path={routes.LANDING}
-              component={() => <LandingPage updateCartSize={this.updateCartSize} />}
-            />
-            <Route exact path={routes.HOME}
-              component={() => <HomePage updateCartSize={this.updateCartSize} />}
-            />
+            <Route exact path={routes.LANDING} component={() => <LandingPage
+              handleAddToCart={this.handleAddToCart}/>} />
+            <Route exact path={routes.HOME} component={() => <HomePage
+              handleAddToCart={this.handleAddToCart}/>} />
             <Route exact path={routes.ACCOUNT} component={() => <AccountPage />}/>
-            <Route exact path={routes.CHECKOUT} component={() => <ShoppingCart />}/>
+            <Route exact path={routes.CHECKOUT} component={() => <ShoppingCart
+              handleRemoveFromCart={this.handleRemoveFromCart}
+              shoppingCart={this.state.shoppingCart}/>}/>
             <Route exact path={routes.SIGN_IN} component={() => <SigninPage />}/>
             <Route exact path={routes.SIGN_UP} component={() => <SignupPage />}/>
             <Route exact path={routes.PASSWORD_FORGET} component={() => <ForgotPasswordPage />}/>
@@ -83,7 +83,6 @@ class App extends React.Component {
           <Footer />
         </div>
       </Router>
-
     )
   }
 };

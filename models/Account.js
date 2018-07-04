@@ -2,10 +2,6 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-function obfuscate (cc) {
-	return '****-****-****-' + cc.slice(cc.length-4, cc.length);
-}
-
 // Create article schema
 var AccountSchema = new Schema({
 	userId: String,
@@ -13,7 +9,6 @@ var AccountSchema = new Schema({
 	description: String,
 	email: {type: String, match: /.+\@.+\..+/, unique: true},
 	phone: String,
-	creditCardNumber: { type: String, get: obfuscate },
 	dateJoined: { type: Date, default: Date.now },
 	industry: String,
 	rating: Number,

@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Slide, Slider } from 'react-materialize'
-import * as routes from '../constants/routes';
 
 const HeroSlider = props => (
     <Slider className="slider">

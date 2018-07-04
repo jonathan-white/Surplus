@@ -97,6 +97,7 @@ const INITIAL_PRODUCT_STATE = {
 	quantity: '',
 	img_local: '',
 	img_cloud: '',
+	fileUpload: '',
 }
 
 class NewProduct extends Component {
@@ -113,11 +114,14 @@ class NewProduct extends Component {
 		const data = new FormData(event.target);
 
 		API.uploadPic(data)
-			.then(res => this.setState({
+		.then(res => {
+			this.setState({
 				img_local: res.data.local_url,
 				img_cloud: res.data.cloud_url,
-			}))
-			.catch(err => console.log(err));
+			});
+		})
+		.catch(err => console.log(err));
+
 		event.preventDefault();
 	};
 
@@ -159,7 +163,7 @@ class NewProduct extends Component {
 								</a>
 							</div>
 						</label>
-						<input id="fileUpload" type="file" name="fileUpload" />
+						<input id="fileUpload" type="file" name="fileUpload" onChange={this.handleInputChange} />
 						<input type="submit" value="Submit"/>
 					</form>
 					<form className="row">
@@ -189,7 +193,7 @@ class UserProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: '5',
+			rating: 5,
 		}
 	};
 
@@ -237,7 +241,7 @@ const UserProductsList = props => (
 		</div>
     <div className="row productslist">
 			{!props.products
-				? <i className="fas fa-spinner fa-spin fa-3x"></i>
+				? <i className="fas fa-spinner fa-spin fa-5x"></i>
 				: props.products.length
 					? props.products.map(product =>
 						<UserProduct product={product} key={product._id}

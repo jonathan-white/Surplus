@@ -12,7 +12,7 @@ var ProductSchema = new Schema({
 	img_cloud: String,
 	weight: Number,
 	unitOfMeasure: String,
-	rating: Number,
+	rating: {type: Number, default: 0},
 	inStock: {type: Boolean, default: true},
 	dateAdded: { type: Date, default: Date.now },
 	userId: String,

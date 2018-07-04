@@ -3,7 +3,7 @@ import React from 'react';
 import AuthUserContext from './AuthUserContext';
 import { firebase } from '../firebase';
 
-const withAuthentication = (Component) =>
+const withAuthentication = (WrappedComponent) =>
   class WithAuthentication extends React.Component {
     constructor(props) {
       super(props);
@@ -25,7 +25,7 @@ const withAuthentication = (Component) =>
       const { authUser } = this.state;
       return (
         <AuthUserContext.Provider value={authUser}>
-          <Component />
+          <WrappedComponent />
         </AuthUserContext.Provider>
       );
     }
