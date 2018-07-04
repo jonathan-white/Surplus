@@ -3,7 +3,6 @@ import Cart from "../components/Cart";
 import Checkout from "../components/Checkout";
 
 // import PaypalExpressBtn from 'react-paypal-express-checkout';
-import API from '../utils/API';
 
 class ShoppingCart extends Component {
 	constructor(props) {

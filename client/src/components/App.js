@@ -36,7 +36,7 @@ class App extends React.Component {
   };
 
   handleAddToCart = (product) => {
-    console.log('Adding product to the cart:', product);
+    console.log('Adding product to the cart:', product); //TODO: remove
     this.setState((prevState) => ({
       shoppingCart: [...prevState.shoppingCart, product]
     }));
@@ -54,12 +54,12 @@ class App extends React.Component {
           sessionId: res.data,
           shoppingCart: newCart,
         }));
-				this.props.decreaseCartSize();
       })
       .catch(err => console.log(err));
 	}
 
   render() {
+    console.log('App rendered');
     return(
       <Router>
         <div>

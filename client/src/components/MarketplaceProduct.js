@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 
 class MarketplaceProduct extends Component {
 	constructor(props) {
@@ -9,35 +8,6 @@ class MarketplaceProduct extends Component {
 			isSelected: false,
 		}
 	};
-
-	// handleClick = (product) => {
-	// 	// Add to the session's cart
-	// 	this.setState({isSelected: true});
-	//
-	// 	let cartData = [];
-	// 	const sessionData = JSON.parse(localStorage.getItem('sessionData'));
-	//
-	// 	if(sessionData) {
-	// 		cartData = [...sessionData.shoppingCart, product];
-	// 	} else {
-	// 		cartData.push(product);
-	// 	}
-	//
-	// 	console.log('cartData:',cartData);
-	//
-	// 	// this.props.updateCartSize(cartData.length);
-	//
-	// 	// Update the cart in localstorage
-	// 	API.getSessionID()
-	// 	.then(res => {
-	// 		localStorage.setItem('sessionData',JSON.stringify({
-	// 			sessionId: res.data,
-	// 			shoppingCart: cartData,
-	// 		}));
-	// 	})
-	// 	.catch(err => console.log(err));
-	//
-	// };
 
 	render() {
 		const { isSelected } = this.state;

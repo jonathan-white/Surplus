@@ -5,7 +5,6 @@ import { Navbar, NavItem, Icon, Badge } from 'react-materialize';
 import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import { auth } from '../firebase';
-import withShoppingCart from '../components/withShoppingCart';
 
 const Navigation = (props) => (
   <AuthUserContext.Consumer>
@@ -131,4 +130,4 @@ class NavigationNonAuth extends Component {
   };
 };
 
-export default withRouter(withShoppingCart(Navigation));
+export default withRouter(Navigation);

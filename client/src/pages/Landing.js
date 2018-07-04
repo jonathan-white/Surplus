@@ -8,7 +8,7 @@ class Landing extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			... this.props.cartData,
+			...this.props.cartData,
       products: null,
     }
 	};
