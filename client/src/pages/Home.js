@@ -51,22 +51,27 @@ class Home extends Component {
       <div className="App">
         <HeroSlider/>
 				<div className="container">
+					<a name="furniture">&nbsp;</a>
 					<h5 className="section-header">Furniture</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsFurniture}
 						handleAddToCart={this.props.handleAddToCart}/>
+					<a name="electronics">&nbsp;</a>
 					<h5 className="section-header">Electronics</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsElectronics}
 						handleAddToCart={this.props.handleAddToCart}/>
+					<a name="apparel">&nbsp;</a>
 					<h5 className="section-header">Apparel</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsApparel}
 						handleAddToCart={this.props.handleAddToCart}/>
+					<a name="office">&nbsp;</a>
 					<h5 className="section-header">Office Supplies</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsOffice}
 						handleAddToCart={this.props.handleAddToCart}/>
+					<a name="general">&nbsp;</a>
 					<h5 className="section-header">General</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsGeneral}

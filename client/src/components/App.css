@@ -58,6 +58,24 @@
 	background-color: #1e88e5;
 }
 
+.hero-link {
+	display: block;
+  color: #fff;
+  background-color: rgba(0,0,0,.6);
+  text-align: center;
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+
+.hero-link:hover {
+	background-color: rgba(0,0,255,.6);
+}
+
 /*Footer*/
 .footer {
   min-height: 100px;

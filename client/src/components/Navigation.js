@@ -37,11 +37,6 @@ class NavigationAuth extends Component {
       pathname: routes.SEARCH,
       search: `?q=${this.state.searchTerms}`
     });
-
-    // this.context.history.push('/search') OR this.props.history.push('/search')
-    // pass this.state.searchTerms to the route
-    // the search route has a component that makes the db request and loops through
-    // the results and creates a SearchResult component for each.
   };
 
   render() {
@@ -96,11 +91,6 @@ class NavigationNonAuth extends Component {
       pathname: routes.SEARCH,
       search: `?q=${this.state.searchTerms}`
     });
-
-    // this.context.history.push('/search') OR this.props.history.push('/search')
-    // pass this.state.searchTerms to the route
-    // the search route has a component that makes the db request and loops through
-    // the results and creates a SearchResult component for each.
   };
 
   render() {
