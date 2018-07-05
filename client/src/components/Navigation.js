@@ -46,8 +46,8 @@ class NavigationAuth extends Component {
 
   render() {
     return (
-      <Navbar brand='Surplus Market' right style={{height: '75px'}}>
-        <NavItem href="#">
+      <Navbar brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
+        <li>
           <form onSubmit={this.handleSubmit}>
             <input
               value={this.state.searchTerms}
@@ -58,7 +58,7 @@ class NavigationAuth extends Component {
               onChange={this.handleChange}
             />
           </form>
-        </NavItem>
+        </li>
         <NavItem href={routes.ACCOUNT}>
           <Icon>person</Icon>
         </NavItem>
@@ -105,8 +105,8 @@ class NavigationNonAuth extends Component {
 
   render() {
     return (
-      <Navbar brand='Surplus Market' right style={{height: '75px'}}>
-        <NavItem href='#'>
+      <Navbar brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
+        <li>
           <form onSubmit={this.handleSubmit}>
             <input
               value={this.state.searchTerms}
@@ -117,7 +117,7 @@ class NavigationNonAuth extends Component {
               onChange={this.handleChange}
             />
           </form>
-        </NavItem>
+        </li>
         <NavItem href={routes.CHECKOUT} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
           <Badge className="cart-badge">{this.props.cartSize}</Badge>

@@ -52,10 +52,6 @@
 }
 
 /*Navigation*/
-.nav-wrapper {
-    background-color: rgb(51, 139, 0);
-}
-
 .navitem-shopping-cart {
 	position: relative;
 }
@@ -69,6 +65,11 @@
 
 .nav-wrapper .searchbox {
 	width: 500px;
+	background-color: #fff;
+	margin: 0;
+	border-radius: 8px;
+	padding: 0 10px;
+	color: #000;
 }
 
 .nav-wrapper .material-icons {
@@ -197,7 +198,7 @@
 	background-color: #ff3800;
 	width: 80%;
 	top: 20px;
-	left: -48px;
+  left: -65px;
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);

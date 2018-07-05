@@ -26,22 +26,27 @@ function remove(array, index) {
 class App extends React.Component {
   constructor(props){
     super(props);
-    // sessionData = {
-    //   sessionId: ...
-    //   shoppingCart: ...
-    // }
-    this.state = { ...JSON.parse(localStorage.getItem('sessionData')) };
+		this.state = (JSON.parse(localStorage.getItem('sessionData'))
+		? { ...JSON.parse(localStorage.getItem('sessionData')) }
+		: { sessionId: '', shoppingCart: [], });
+
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   };
 
   handleAddToCart = (product) => {
-    console.log('Adding product to the cart:', product); //TODO: remove
     this.setState((prevState) => ({
       shoppingCart: [...prevState.shoppingCart, product]
     }));
 
-    localStorage.setItem('sessionData',JSON.stringify(this.state));
+		API.getSessionID()
+			.then(res => {
+				localStorage.setItem('sessionData',JSON.stringify({
+          sessionId: res.data,
+          shoppingCart: this.state.shoppingCart,
+        }));
+			})
+			.catch(err => console.log(err));
   }
 
   handleRemoveFromCart = (index) => {
@@ -59,7 +64,6 @@ class App extends React.Component {
 	}
 
   render() {
-    console.log('App rendered');
     return(
       <Router>
         <div>
