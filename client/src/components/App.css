@@ -1,3 +1,7 @@
+.brand-logo {
+	margin: 0 20px;
+}
+
 .carousel .carousel-item {
 	width: 500px;
 	height: 300px;
@@ -23,7 +27,7 @@
     height: 200px;
 }
 
-/*Favorites*/
+/*Hero Slider*/
 .slider .caption h3 {
   color: #00f;
   text-shadow: 2px 2px 10px rgba(0,0,0,.9);
@@ -33,6 +37,19 @@
 .slider .caption h5 {
   color: #fff;
   text-shadow: 2px 2px 10px rgba(0,0,0,.7);
+}
+
+.slider {
+	height: 330px !important;
+	margin-bottom: 30px;
+}
+
+.slider .slides {
+	height: 300px !important;
+}
+
+.slider .indicators .indicator-item.active {
+	background-color: #1e88e5;
 }
 
 /*Footer*/
@@ -466,4 +483,15 @@ form .input-field {
 form .input-field label {
 	font-weight: 400;
 	font-size: .875rem;
+}
+
+.container hr {
+	border: 3px solid #ddd;
+}
+
+@media only screen and (min-width: 993px) {
+	.container {
+		width: 90%;
+	}
+
 }

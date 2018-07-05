@@ -33,7 +33,7 @@ class App extends React.Component {
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   };
-
+	
   handleAddToCart = (product) => {
     this.setState((prevState) => ({
       shoppingCart: [...prevState.shoppingCart, product]

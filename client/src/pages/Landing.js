@@ -23,8 +23,12 @@ class Landing extends Component {
     return (
       <div className="App">
         <HeroSlider/>
-				<MarketplaceProductList products={this.state.products}
-					handleAddToCart={this.props.handleAddToCart}/>
+				<div className="container">
+					<h5>Products</h5>
+					<hr />
+					<MarketplaceProductList products={this.state.products}
+						handleAddToCart={this.props.handleAddToCart}/>
+				</div>
 				<Parallax
 					className="imageSize s200"
 					imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/officeBuilding.jpg"
