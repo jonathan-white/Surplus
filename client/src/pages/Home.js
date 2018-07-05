@@ -16,14 +16,10 @@ class Home extends Component {
 	};
 
 	componentDidMount = () => {
-		this.loadProducts();
-  };
-
-	loadProducts = () => {
 		API.getProducts()
       .then(results=> this.setState({ products: results.data }))
       .catch(err => console.log(err));
-	}
+  };
 
   render() {
     return (

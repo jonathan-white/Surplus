@@ -17,7 +17,7 @@ const mStorage = multer.diskStorage({
 
 const upload = multer({
     storage: mStorage
-  }).single('fileUpload');
+  }).single('imageUpload');
 
 // Matches with "/api/uploads"
 router.route("/")
@@ -43,10 +43,13 @@ router.route("/")
 	.delete(function(req, res) {
 
 		const bucketName = process.env.BUCKET;
-		const filename = path.join(__dirname, "../../uploads/" + req.file.filename);
+		const filepath = req.body.filepath;
 
-		deleteFile(bucketName, filename);
-		return res.send('Delete complete');
+		deleteFile(bucketName, filepath);
+		return res.json({
+			status: 'Delete complete',
+			file: filepath
+		});
 	});
 
 // Displays images at "/api/uploads/{filename}" from uploads folder

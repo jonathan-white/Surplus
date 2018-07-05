@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cart from "../components/Cart";
+import CartItem from "../components/CartItem";
 import Checkout from "../components/Checkout";
 
 // import PaypalExpressBtn from 'react-paypal-express-checkout';
@@ -21,7 +21,7 @@ class ShoppingCart extends Component {
 					<div className="col s8">
 						{this.props.shoppingCart.length
 							?	this.props.shoppingCart.map((cartItem, index) =>
-								<Cart
+								<CartItem
 									product={cartItem}
 									key={index}
 									index={index}

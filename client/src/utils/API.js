@@ -33,11 +33,15 @@ export default {
 
   // Uploads a Picture locally and to Google Cloud Storage
   uploadPic: (data) => {
-    return axios.post("/api/uploads",data,{
+    return axios.post("/api/uploads/",data,{
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
+  },
+  
+  deletePic: (filepath) => {
+    return axios.delete("/api/uploads/",{ filepath });
   },
 
   // Removes a product from the database (pic remains)

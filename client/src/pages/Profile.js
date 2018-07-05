@@ -68,22 +68,30 @@ class Profile extends Component {
 
   render() {
     return (
-			<div className="row">
-				<div className="col s6">
-					<div className="row">
-						<h4>Account: {this.props.authUser.email}</h4>
+			<div>
+				<div className="row">
+					<div className="col s6">
+						<h4>Account: {this.state.account.name}</h4>
+						<h5>Email: {this.props.authUser.email}</h5>
 					</div>
-					<NewProduct
-						userId={this.props.authUser.uid}
-						updateProductList={this.updateProductList}
-					/>
-					<PasswordChangeForm />
+					<div className="col s6">
+						<h4>Products You Are Selling</h4>
+					</div>
 				</div>
-				<div className="col s6">
-					<UserProductsList
-						products={this.state.products}
-						handleProductDelete={this.handleProductDelete}
-					/>
+				<div className="row">
+					<div className="col s6">
+						<NewProduct
+							userId={this.props.authUser.uid}
+							updateProductList={this.updateProductList}
+						/>
+						<PasswordChangeForm />
+					</div>
+					<div className="col s6">
+						<UserProductsList
+							products={this.state.products}
+							handleProductDelete={this.handleProductDelete}
+						/>
+					</div>
 				</div>
 			</div>
     );
@@ -97,7 +105,6 @@ const INITIAL_PRODUCT_STATE = {
 	quantity: '',
 	img_local: '',
 	img_cloud: '',
-	fileUpload: '',
 }
 
 class NewProduct extends Component {
@@ -125,6 +132,26 @@ class NewProduct extends Component {
 		event.preventDefault();
 	};
 
+	handlePictureChange = (event) => {
+		const curFiles = event.target.files;
+		const fileTypes = ['image/jpeg', 'image/jpg',
+		'image/png', 'image/webp', 'image/gif'];
+		const validFileType = (file) => {
+			for (var i = 0; i < fileTypes.length; i++) {
+				if(file.type === fileTypes[i]) {
+					return true;
+				}
+			}
+			return false;
+		}
+		if(validFileType(curFiles[0])) {
+			const imgPath = window.URL.createObjectURL(curFiles[0]);
+			this.setState({img_local: imgPath});
+			const imgForm = document.querySelector('#image');
+			imgForm.querySelector('input[type="submit"]').click();
+		}
+	}
+
 	// Handle Input Change Events
 	handleInputChange = event => {
 		const {name, value} = event.target;
@@ -146,15 +173,17 @@ class NewProduct extends Component {
 	};
 
 	render() {
+
 		return (
 			<div className="row">
 				<div className="profile">
 					<h5>Add a product</h5>
-					<form	className="row"	action="api/uploads/" method="post"
+					<form id="image"	className="row"	action="api/uploads/" method="post"
 						encType="multipart/form-data"	onSubmit={this.handlePicUpload}>
-						<label htmlFor="fileUpload">
-							<div className="profile-img">
+						<label htmlFor="imageUpload">
+							<div className="preview">
 								<img
+									id="preview-img"
 									src={this.state.img_local || "https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
 									alt={this.state.title}
 								/>
@@ -163,8 +192,11 @@ class NewProduct extends Component {
 								</a>
 							</div>
 						</label>
-						<input id="fileUpload" type="file" name="fileUpload" onChange={this.handleInputChange} />
-						<input type="submit" value="Submit"/>
+						<input id="imageUpload" type="file" name="imageUpload"
+							onChange={this.handlePictureChange} accept=".jpg, .jpeg, .png, .svg"
+							style={{opacity: 0}}
+						/>
+						<input type="submit" value="Load Image" style={{opacity: 0}} />
 					</form>
 					<form className="row">
 						<Input s={12}	type="text" onChange={this.handleInputChange}
@@ -236,9 +268,9 @@ class UserProduct extends Component {
 
 const UserProductsList = props => (
   <div>
-    <div className="row">
+    {/* <div className="row">
       <h4>Products You Are Selling</h4>
-		</div>
+		</div> */}
     <div className="row productslist">
 			{!props.products
 				? <i className="fas fa-spinner fa-spin fa-5x"></i>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "react-materialize";
 
-const Cart = (props) => (
+const CartItem = (props) => (
   <div className="row cart-item">
     <div className="col s3">
       <img className="product-image" src={props.product.img_cloud} alt={props.product.title}/>
@@ -39,4 +39,4 @@ const Cart = (props) => (
   </div>
 );
 
-export default Cart;
+export default CartItem;
