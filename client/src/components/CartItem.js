@@ -28,7 +28,7 @@ const CartItem = (props) => (
       </div>
       <div className="row bottom-half">
         <div className="item-alert">
-          <div>{props.product.quantity === 1 && `Only 1 Left!`}</div>
+          {props.product.quantity === 1 && `Only 1 Left!`}
         </div>
         <div className="item-buttons">
           <button className="btn-item" onClick={() => props.handleRemoveFromCart(props.index)}>Remove</button>

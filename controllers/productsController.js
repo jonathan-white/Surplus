@@ -9,6 +9,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findCategory: function(req, res) {
+    db.Product
+      .find({category: req.params.category})
+      .sort({ dateAdded: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findItem: function(req, res) {
     if(req.query) {
       // Search by queryterm if req.query exists

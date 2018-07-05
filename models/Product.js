@@ -11,10 +11,13 @@ var ProductSchema = new Schema({
 	img_local: String,
 	img_cloud: String,
 	category: {type: String, default: 'General'},
-	rating: {type: Number, default: 0},
+	ratings: [{rating: Number, customerId: String}],
 	inStock: {type: Boolean, default: true},
 	dateAdded: { type: Date, default: Date.now },
-	userId: String,
+	userId: String, //The account that is selling this item
+	meta: {
+		favs: Number
+	}
 });
 
 ProductSchema.index(

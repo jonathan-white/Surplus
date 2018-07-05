@@ -10,8 +10,8 @@ class MarketplaceProduct extends Component {
 	};
 
 	render() {
-		const { isSelected } = this.state;
-		const { title, description, price, quantity, img_cloud, rating } = this.props.product;
+		const { isSelected, rating } = this.state;
+		const { title, description, price, quantity, img_cloud, ratings } = this.props.product;
 
 		return (
 			<div className={`item-container ${quantity}`}>

@@ -99,6 +99,7 @@ class Profile extends Component {
 const INITIAL_PRODUCT_STATE = {
 	title: '',
 	description: '',
+	category: '',
 	price: '',
 	quantity: '',
 	img_local: '',
@@ -203,6 +204,13 @@ class NewProduct extends Component {
 						<Input s={12} type="textarea" onChange={this.handleInputChange}
 							label="Description"	value={this.state.description}	name="description"
 						/>
+						<Input s={12} type='select' label="Cateogry" name="category" defaultValue='General'>
+							<option value='General'>General</option>
+							<option value='Furniture'>Furniture</option>
+							<option value='Electronics'>Electronics</option>
+							<option value='Apparel'>Apparel</option>
+							<option value='Office'>Office Supplies</option>
+						</Input>
 						<Input s={12}	type="number" onChange={this.handleInputChange}
 							label="Price per unit" value={this.state.price} name="price"
 						/>
@@ -223,7 +231,7 @@ class UserProduct extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rating: 5,
+			rating: 4,
 		}
 	};
 
@@ -254,7 +262,7 @@ class UserProduct extends Component {
 							<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
 						</div>
 					</div>
-					<div className={`rating stars-${rating}`}></div>
+					<div className={`rating stars-${rating}`} title="User Rating"></div>
 				</div>
 				<div className="close" title="Remove Product" onClick={() => this.props.handleProductDelete(this.props.product._id)}>
 					<i className="fas fa-window-close fa-2x"></i>

@@ -395,6 +395,8 @@
 
 .cart-item .item-alert {
 	width: 40%;
+	color: #f00;
+	font-weight: 600;
 }
 
 .cart-item .item-buttons {

@@ -11,6 +11,11 @@ export default {
     return axios.get("/api/products");
   },
 
+  // Returns all products of a specified category
+  getProductsForCategory: (category) => {
+    return axios.get(`/api/products/category/${category}`);
+  },
+
   // Returns only products added by the specified user
   getProductsForUser: (userId) => {
     return axios.get("/api/products/user/"+ userId);
@@ -39,7 +44,7 @@ export default {
       }
     });
   },
-  
+
   deletePic: (filepath) => {
     return axios.delete("/api/uploads/",{ filepath });
   },

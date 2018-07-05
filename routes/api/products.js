@@ -17,4 +17,7 @@ router.route("/:id")
 router.route("/user/:id")
   .get(productsController.findByUser);
 
+router.route("/category/:category")
+  .get(productsController.findCategory);
+
 module.exports = router;

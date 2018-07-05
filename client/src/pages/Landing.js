@@ -10,6 +10,11 @@ class Landing extends Component {
 		this.state = {
 			...this.props.cartData,
       products: null,
+			productsGeneral: null,
+			productsFurniture: null,
+			productsElectronics: null,
+			productsApparel: null,
+			productsOffice: null,
     }
 	};
 
@@ -17,6 +22,26 @@ class Landing extends Component {
 		API.getProducts()
       .then(results=> this.setState({ products: results.data }))
       .catch(err => console.log(err));
+
+		API.getProductsForCategory('General')
+			.then(results=> this.setState({ productsGeneral: results.data }))
+			.catch(err => console.log(err));
+
+		API.getProductsForCategory('Furniture')
+			.then(results=> this.setState({ productsFurniture: results.data }))
+			.catch(err => console.log(err));
+
+		API.getProductsForCategory('Electronics')
+			.then(results=> this.setState({ productsElectronics: results.data }))
+			.catch(err => console.log(err));
+
+		API.getProductsForCategory('Apparel')
+			.then(results=> this.setState({ productsApparel: results.data }))
+			.catch(err => console.log(err));
+
+		API.getProductsForCategory('Office')
+			.then(results=> this.setState({ productsOffice: results.data }))
+			.catch(err => console.log(err));
   };
 
   render() {
@@ -24,9 +49,25 @@ class Landing extends Component {
       <div className="App">
         <HeroSlider/>
 				<div className="container">
-					<h5>Products</h5>
+					<h5>Furniture</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.products}
+					<MarketplaceProductList products={this.state.productsFurniture}
+						handleAddToCart={this.props.handleAddToCart}/>
+					<h5>Electronics</h5>
+					<hr />
+					<MarketplaceProductList products={this.state.productsElectronics}
+						handleAddToCart={this.props.handleAddToCart}/>
+					<h5>Apparel</h5>
+					<hr />
+					<MarketplaceProductList products={this.state.productsApparel}
+						handleAddToCart={this.props.handleAddToCart}/>
+					<h5>Office Supplies</h5>
+					<hr />
+					<MarketplaceProductList products={this.state.productsOffice}
+						handleAddToCart={this.props.handleAddToCart}/>
+					<h5>General</h5>
+					<hr />
+					<MarketplaceProductList products={this.state.productsGeneral}
 						handleAddToCart={this.props.handleAddToCart}/>
 				</div>
 				<Parallax
