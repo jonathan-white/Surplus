@@ -1,5 +1,11 @@
 .brand-logo {
 	margin: 0 20px;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.section-header {
+	text-transform: uppercase;
+	font-weight: 600;
 }
 
 .carousel .carousel-item {

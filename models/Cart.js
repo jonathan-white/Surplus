@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-// Create article schema
 var CartSchema = new Schema({
   sessionId: {type: String, unique: true, required: true},
   products: [

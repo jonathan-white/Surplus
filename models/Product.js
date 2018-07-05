@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-// Create article schema
 var ProductSchema = new Schema({
 	title: {type: String, required: true, index: true},
 	description: {type: String, index: true},

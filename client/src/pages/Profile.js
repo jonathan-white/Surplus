@@ -161,6 +161,8 @@ class NewProduct extends Component {
 	handleFormSubmit = event => {
 		event.preventDefault();
 
+		console.log(this.state);
+
 		API.createProduct(this.state)
 			.then(res => {
 				this.setState({ ...INITIAL_PRODUCT_STATE });
@@ -204,7 +206,8 @@ class NewProduct extends Component {
 						<Input s={12} type="textarea" onChange={this.handleInputChange}
 							label="Description"	value={this.state.description}	name="description"
 						/>
-						<Input s={12} type='select' label="Cateogry" name="category" defaultValue='General'>
+						<Input s={12} type='select' label="Cateogry" name="category" defaultValue='General'
+							onChange={this.handleInputChange}>
 							<option value='General'>General</option>
 							<option value='Furniture'>Furniture</option>
 							<option value='Electronics'>Electronics</option>

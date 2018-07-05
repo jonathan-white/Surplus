@@ -49,23 +49,23 @@ class Landing extends Component {
       <div className="App">
         <HeroSlider/>
 				<div className="container">
-					<h5>Furniture</h5>
+					<h5 className="section-header">Furniture</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsFurniture}
 						handleAddToCart={this.props.handleAddToCart}/>
-					<h5>Electronics</h5>
+					<h5 className="section-header">Electronics</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsElectronics}
 						handleAddToCart={this.props.handleAddToCart}/>
-					<h5>Apparel</h5>
+					<h5 className="section-header">Apparel</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsApparel}
 						handleAddToCart={this.props.handleAddToCart}/>
-					<h5>Office Supplies</h5>
+					<h5 className="section-header">Office Supplies</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsOffice}
 						handleAddToCart={this.props.handleAddToCart}/>
-					<h5>General</h5>
+					<h5 className="section-header">General</h5>
 					<hr />
 					<MarketplaceProductList products={this.state.productsGeneral}
 						handleAddToCart={this.props.handleAddToCart}/>
