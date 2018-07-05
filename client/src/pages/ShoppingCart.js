@@ -32,7 +32,6 @@ class ShoppingCart extends Component {
 					</div>
 					<div className="col s4">
 						<Checkout cartSize={this.props.shoppingCart.length} />
-						{/* <PaypalExpressBtn client={client} currency={'USD'} total={1.00} env={'sandbox'} onError={onError} onSuccess={onSuccess} onCancel={onCancel} /> */}
 					</div>
 				</div>
 			</div>

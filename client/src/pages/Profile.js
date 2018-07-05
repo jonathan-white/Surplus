@@ -40,8 +40,6 @@ class Profile extends Component {
 					account: res.data[0],
 					products: res.data[0].products,
 				});
-
-				console.log('found account:',res.data[0]);
 			})
 			.catch(err => console.log(err));
 	};
