@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "braintree-web-drop-in": "^1.11.0",
     "firebase": "^5.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-materialize": "^2.3.1",
-    "react-paypal-express-checkout": "^1.0.4",
     "react-recaptcha": "^2.3.9",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"

@@ -3,7 +3,6 @@ const db = require("../models");
 // Defining methods for the productsController
 module.exports = {
   findAll: function(req, res) {
-    console.log('Inside findAll');
     db.Product
       .find(req.query)
       .sort({ dateAdded: -1 })
@@ -11,7 +10,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findItem: function(req, res) {
-    console.log('Inside findById/Query');
     if(req.query) {
       // Search by queryterm if req.query exists
       // Searches both title (weight 10) and description (weight 5)
@@ -33,14 +31,12 @@ module.exports = {
     }
   },
   findByUser: function(req, res) {
-    console.log('Inside findByUser');
     db.Product
       .find({userId: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log('Inside create');
     db.Product
       .create(req.body)
       .then(dbProduct => {
@@ -50,14 +46,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log('Inside update');
     db.Product
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    console.log('Inside remove');
     db.Product
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
