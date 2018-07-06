@@ -18,6 +18,7 @@ class SearchResults extends Component {
   }
 
   runSearch = (query) => {
+    console.log('Running a search for:',query);
     API.searchFor(query)
       .then(res => this.setState({ results: res.data }))
       .catch(err => console.log(err));

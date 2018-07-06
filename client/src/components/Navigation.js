@@ -52,9 +52,7 @@ class NavigationAuth extends Component {
               placeholder="Search..."
               onChange={this.handleChange}
             />
-            <button type="submit">
-              <Icon>book</Icon>
-            </button>
+            <input className="searchBtn" type="submit" value="Go" />
           </form>
         </li>
         <NavItem href={routes.ACCOUNT}>
