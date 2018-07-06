@@ -3,8 +3,8 @@ import { withRouter } from  'react-router-dom';
 
 import { SignUpLink } from './AppSignUp';
 import { PasswordForgetLink } from  './ForgotPW';
-import { auth } from '../firebase';
-import * as routes from '../constants/routes';
+import { auth } from '../../firebase';
+import * as routes from '../../constants/routes';
 
 import { Input } from "react-materialize";
 // import API from '../utils/API';

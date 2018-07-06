@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { Input } from "react-materialize";
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 
 const PasswordForgetPage = () => (
   <div>

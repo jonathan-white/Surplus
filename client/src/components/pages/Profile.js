@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Input } from "react-materialize";
-import AuthUserContext from '../components/AuthUserContext';
+import AuthUserContext from '../AuthUserContext';
 import PasswordChangeForm from './PasswordChange';
 
-import API from "../utils/API";
+import API from "../../utils/API";
 
-import withAuthorization from '../components/withAuthorization';
+import withAuthorization from '../withAuthorization';
 
 const AccountPage = () => (
 	<AuthUserContext.Consumer>

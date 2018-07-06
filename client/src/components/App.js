@@ -2,17 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navigation from "./Navigation";
-import LandingPage from "../pages/Landing";
-import SignupPage from "../pages/AppSignUp";
-import SigninPage from "../pages/AppSignIn";
-import ForgotPasswordPage from "../pages/ForgotPW";
-import ChangePasswordPage from "../pages/PasswordChange";
-import HomePage from "../pages/Home";
-import AccountPage from "../pages/Profile";
+import LandingPage from "./pages/Landing";
+import SignupPage from "./pages/AppSignUp";
+import SigninPage from "./pages/AppSignIn";
+import ForgotPasswordPage from "./pages/ForgotPW";
+import ChangePasswordPage from "./pages/PasswordChange";
+import HomePage from "./pages/Home";
+import AccountPage from "./pages/Profile";
 import Footer from "./Footer";
-import ShoppingCart from "../pages/ShoppingCart";
-import SearchResults from "../pages/Results";
-import NoMatch from '../pages/404';
+import ShoppingCart from "./pages/ShoppingCart";
+import SearchResults from "./pages/Results";
+import NoMatch from './pages/404';
 import './App.css';
 
 import * as routes from '../constants/routes';
@@ -33,7 +33,7 @@ class App extends React.Component {
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   };
-	
+
   handleAddToCart = (product) => {
     this.setState((prevState) => ({
       shoppingCart: [...prevState.shoppingCart, product]

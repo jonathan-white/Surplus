@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Pagination } from 'react-materialize';
 
 class MarketplaceProduct extends Component {
 	constructor(props) {
@@ -20,7 +21,7 @@ class MarketplaceProduct extends Component {
 					"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
 						alt={title} />
 				</div>
-				<div className="row">
+				<div className="row item-title">
 					<div>
 						<span className="product-title">{title}</span>
 					</div>
@@ -67,6 +68,7 @@ const MarketplaceProductList = props => (
 					: `We are currently adding more products. Check back later!`
 			}
     </div>
+		<Pagination items={10} activePage={1} maxButtons={8} />
   </div>
 );
 

@@ -29,7 +29,11 @@
 }
 
 /*Parallax Companies*/
-.imageSize.s200 {
+.imageSize.h100 {
+    height: 100px;
+}
+
+.imageSize.h200 {
     height: 200px;
 }
 
@@ -155,6 +159,10 @@
 .item-container .product-img {
   width: 100%;
   height: 100%;
+}
+
+.item-container .item-title {
+	min-height: 56px;
 }
 
 .item-container .close {

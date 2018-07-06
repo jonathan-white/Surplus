@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CartItem from "../components/CartItem";
-import Checkout from "../components/Checkout";
+import CartItem from "../CartItem";
+import Checkout from "../Checkout";
 
 // import PaypalExpressBtn from 'react-paypal-express-checkout';
 
