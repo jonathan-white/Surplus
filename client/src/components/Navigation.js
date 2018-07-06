@@ -41,7 +41,7 @@ class NavigationAuth extends Component {
 
   render() {
     return (
-      <Navbar brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
+      <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
           <form onSubmit={this.handleSubmit}>
             <input
@@ -95,7 +95,7 @@ class NavigationNonAuth extends Component {
 
   render() {
     return (
-      <Navbar brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
+      <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
           <form onSubmit={this.handleSubmit}>
             <input
