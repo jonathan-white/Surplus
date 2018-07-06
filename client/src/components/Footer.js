@@ -12,16 +12,16 @@ const Footer = () => (
           <div className="footerLinksSectionHeader">About Surplus Market</div>
           <ul>
             <li>
-              <a href={routes.LANDING} className="footerLink">About Us</a>
+              <a href={routes.ABOUT} className="footerLink">About Us</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Our Vision</a>
+              <a href={routes.VISION} className="footerLink">Our Vision</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Careers</a>
+              <a href={routes.CAREERS} className="footerLink">Careers</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Investor Relations</a>
+              <a href={routes.INVEST} className="footerLink">Investor Relations</a>
             </li>
           </ul>
         </div>
@@ -29,7 +29,7 @@ const Footer = () => (
           <div className="footerLinksSectionHeader">Buy on Surplus Market</div>
           <ul>
             <li>
-              <a href={routes.LANDING} className="footerLink">All Categories</a>
+              <a href={routes.PRODUCTS} className="footerLink">All Categories</a>
             </li>
           </ul>
         </div>
@@ -40,10 +40,10 @@ const Footer = () => (
               <a href={routes.SIGN_UP} className="footerLink">Sign Up</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Getting Started</a>
+              <a href={routes.GETTING_STARTED} className="footerLink">Getting Started</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Support</a>
+              <a href={routes.HELP} className="footerLink">Support</a>
             </li>
           </ul>
         </div>
@@ -54,13 +54,13 @@ const Footer = () => (
               <a href={routes.ACCOUNT} className="footerLink">Your Account</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Your Orders</a>
+              <a href={routes.ORDERS} className="footerLink">Your Orders</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Help Center</a>
+              <a href={routes.HELP} className="footerLink">Help Center</a>
             </li>
             <li>
-              <a href={routes.LANDING} className="footerLink">Submit a Dispute</a>
+              <a href={routes.DISPUTE} className="footerLink">Submit a Dispute</a>
             </li>
           </ul>
         </div>
