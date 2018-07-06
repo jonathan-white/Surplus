@@ -12,6 +12,8 @@ import AccountPage from "./pages/Profile";
 import Footer from "./Footer";
 import ShoppingCart from "./pages/ShoppingCart";
 import SearchResults from "./pages/Results";
+import AboutUs from './pages/About';
+import AllProductsPage from "./pages/AllProducts";
 import NoMatch from './pages/404';
 import './App.css';
 
@@ -82,6 +84,9 @@ class App extends React.Component {
             <Route exact path={routes.PASSWORD_FORGET} component={() => <ForgotPasswordPage />}/>
             <Route exact path={routes.PASSWORD_CHANGE} component={() => <ChangePasswordPage />}/>
             <Route exact path={routes.SEARCH} component={() => <SearchResults />}/>
+						<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
+						<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage
+              handleAddToCart={this.handleAddToCart}/>} />
             <Route component={NoMatch} />
           </Switch>
           <Footer />

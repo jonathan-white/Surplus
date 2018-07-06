@@ -29,7 +29,7 @@ const Footer = () => (
           <div className="footerLinksSectionHeader">Buy on Surplus Market</div>
           <ul>
             <li>
-              <a href={routes.PRODUCTS} className="footerLink">All Categories</a>
+              <a href={routes.PRODUCTS} className="footerLink">All Products</a>
             </li>
           </ul>
         </div>

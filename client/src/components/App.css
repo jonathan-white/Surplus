@@ -579,6 +579,61 @@ form .input-field label {
 	background-color: #3f51b5;
 }
 
+/* 404 Page */
+.pageNotFound {
+	display: flex;
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.pageNotFound a {
+	color: #888;
+}
+
+.pageNotFound .link {
+	color: blue;
+}
+
+/* About Us */
+.foundersList {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.founder {
+	display: flex;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.founder img {
+	border-radius: 50%;
+	height: 200px;
+	width: 200px;
+	margin-right: 20px;
+}
+
+.foundersList hr {
+	border: 3px solid #eee;
+	width: 80%;
+}
+
+.about-surplus,
+.about-founders {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.about-surplus h5,
+.about-founders h5 {
+	color: #1f2963;
+	font-weight: 600;
+	font-family: Oswald, sans-serif;
+}
+
 @media only screen and (min-width: 993px) {
 	.container {
 		width: 90%;
