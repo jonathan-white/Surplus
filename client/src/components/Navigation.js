@@ -58,7 +58,7 @@ class NavigationAuth extends Component {
         <NavItem href={routes.ACCOUNT}>
           <Icon>person</Icon>
         </NavItem>
-        <NavItem href={routes.CHECKOUT} className="navitem-shopping-cart">
+        <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
           <Badge className="cart-badge">{this.props.cartSize}</Badge>
         </NavItem>
@@ -110,7 +110,7 @@ class NavigationNonAuth extends Component {
             <input className="searchBtn" type="submit" value="Go" />
           </form>
         </li>
-        <NavItem href={routes.CHECKOUT} className="navitem-shopping-cart">
+        <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
           <Badge className="cart-badge">{this.props.cartSize}</Badge>
         </NavItem>

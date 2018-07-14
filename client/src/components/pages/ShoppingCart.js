@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CartItem from "../CartItem";
-import Checkout from "../Checkout";
+import CartTotal from "../CartTotal";
 
 // import PaypalExpressBtn from 'react-paypal-express-checkout';
 
@@ -9,7 +9,23 @@ class ShoppingCart extends Component {
 		super(props);
 		this.state = {
 			order: {},
+			activeClass: "",
 		}
+	}
+
+	componentDidMount = () => {
+		window.addEventListener('scroll', (event) => {
+			const scrollPosY = window.pageYOffset | document.body.scrollTop;
+			let classToApply = "";
+			if(scrollPosY > 50) {
+				classToApply = "checkoutBox_scrolled";
+			} else {
+				classToApply = ""
+			}
+			this.setState({
+				activeClass: classToApply
+			})
+		});
 	}
 
   render() {
@@ -31,7 +47,8 @@ class ShoppingCart extends Component {
 						}
 					</div>
 					<div className="col s4">
-						<Checkout cartSize={this.props.shoppingCart.length} />
+						<CartTotal classToApply={this.state.activeClass}
+							cartSize={this.props.shoppingCart.length} stage={this.props.stage} />
 					</div>
 				</div>
 			</div>

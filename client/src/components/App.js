@@ -11,6 +11,7 @@ import HomePage from "./pages/Home";
 import AccountPage from "./pages/Profile";
 import Footer from "./Footer";
 import ShoppingCart from "./pages/ShoppingCart";
+import Checkout from "./pages/Checkout";
 import SearchResults from "./pages/Results";
 import AboutUs from './pages/About';
 import AllProductsPage from "./pages/AllProducts";
@@ -76,9 +77,11 @@ class App extends React.Component {
             <Route exact path={routes.HOME} component={() => <HomePage
               handleAddToCart={this.handleAddToCart}/>} />
             <Route exact path={routes.ACCOUNT} component={() => <AccountPage />}/>
-            <Route exact path={routes.CHECKOUT} component={() => <ShoppingCart
+            <Route exact path={routes.CART} component={() => <ShoppingCart
               handleRemoveFromCart={this.handleRemoveFromCart}
-              shoppingCart={this.state.shoppingCart}/>}/>
+              shoppingCart={this.state.shoppingCart} stage="cart"/>}/>
+						<Route exact path={routes.CHECKOUT} component={() => <Checkout
+							shoppingCart={this.state.shoppingCart} stage="checkout"/>} />
             <Route exact path={routes.SIGN_IN} component={() => <SigninPage />}/>
             <Route exact path={routes.SIGN_UP} component={() => <SignupPage />}/>
             <Route exact path={routes.PASSWORD_FORGET} component={() => <ForgotPasswordPage />}/>

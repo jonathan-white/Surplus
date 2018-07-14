@@ -99,7 +99,7 @@ class Profile extends Component {
 const INITIAL_PRODUCT_STATE = {
 	title: '',
 	description: '',
-	category: '',
+	category: 'General',
 	price: '',
 	quantity: '',
 	img_local: '',
@@ -207,7 +207,7 @@ class NewProduct extends Component {
 							label="Description"	value={this.state.description}	name="description"
 						/>
 						<Input s={12} type='select' label="Cateogry" name="category"
-							onChange={this.handleInputChange}>
+							onChange={this.handleInputChange} defaultValue="General">
 							<option value='General'>General</option>
 							<option value='Furniture'>Furniture</option>
 							<option value='Electronics'>Electronics</option>

@@ -5,6 +5,7 @@ export const HOME = '/home';
 export const ACCOUNT = '/profile';
 export const PASSWORD_FORGET = '/pw-forget';
 export const PASSWORD_CHANGE = '/pw-change';
+export const CART = '/cart';
 export const CHECKOUT = '/checkout';
 export const USER = '/users/:id';
 export const PRODUCT = '/products/:id';

@@ -28,6 +28,31 @@
 	text-align: left;
 }
 
+.checkout-now {
+	margin: 30px 20px 20px;
+	text-align: center;
+}
+
+.btn-checkout {
+	background-color: rgba(31, 196, 53,1);
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 20px;
+}
+
+.btn-checkout:focus {
+	background-color: green;
+}
+
+/* Checkout */
+.section-container {
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid #ddd;
+}
+
 /*Parallax Companies*/
 .imageSize.h100 {
     height: 100px;
@@ -172,12 +197,17 @@
 
 .searchBtn {
 	position: relative;
-  background-color: #000;
+  background-color: #1f2963;
   border: 0;
 	height: 44.5px;
 	top: 0;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+	outline: none;
+}
+
+.searchBtn:focus {
+	background-color: #708ec8;
 }
 
 .nav-wrapper .material-icons {
@@ -449,12 +479,18 @@
 
 /*Checkout*/
 .checkoutBox {
-	margin: 35px;
+	margin: 0 35px 35px;
   border: 1px solid #bbb;
   padding: 15px;
 	color: #626669;
 	font-size: 12px;
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.checkoutBox.checkoutBox_scrolled {
+	position: fixed;
+	width: 25%;
+	top: 20px;
 }
 
 .checkout_content {
@@ -470,7 +506,7 @@
 .cart-item {
   border: 1px solid #bbb;
   padding: 20px 15px;
-  margin: 35px 20px;
+  margin: 0 20px 35px;
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
 }
 
@@ -522,8 +558,7 @@
 	margin-bottom: 5px;
 }
 
-.cart-item .item-desc-label,
-.cart-item .item-num-label {
+.cart-item .item-label {
 	font-weight: 700;
 }
 

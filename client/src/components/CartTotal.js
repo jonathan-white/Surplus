@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import dropin from 'braintree-web-drop-in';
+import * as routes from '../constants/routes';
 
 class Checkout extends Component {
   render() {
@@ -23,7 +24,7 @@ class Checkout extends Component {
     }
 
     return (
-        <div className="checkoutBox">
+        <div className={`checkoutBox ${this.props.classToApply}`}>
           <div className="totals-item">
             <span className="total-label">Items ({this.props.cartSize}):</span>
             <span className="total-value">$0.00</span>
@@ -45,8 +46,23 @@ class Checkout extends Component {
             <span className="total-label">Order Total:</span>
             <span className="total-value">$0.00</span>
           </div>
-          <div id="dropin-container"></div>
-          <div id="submit-button"></div>
+          {this.props.stage === "checkout" && (
+            <div>
+              <div id="dropin-container"></div>
+              <div id="submit-button"></div>
+            </div>
+          )}
+          {this.props.stage === "cart" && (
+            <div>
+              <div className="checkout-now">
+                <a href={routes.CHECKOUT} className="btn-checkout">
+                  <i class="fas fa-lock"></i>
+                  {"  "}
+                  Checkout Now
+                </a>
+              </div>
+            </div>
+          )}
         </div>
     )
   }
