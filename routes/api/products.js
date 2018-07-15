@@ -7,9 +7,8 @@ router.route("/")
   .post(productsController.create);
 
 // Matches with "/api/products/:id"
-// Matches with "/api/products/search?q="
 router.route("/:id")
-  .get(productsController.findItem)
+  .get(productsController.findProduct)
   .put(productsController.update)
   .delete(productsController.remove);
 
@@ -17,6 +16,7 @@ router.route("/:id")
 router.route("/user/:id")
   .get(productsController.findByUser);
 
+// Matches with "/api/products/category/:category"
 router.route("/category/:category")
   .get(productsController.findCategory);
 

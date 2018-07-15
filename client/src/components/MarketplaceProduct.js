@@ -12,35 +12,36 @@ class MarketplaceProduct extends Component {
 
 	render() {
 		const { isSelected, rating } = this.state;
-		const { title, description, price, quantity, img_cloud, ratings } = this.props.product;
+		const { _id, title, description, quantity, img_cloud, ratings } = this.props.product;
+		const price = this.props.product.price.toFixed(2);
+
+		const checkIfSoldOut = () => {
+			if(quantity < 1) {
+				return 'sold-out';
+			}
+			return '';
+		}
+
+		const priceReduction = Math.floor(Math.random() * ((price * .8) - (price * .1) + (price * .1)));
 
 		return (
-			<div className={`item-container ${quantity}`}>
-				<div className="row img-holder">
-					<img className="product-img" src={img_cloud ||
-					"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
-						alt={title} />
-				</div>
-				<div className="row item-title">
-					<div>
-						<span className="product-title">{title}</span>
-					</div>
-				</div>
-				<div className="row">
-					<div className="product-description">
-						<span>{description}</span>
-					</div>
-				</div>
-				<div className="row">
-					<div className="price-qty-row">
-						<div className="price">${price}</div>
-						<div className="unit-qty">
-							<div className="unit">/unit</div>
+				<div id={_id} className={`item-container ${quantity < 1 && 'sold-out'}`}>
+					<a href={`products/${_id}`}>
+						<div className="row img-holder">
+							<img className="product-img" src={img_cloud ||
+							"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
+								alt={title} />
 						</div>
-					</div>
-					<div className={`rating stars-${rating}`}></div>
+						<div className="product-title">{title}</div>
+						<div className="product-price">
+							<span className="current-price">Sale ${price}</span>
+							{"  "}
+							<span className={`old-price reduction-${priceReduction}`}>${(parseFloat(price) + priceReduction).toFixed(2)}</span>
+						</div>
+						<div className={`rating stars-${rating}`}></div>
+					</a>
 					<button
-						disabled={isSelected}
+						disabled={isSelected || (quantity < 1)}
 						className={`btn green add-to-cart-btn`}
 						onClick={() => {
 							this.setState({isSelected: true});
@@ -50,25 +51,27 @@ class MarketplaceProduct extends Component {
 						Add to Cart
 					</button>
 				</div>
-			</div>
 		);
 	};
 };
 
-const MarketplaceProductList = props => (
+const MarketplaceProductList = ({
+	products,
+	onAddToCart
+}) => (
   <div>
     <div className="row productslist">
-			{!props.products
+			{!products
 				? <i className="fas fa-spinner fa-spin fa-5x"></i>
-				: props.products.length
-					? props.products.map(product =>
+				: products.length
+					? products.map(product =>
 						<MarketplaceProduct
-							handleAddToCart={props.handleAddToCart}
+							handleAddToCart={onAddToCart}
 							product={product} key={product._id} />)
 					: `We are currently adding more products. Check back later!`
 			}
     </div>
-		<Pagination items={10} activePage={1} maxButtons={8} />
+		<Pagination items={5} activePage={1} maxButtons={5} />
   </div>
 );
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import * as routes from '../../constants/routes';
 
 const About = () => (
   <div>
@@ -38,10 +37,10 @@ const About = () => (
           <div>
             <h2>Kevin Beeler</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
-            <p> Kevin is a Graduate of the Case Western Reserve- Full Stack Boot Camp, he strides to grow his developing reputation in building creative, clean, practical applications. 
-                His web development focus is directed towards business, technology, and design. "My lifetime goal is to use technology to change the World." 
-                His journey in designing and developing websites, building interactive experiences and creating businesses began in 2016. 
-                Kevin devoted to modern and clean designs. An advocate of structure, purity and simplicity in both, design and code. Beautiful is better than ugly. 
+            <p> Kevin is a Graduate of the Case Western Reserve- Full Stack Boot Camp, he strides to grow his developing reputation in building creative, clean, practical applications.
+                His web development focus is directed towards business, technology, and design. "My lifetime goal is to use technology to change the World."
+                His journey in designing and developing websites, building interactive experiences and creating businesses began in 2016.
+                Kevin devoted to modern and clean designs. An advocate of structure, purity and simplicity in both, design and code. Beautiful is better than ugly.
                 Simple is better than complex. Complex is better than complicated. "I believe that every line of code and element in design has to have purpose or function. Organization and consistency are very important to me."</p>
           </div>
         </div>

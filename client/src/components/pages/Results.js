@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import { withRouter } from  'react-router-dom';
 import API from "../../utils/API";
 import { MarketplaceProductList } from '../MarketplaceProduct';
+import moment from "moment";
 
 class SearchResults extends Component {
   constructor(props){
     super(props);
     this.state = {
-      query: '',
       results: null,
     };
   }
   componentDidMount() {
-    const queryTerm = this.props.location.search.split("=")[1];
-    this.setState({query: queryTerm});
-    this.runSearch(queryTerm);
+    this.runSearch(this.props.location.search.split("=")[1]);
   }
 
   runSearch = (query) => {
@@ -25,9 +23,10 @@ class SearchResults extends Component {
   }
 
   render() {
+    const currentTime = moment();
     return(
       <div className="results-container">
-        <MarketplaceProductList products={this.state.results} />
+        <MarketplaceProductList products={this.state.results} key={currentTime} />
       </div>
     )
   }

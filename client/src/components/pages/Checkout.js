@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { Input } from "react-materialize";
-import dropin from 'braintree-web-drop-in';
 import OrderItem from "../OrderItem";
 import CartTotal from "../CartTotal";
 import States from "../../utils/states.json";
 import Countries from "../../utils/countries.json";
 
-// import PaypalExpressBtn from 'react-paypal-express-checkout';
-
 class Checkout extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			order: {},
       email: "",
       billing_firstName: "",
       billing_lastName: "",
@@ -33,6 +29,7 @@ class Checkout extends Component {
       shipping_zipcode: "",
       shipping_phone: "",
       activeClass: "",
+      sameAddress: false,
 		}
 	};
 
@@ -56,8 +53,10 @@ class Checkout extends Component {
     this.setState({ [name]: value });
   };
 
-  handleFormSubmit = () => {
-
+  handleSameAddress = () => {
+    this.setState((prevState) => ({
+      sameAddress: !prevState.sameAddress
+    }));
   };
 
   render() {
@@ -83,13 +82,13 @@ class Checkout extends Component {
     						<Input s={6} type='select' label="Country" name="billing_country"
     							onChange={this.handleInputChange} defaultValue="USA">
                   {Countries && Countries.map(country => (
-                    <option value={country.abbr}>{country.name}</option>
+                    <option value={country.abbr} key={`billingCountry-${country.abbr}`}>{country.name}</option>
                   ))}
     						</Input>
                 <Input s={6} type='select' label="State" name="billing_state"
                   onChange={this.handleInputChange} defaultValue="OH">
                   {States && States.map(state => (
-                    <option value={state.abbr}>{state.name}</option>
+                    <option value={state.abbr} key={`billingState-${state.abbr}`}>{state.name}</option>
                   ))}
                 </Input>
                 <Input s={6}	type="text" onChange={this.handleInputChange}
@@ -104,8 +103,10 @@ class Checkout extends Component {
               </div>
               <div>
                 <h6>
-                  <Input name={this.state.sameAddress} type='checkbox' value='1' label='Shipping address is the same as my billing address.'
-                  className='filled-in' defaultChecked='checked' />
+                  <Input name={this.state.sameAddress} type='checkbox' value='1'
+                    label='Shipping address is the same as my billing address.'
+                    onChange={this.handleSameAddress}
+                  className='filled-in' />
                 </h6>
               </div>
               <form>
@@ -120,13 +121,13 @@ class Checkout extends Component {
     						<Input s={6} type='select' label="Country" name="shipping_country"
     							onChange={this.handleInputChange} defaultValue="USA">
                   {Countries && Countries.map(country => (
-                    <option value={country.abbr}>{country.name}</option>
+                    <option value={country.abbr} key={`shippingCountry-${country.abbr}`}>{country.name}</option>
                   ))}
     						</Input>
                 <Input s={6} type='select' label="State" name="shipping_state"
                   onChange={this.handleInputChange} defaultValue="OH">
                   {States && States.map(state => (
-                    <option value={state.abbr}>{state.name}</option>
+                    <option value={state.abbr} key={`shippingState-${state.abbr}`}>{state.name}</option>
                   ))}
                 </Input>
                 <Input s={6}	type="text" onChange={this.handleInputChange}
@@ -135,13 +136,13 @@ class Checkout extends Component {
                   label="Zip Code"	value={this.state.shipping_zipcode}	name="shipping_zipcode"/>
     					</form>
             </div>
-            <div className="row section-container payment-options">
+            {/* <div className="row section-container payment-options">
               <div>
                 <h5>Payment Options</h5>
               </div>
-              <div id="dropin-container"></div>
-              <div id="submit-button"></div>
-            </div>
+              <div id="dropin-container2"></div>
+              <div id="pm-button"></div>
+            </div> */}
             <div className="row section-container review-order">
               <div>
                 <h5>Review Order</h5>

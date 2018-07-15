@@ -94,6 +94,6 @@ export default {
     return axios.get("/api/session");
   },
   searchFor: (query) => {
-    return axios.get(`/api/products/search?q=${query}`);
+    return axios.get(`/api/search?q=${query}`);
   }
 };

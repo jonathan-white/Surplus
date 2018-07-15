@@ -71,7 +71,7 @@ const uploadFile = (bucketName, filename) => {
 	.bucket(bucketName)
 	.upload(filename)
 	.then(() => {
-		console.log(`${filename} uploaded to ${bucketName}.`);
+		// console.log(`${filename} uploaded to ${bucketName}.`);
 	})
 	.catch(err => {
 		console.error('ERROR:', err);

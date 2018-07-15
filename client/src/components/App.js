@@ -15,12 +15,14 @@ import Checkout from "./pages/Checkout";
 import SearchResults from "./pages/Results";
 import AboutUs from './pages/About';
 import AllProductsPage from "./pages/AllProducts";
+import Product from "./pages/Product";
 import NoMatch from './pages/404';
 import './App.css';
 
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
 import API from "../utils/API";
+import moment from "moment";
 
 function remove(array, index) {
 	return array.filter((e,i) => i !== index);
@@ -67,6 +69,7 @@ class App extends React.Component {
 	}
 
   render() {
+		const currentTime = moment();
     return(
       <Router>
         <div>
@@ -84,12 +87,17 @@ class App extends React.Component {
 							shoppingCart={this.state.shoppingCart} stage="checkout"/>} />
             <Route exact path={routes.SIGN_IN} component={() => <SigninPage />}/>
             <Route exact path={routes.SIGN_UP} component={() => <SignupPage />}/>
-            <Route exact path={routes.PASSWORD_FORGET} component={() => <ForgotPasswordPage />}/>
-            <Route exact path={routes.PASSWORD_CHANGE} component={() => <ChangePasswordPage />}/>
-            <Route exact path={routes.SEARCH} component={() => <SearchResults />}/>
+            <Route exact path={routes.PASSWORD_FORGET} component={() =>
+							<ForgotPasswordPage />}/>
+            <Route exact path={routes.PASSWORD_CHANGE} component={() =>
+							<ChangePasswordPage />}/>
+            <Route exact path={routes.SEARCH} component={() =>
+							<SearchResults key={currentTime}/>}/>
 						<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
-						<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage
-              handleAddToCart={this.handleAddToCart}/>} />
+						<Route exact path={routes.PRODUCTS} component={() =>
+							<AllProductsPage handleAddToCart={this.handleAddToCart}/>} />
+						<Route exact path={routes.PRODUCT} component={(props) =>
+							<Product productId={props.match.params.id} />} />
             <Route component={NoMatch} />
           </Switch>
           <Footer />

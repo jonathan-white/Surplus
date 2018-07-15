@@ -220,6 +220,10 @@
 	transform: translateY(-5px);
 }
 
+.productslist .row {
+	margin-bottom: 0;
+}
+
 /* Product Card */
 .item-container {
   position: relative;
@@ -238,6 +242,10 @@
 	overflow: hidden;
 }
 
+.item-container a {
+	color: #000;
+}
+
 .item-container:hover {
 	border-color: #2B85E7;
 	border-radius: 4px;
@@ -254,10 +262,6 @@
   height: 100%;
 }
 
-.item-container .item-title {
-	min-height: 56px;
-}
-
 .item-container .close {
   position: absolute;
   top: 10px;
@@ -266,18 +270,22 @@
   cursor: pointer;
 }
 
-.price-qty-row {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-}
-
 .item-container .product-title {
   font-size: 1.25rem;
+	color: #aaa;
 }
 
-.item-container .price {
-  font-size: 30px;
+.item-container .product-price {
+  font-size: 20px;
+}
+
+.item-container .old-price {
+	text-decoration: line-through;
+	font-size: 12px;
+}
+
+.item-container .current-price {
+	color: #f00;
 }
 
 .item-container .quantity {
@@ -318,19 +326,18 @@
 }
 
 .item-container.sold-out::after {
-	color: #fff;
-	content: 'Sold Out!';
-	position: absolute;
-	background-color: #f00;
-	width: 80%;
-	top: 20px;
-	right: -40px;
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-	text-align: center;
-	padding: 0 10px;
-	border-radius: 5px;
+	color: #000;
+  content: 'Sold Out!';
+  position: absolute;
+  background-color: #f00;
+  top: 50%;
+  left: 50%;
+	width: 150px;
+  transform: translate(-50%, -50%) rotate(15deg);
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-weight: 800;
 }
 
 .item-container.featured::after {
@@ -351,10 +358,10 @@
 
 .item-container .rating {
 	background-image: url(https://storage.googleapis.com/surplus-6507a.appspot.com/assets/ratings.png);
-	background-position: 52% 10%;
+	background-position: 80% 10%;
 	height: 25px;
 	width: 100%;
-	margin: 5px;
+	margin: 5px 0;
 }
 
 .rating.stars-0 {
@@ -395,7 +402,7 @@
 .profile {
     position: relative;
     margin: .5rem 0 1rem 0;
-    background-color: #dfdfdf;
+    background-color: #eee;
     transition: box-shadow .25s;
     border-radius: 2px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
@@ -678,6 +685,14 @@ form .input-field label {
 	color: #1f2963;
 	font-weight: 600;
 	font-family: Oswald, sans-serif;
+}
+
+.product-item .product-img {
+	margin: 30px;
+}
+
+.product-item .product-img img {
+	width: 500px;
 }
 
 @media only screen and (min-width: 993px) {

@@ -16,26 +16,11 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findItem: function(req, res) {
-    if(req.query) {
-      // Search by queryterm if req.query exists
-      // Searches both title (weight 10) and description (weight 5)
-      // and sorts results based on the score (determined by weights)
-      db.Product
-        .find(
-          { $text: { $search: req.query.q } },
-          { score: { $meta: "textScore" } }
-        )
-        .sort({ score: { $meta: 'textScore' } })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    } else {
-      // Search by params.id if req.query does not exist
-      db.Product
-        .findById(req.params.id)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }
+  findProduct: function(req, res) {
+    db.Product
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   findByUser: function(req, res) {
     db.Product

@@ -100,8 +100,8 @@ const INITIAL_PRODUCT_STATE = {
 	title: '',
 	description: '',
 	category: 'General',
-	price: '',
-	quantity: '',
+	price: null,
+	quantity: null,
 	img_local: '',
 	img_cloud: '',
 }
@@ -161,8 +161,6 @@ class NewProduct extends Component {
 	handleFormSubmit = event => {
 		event.preventDefault();
 
-		console.log(this.state);
-
 		API.createProduct(this.state)
 			.then(res => {
 				this.setState({ ...INITIAL_PRODUCT_STATE });
@@ -171,9 +169,20 @@ class NewProduct extends Component {
 					.catch(err => console.log(err));
 			})
 			.catch(err => console.log(err));
+
+
 	};
 
 	render() {
+
+		const {title, description, price, quantity, img_local, img_cloud} = this.state;
+
+		const isInvalid = (
+			title === '' ||
+			price === null ||
+			price <= 0 ||
+			quantity === null
+		);
 
 		return (
 			<div className="row">
@@ -207,6 +216,7 @@ class NewProduct extends Component {
 							label="Description"	value={this.state.description}	name="description"
 						/>
 						<Input s={12} type='select' label="Cateogry" name="category"
+							value={this.state.category}
 							onChange={this.handleInputChange} defaultValue="General">
 							<option value='General'>General</option>
 							<option value='Furniture'>Furniture</option>
@@ -214,13 +224,13 @@ class NewProduct extends Component {
 							<option value='Apparel'>Apparel</option>
 							<option value='Office'>Office Supplies</option>
 						</Input>
-						<Input s={12}	type="number" onChange={this.handleInputChange}
+						<Input s={12}	type="number" step="0.01" min="0" onChange={this.handleInputChange}
 							label="Price per unit" value={this.state.price} name="price"
 						/>
 						<Input s={12}	type="number" onChange={this.handleInputChange}
 							label="Quantity" value={this.state.quantity}	name="quantity"
 						/>
-						<button	className="btn center-align" onClick={this.handleFormSubmit}>
+						<button disabled={isInvalid}	className="btn center-align" onClick={this.handleFormSubmit}>
 							Submit
 						</button>
 					</form>
@@ -240,6 +250,8 @@ class UserProduct extends Component {
 
 	render() {
 		const { rating } = this.state;
+		const price = this.props.product.price.toFixed(2);
+
 		return (
 			<div className="item-container">
 				<div className="row img-holder">
@@ -253,18 +265,8 @@ class UserProduct extends Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="product-description">
-						<span>{this.props.product.description}</span>
-					</div>
-				</div>
-				<div className="row">
-					<div className="price-qty-row">
-						<div className="price">${this.props.product.price}</div>
-						<div className="unit-qty">
-							<div className="unit">/unit</div>
-							<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
-						</div>
-					</div>
+					<div className="price">Price/unit: ${price}</div>
+					<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
 					<div className={`rating stars-${rating}`} title="User Rating"></div>
 				</div>
 				<div className="close" title="Remove Product" onClick={() => this.props.handleProductDelete(this.props.product._id)}>

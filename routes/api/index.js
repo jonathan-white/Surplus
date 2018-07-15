@@ -3,12 +3,14 @@ const productRoutes = require("./products");
 const accountRoutes = require("./accounts");
 const uploadRoutes = require("./uploads");
 const checkoutRoutes = require("./checkout");
+const searchRoutes = require("./search");
 
 // api routes
 router.use("/products", productRoutes);
 router.use("/users", accountRoutes);
 router.use("/uploads",uploadRoutes);
 router.use("/checkout",checkoutRoutes);
+router.use("/search", searchRoutes);
 
 router.get("/session", (req, res) => {
   console.log('Session:',req.sessionID);

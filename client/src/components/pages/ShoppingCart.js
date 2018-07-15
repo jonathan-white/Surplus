@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import CartItem from "../CartItem";
 import CartTotal from "../CartTotal";
 
-// import PaypalExpressBtn from 'react-paypal-express-checkout';
-
 class ShoppingCart extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			order: {},
 			activeClass: "",
 		}
 	}

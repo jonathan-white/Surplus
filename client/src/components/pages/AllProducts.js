@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { MarketplaceProductList } from "../MarketplaceProduct";
-import * as routes from '../../constants/routes';
 import API from "../../utils/API";
 
 class AllProducts extends Component {

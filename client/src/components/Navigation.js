@@ -22,7 +22,7 @@ class NavigationAuth extends Component {
       searchTerms: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   };
 
   handleChange = (event) => {
@@ -30,7 +30,7 @@ class NavigationAuth extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
+  handleSearch = (event) => {
     event.preventDefault();
 
     this.props.history.push({
@@ -43,7 +43,7 @@ class NavigationAuth extends Component {
     return (
       <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
-          <form className="searchForm" onSubmit={this.handleSubmit}>
+          <form className="searchForm" onSubmit={this.handleSearch}>
             <input
               value={this.state.searchTerms}
               className="searchbox"
@@ -77,7 +77,7 @@ class NavigationNonAuth extends Component {
       searchTerms: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   };
 
   handleChange = (event) => {
@@ -85,7 +85,7 @@ class NavigationNonAuth extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
+  handleSearch = (event) => {
     event.preventDefault();
 
     this.props.history.push({
@@ -98,7 +98,7 @@ class NavigationNonAuth extends Component {
     return (
       <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
-          <form className="searchForm" onSubmit={this.handleSubmit}>
+          <form className="searchForm" onSubmit={this.handleSearch}>
             <input
               value={this.state.searchTerms}
               className="searchbox"
