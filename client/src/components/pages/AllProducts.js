@@ -12,7 +12,7 @@ class AllProducts extends Component {
 	};
 
   componentDidMount = () => {
-    API.getProducts()
+    API.getAllProducts()
   		.then(results=> this.setState({ products: results.data }))
   		.catch(err => console.log(err));
   };

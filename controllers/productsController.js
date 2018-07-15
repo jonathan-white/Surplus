@@ -1,12 +1,54 @@
 const db = require("../models");
 
-// Defining methods for the productsController
 module.exports = {
   findAll: function(req, res) {
     db.Product
       .find(req.query)
       .sort({ dateAdded: -1 })
       .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findAllByCategory: function(req, res) {
+    db.Product
+      .find(req.query)
+      .sort({ dateAdded: -1 })
+      .then(dbModel => {
+        let general = [],
+          furniture = [],
+          electronics = [],
+          apparel = [],
+          office = [];
+
+        dbModel.forEach(p => {
+          switch(p.category) {
+            case 'Furniture':
+              furniture.push(p);
+              break;
+            case 'Electronics':
+              electronics.push(p);
+              break;
+            case 'Apparel':
+              apparel.push(p);
+              break;
+            case 'Office':
+              office.push(p);
+              break;
+            default:
+              general.push(p);
+              break;
+          }
+        });
+
+        const results = {
+          furnitureProducts: furniture,
+          electronicProducts: electronics,
+          apparelProducts: apparel,
+          officeProducts: office,
+          generalProducts: general
+        }
+
+        res.json(results);
+      })
       .catch(err => res.status(422).json(err));
   },
   findCategory: function(req, res) {

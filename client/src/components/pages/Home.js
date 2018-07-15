@@ -11,34 +11,38 @@ class Home extends Component {
 		super(props);
 		this.state = {
 			...this.props.cartData,
-			productsGeneral: null,
-			productsFurniture: null,
-			productsElectronics: null,
-			productsApparel: null,
-			productsOffice: null,
+			generalProducts: null,
+			furnitureProducts: null,
+			electronicProducts: null,
+			apparelProducts: null,
+			officeProducts: null,
     }
 	};
 
 	componentDidMount = () => {
-		API.getProductsForCategory('Furniture')
-		.then(results=> this.setState({ productsFurniture: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('Electronics')
-		.then(results=> this.setState({ productsElectronics: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('Apparel')
-		.then(results=> this.setState({ productsApparel: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('Office')
-		.then(results=> this.setState({ productsOffice: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('General')
-		.then(results=> this.setState({ productsGeneral: results.data }))
-		.catch(err => console.log(err));
+		API.getProducts()
+			.then(results=> this.setState(results.data))
+			.catch(err => console.log(err));
+		//
+		// API.getProductsForCategory('Furniture')
+		// .then(results=> this.setState({ furnitureProducts: results.data }))
+		// .catch(err => console.log(err));
+		// 
+		// API.getProductsForCategory('Electronics')
+		// .then(results=> this.setState({ electronicProducts: results.data }))
+		// .catch(err => console.log(err));
+		//
+		// API.getProductsForCategory('Apparel')
+		// .then(results=> this.setState({ apparelProducts: results.data }))
+		// .catch(err => console.log(err));
+		//
+		// API.getProductsForCategory('Office')
+		// .then(results=> this.setState({ officeProducts: results.data }))
+		// .catch(err => console.log(err));
+		//
+		// API.getProductsForCategory('General')
+		// .then(results=> this.setState({ generalProducts: results.data }))
+		// .catch(err => console.log(err));
   };
 
   render() {
@@ -53,8 +57,8 @@ class Home extends Component {
 					/>
 					<h5 className="section-header">Furniture</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsFurniture}
-						handleAddToCart={this.props.handleAddToCart}/>
+					<MarketplaceProductList products={this.state.furnitureProducts}
+						onAddToCart={this.props.handleAddToCart}/>
 					<a name="electronics">&nbsp;</a>
 					<Parallax
 						className="imageSize h100"
@@ -62,8 +66,8 @@ class Home extends Component {
 					/>
 					<h5 className="section-header">Electronics</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsElectronics}
-						handleAddToCart={this.props.handleAddToCart}/>
+					<MarketplaceProductList products={this.state.electronicProducts}
+						onAddToCart={this.props.handleAddToCart}/>
 					<a name="apparel">&nbsp;</a>
 					<Parallax
 						className="imageSize h100"
@@ -71,8 +75,8 @@ class Home extends Component {
 					/>
 					<h5 className="section-header">Apparel</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsApparel}
-						handleAddToCart={this.props.handleAddToCart}/>
+					<MarketplaceProductList products={this.state.apparelProducts}
+						onAddToCart={this.props.handleAddToCart}/>
 					<a name="office">&nbsp;</a>
 					<Parallax
 						className="imageSize h100"
@@ -80,8 +84,8 @@ class Home extends Component {
 					/>
 					<h5 className="section-header">Office Supplies</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsOffice}
-						handleAddToCart={this.props.handleAddToCart}/>
+					<MarketplaceProductList products={this.state.officeProducts}
+						onAddToCart={this.props.handleAddToCart}/>
 					<a name="general">&nbsp;</a>
 					<Parallax
 						className="imageSize h100"
@@ -89,8 +93,8 @@ class Home extends Component {
 					/>
 					<h5 className="section-header">General</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsGeneral}
-						handleAddToCart={this.props.handleAddToCart}/>
+					<MarketplaceProductList products={this.state.generalProducts}
+						onAddToCart={this.props.handleAddToCart}/>
 				</div>
       </div>
     );

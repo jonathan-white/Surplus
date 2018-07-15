@@ -9,35 +9,18 @@ class Landing extends Component {
 		super(props);
 		this.state = {
 			...this.props.cartData,
-			productsGeneral: null,
-			productsFurniture: null,
-			productsElectronics: null,
-			productsApparel: null,
-			productsOffice: null,
+			generalProducts: null,
+			furnitureProducts: null,
+			electronicProducts: null,
+			apparelProducts: null,
+			officeProducts: null,
     }
 	};
 
   componentDidMount = () => {
-		API.getProductsForCategory('Furniture')
-		.then(results=> this.setState({ productsFurniture: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('Electronics')
-		.then(results=> this.setState({ productsElectronics: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('Apparel')
-		.then(results=> this.setState({ productsApparel: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('Office')
-		.then(results=> this.setState({ productsOffice: results.data }))
-		.catch(err => console.log(err));
-
-		API.getProductsForCategory('General')
-		.then(results=> this.setState({ productsGeneral: results.data }))
-		.catch(err => console.log(err));
-
+		API.getProducts()
+			.then(results=> this.setState(results.data))
+			.catch(err => console.log(err));
   };
 
   render() {
@@ -52,7 +35,7 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Furniture</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsFurniture}
+					<MarketplaceProductList products={this.state.furnitureProducts}
 						handleAddToCart={this.props.handleAddToCart}/>
 					<a name="electronics">&nbsp;</a>
 					<Parallax
@@ -61,7 +44,7 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Electronics</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsElectronics}
+					<MarketplaceProductList products={this.state.electronicProducts}
 						handleAddToCart={this.props.handleAddToCart}/>
 					<a name="apparel">&nbsp;</a>
 					<Parallax
@@ -70,7 +53,7 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Apparel</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsApparel}
+					<MarketplaceProductList products={this.state.apparelProducts}
 						handleAddToCart={this.props.handleAddToCart}/>
 					<a name="office">&nbsp;</a>
 					<Parallax
@@ -79,7 +62,7 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Office Supplies</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsOffice}
+					<MarketplaceProductList products={this.state.officeProducts}
 						handleAddToCart={this.props.handleAddToCart}/>
 					<a name="general">&nbsp;</a>
 					<Parallax
@@ -88,7 +71,7 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">General</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.productsGeneral}
+					<MarketplaceProductList products={this.state.generalProducts}
 						handleAddToCart={this.props.handleAddToCart}/>
 				</div>
       </div>

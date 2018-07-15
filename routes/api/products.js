@@ -3,8 +3,11 @@ const productsController = require("../../controllers/productsController");
 
 // Matches with "/api/products"
 router.route("/")
-  .get(productsController.findAll)
+  .get(productsController.findAllByCategory)
   .post(productsController.create);
+
+router.route("/list")
+  .get(productsController.findAll)
 
 // Matches with "/api/products/:id"
 router.route("/:id")

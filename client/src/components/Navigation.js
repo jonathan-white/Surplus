@@ -41,7 +41,7 @@ class NavigationAuth extends Component {
 
   render() {
     return (
-      <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
+      <Navbar href={routes.HOME} name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
           <form className="searchForm" onSubmit={this.handleSearch}>
             <input

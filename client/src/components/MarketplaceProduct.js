@@ -1,60 +1,40 @@
 import React, { Component } from "react";
 import { Pagination } from 'react-materialize';
 
-class MarketplaceProduct extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			rating: 4,
-			isSelected: false,
-		}
-	};
+// Presentational Component
+const MarketplaceProduct = ({
+	product,
+	onAddToCart,
+	discount=Math.floor(Math.random() * ((product.price * .8) - (product.price * .1) + (product.price * .1)))
+}) => (
+	<div id={product._id} className={`item-container ${product.quantity < 1 && 'sold-out'}`}>
+		<a href={`products/${product._id}`}>
+			<div className="row img-holder">
+				<img className="product-img" src={product.img_cloud ||
+				"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
+					alt={product.title} />
+			</div>
+			<div className="product-title">{product.title}</div>
+			<div className="product-price">
+				<span className="current-price">Sale ${product.price.toFixed(2)}</span>
+				{"  "}
+				<span className={`old-price reduction-${discount}`}>
+					${(parseFloat(product.price) + discount).toFixed(2)}
+				</span>
+			</div>
+			<div className={`rating stars-4`}></div>
+		</a>
+		<button
+			disabled={product.quantity < 1}
+			className={`btn green add-to-cart-btn`}
+			onClick={onAddToCart}
+		>
+			Add to Cart
+		</button>
+	</div>
+);
 
-	render() {
-		const { isSelected, rating } = this.state;
-		const { _id, title, description, quantity, img_cloud, ratings } = this.props.product;
-		const price = this.props.product.price.toFixed(2);
-
-		const checkIfSoldOut = () => {
-			if(quantity < 1) {
-				return 'sold-out';
-			}
-			return '';
-		}
-
-		const priceReduction = Math.floor(Math.random() * ((price * .8) - (price * .1) + (price * .1)));
-
-		return (
-				<div id={_id} className={`item-container ${quantity < 1 && 'sold-out'}`}>
-					<a href={`products/${_id}`}>
-						<div className="row img-holder">
-							<img className="product-img" src={img_cloud ||
-							"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
-								alt={title} />
-						</div>
-						<div className="product-title">{title}</div>
-						<div className="product-price">
-							<span className="current-price">Sale ${price}</span>
-							{"  "}
-							<span className={`old-price reduction-${priceReduction}`}>${(parseFloat(price) + priceReduction).toFixed(2)}</span>
-						</div>
-						<div className={`rating stars-${rating}`}></div>
-					</a>
-					<button
-						disabled={isSelected || (quantity < 1)}
-						className={`btn green add-to-cart-btn`}
-						onClick={() => {
-							this.setState({isSelected: true});
-							this.props.handleAddToCart(this.props.product);
-						}}
-					>
-						Add to Cart
-					</button>
-				</div>
-		);
-	};
-};
-
+// Presentational Component
 const MarketplaceProductList = ({
 	products,
 	onAddToCart
@@ -66,7 +46,7 @@ const MarketplaceProductList = ({
 				: products.length
 					? products.map(product =>
 						<MarketplaceProduct
-							handleAddToCart={onAddToCart}
+							onAddToCart={onAddToCart}
 							product={product} key={product._id} />)
 					: `We are currently adding more products. Check back later!`
 			}

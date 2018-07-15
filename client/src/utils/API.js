@@ -5,9 +5,14 @@ export default {
   // Product APIs
   // ======================================
 
-  // Returns all products
+  // Returns all products (split into categories)
   getProducts: () => {
     return axios.get("/api/products");
+  },
+
+  // Returns all products (no category split)
+  getAllProducts: () => {
+    return axios.get("/api/products/list");
   },
 
   // Returns all products of a specified category
