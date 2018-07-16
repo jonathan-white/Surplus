@@ -10,7 +10,6 @@ class Home extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			...this.props.cartData,
 			generalProducts: null,
 			furnitureProducts: null,
 			electronicProducts: null,
@@ -39,7 +38,6 @@ class Home extends Component {
 					<hr />
 					<ProductsList
 						products={this.state.furnitureProducts}
-						onAddToCart={this.props.onAddToCart}
 					/>
 					<a name="electronics">{' '}</a>
 					<Parallax
@@ -50,7 +48,6 @@ class Home extends Component {
 					<hr />
 					<ProductsList
 						products={this.state.electronicProducts}
-						onAddToCart={this.props.onAddToCart}
 					/>
 					<a name="apparel">{' '}</a>
 					<Parallax
@@ -61,7 +58,6 @@ class Home extends Component {
 					<hr />
 					<ProductsList
 						products={this.state.apparelProducts}
-						onAddToCart={this.props.onAddToCart}
 					/>
 					<a name="office">{' '}</a>
 					<Parallax
@@ -72,7 +68,6 @@ class Home extends Component {
 					<hr />
 					<ProductsList
 						products={this.state.officeProducts}
-						onAddToCart={this.props.onAddToCart}
 					/>
 					<a name="general">{' '}</a>
 					<Parallax
@@ -83,7 +78,6 @@ class Home extends Component {
 					<hr />
 					<ProductsList
 						products={this.state.generalProducts}
-						onAddToCart={this.props.onAddToCart}
 					/>
 				</div>
       </div>

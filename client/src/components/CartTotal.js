@@ -1,9 +1,27 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import dropin from 'braintree-web-drop-in';
 import * as routes from '../constants/routes';
 
-class Checkout extends Component {
+class CartTotal extends Component {
+  componentDidMount() {
+    const { store } = this.context;
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate()
+    );
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
+    // const props = this.props;
+		const { store } = this.context;
+		const state = store.getState();
+
+    // const orderTotal = state.orderTotal;
+
     const button = document.querySelector('#submit-button');
     if(button) {
       dropin.create({
@@ -15,18 +33,26 @@ class Checkout extends Component {
           currency: 'USD'
         }
       },function(createErr,instance){
-        button.addEventListener('click',function(){
-          instance.requestPaymentMethod(function(requestPaymentMethodErr,payload){
-            // Submit payload.nonce to your server
+        if(createErr) {
+          console.log('Error While Creating Payment:',createErr);
+        } else {
+          console.log('Payment Instance:',instance);
+          button.addEventListener('click',function(){
+            console.log('Payment button clicked');
+            instance.requestPaymentMethod(function(requestPaymentMethodErr,payload){
+              console.log('payment error:',requestPaymentMethodErr);
+              console.log('payment Nonce:',payload.nonce);
+              // Submit payload.nonce to your server
+            });
           });
-        });
+        }
       });
     }
 
     return (
         <div className={`checkoutBox ${this.props.classToApply}`}>
           <div className="totals-item">
-            <span className="total-label">Items ({this.props.cartSize}):</span>
+            <span className="total-label">Items ({state.length}):</span>
             <span className="total-value">$0.00</span>
           </div>
           <div className="totals-item">
@@ -49,7 +75,7 @@ class Checkout extends Component {
           {this.props.stage === "checkout" && (
             <div>
               <div id="dropin-container"></div>
-              <div id="submit-button"></div>
+              <button id="submit-button">Request payment method</button>
             </div>
           )}
           {this.props.stage === "cart" && (
@@ -64,8 +90,11 @@ class Checkout extends Component {
             </div>
           )}
         </div>
-    )
-  }
-}
+    );
+  };
+};
+CartTotal.contextTypes = {
+  store: PropTypes.object
+};
 
-export default Checkout;
+export default CartTotal;

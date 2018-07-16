@@ -20,9 +20,20 @@ class ShoppingCart extends Component {
 
 		window.addEventListener('scroll', (event) => {
 			const scrollPosY = window.pageYOffset || document.body.scrollTop;
+			const scrollBottom = document.body.offsetHeight - 600;
 			let classToApply = "";
-			if(scrollPosY > 50) {
+			if(scrollPosY > 50 && scrollPosY <= scrollBottom) {
 				classToApply = "checkoutBox_scrolled";
+				const elem = document.querySelector('.checkoutBox_scrolled');
+				if(elem) {
+					elem.style.top = '20px';
+				}
+			} else if (scrollPosY > scrollBottom) {
+				classToApply = "checkoutBox_scroll_finished";
+				const elem = document.querySelector('.checkoutBox_scroll_finished');
+				if(elem) {
+					elem.style.top = `${window.pageYOffset - 200}px`;
+				}
 			} else {
 				classToApply = ""
 			}
@@ -37,11 +48,9 @@ class ShoppingCart extends Component {
 	}
 
   render() {
-		const props = this.props;
+		// const props = this.props;
 		const { store } = this.context;
 		const state = store.getState();
-
-		console.log('Shopping cart state:',state);
 
     return (
       <Cart
@@ -75,14 +84,16 @@ const Cart = ({
 				}
 			</div>
 			<div className="col s4">
-				<CartTotal classToApply={activeClass}
-					cartSize={shoppingCart.length} stage={"cart"} />
+				<CartTotal
+					classToApply={activeClass}
+					stage={"cart"}
+				/>
 			</div>
 		</div>
 	</div>
 );
 
-// Presentational Component
+// semi-Presentational Component
 const CartItem = ({ cartItem, index }, { store }) => {
 	const state = store.getState();
 	return (
@@ -100,13 +111,19 @@ const CartItem = ({ cartItem, index }, { store }) => {
 					<div className="col s3">
 						<div className="row item-price">${state[index].cost}</div>
 						<div>
-							<Input type='select' label='Quantity' onChange={(event) =>
-								store.dispatch({
-									type: 'UPDATE_QUANTITY',
-									product: cartItem.product,
-									qty: parseInt(event.target.value)
-								})
-							}>
+							<Input
+								type='select'
+								label='Quantity'
+								defaultValue={state[index].qty}
+								onChange={(event) => {
+									store.dispatch({
+										type: 'UPDATE_QUANTITY',
+										index: index,
+										product: cartItem.product,
+										qty: parseInt(event.target.value, 10)
+								});
+								localStorage.setItem('cart',JSON.stringify(store.getState()));
+							}}>
 								<option value="1" defaultValue>1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -123,12 +140,13 @@ const CartItem = ({ cartItem, index }, { store }) => {
 					<div className="item-buttons">
 						<button
 							className="btn-item"
-							onClick={() =>
+							onClick={() =>{
 								store.dispatch({
-									type: 'INCREASE_QUANTITY',
-									product: cartItem.product
-								})
-							}
+									type: 'REMOVE_FROM_CART',
+									index: index
+								});
+								localStorage.setItem('cart',JSON.stringify(store.getState()));
+							}}
 						>
 							Remove
 						</button>

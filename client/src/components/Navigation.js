@@ -7,11 +7,11 @@ import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import { auth } from '../firebase';
 
-const Navigation = ({ history, cartSize}) => (
+const Navigation = ({ history }) => (
   <AuthUserContext.Consumer>
     { authUser => authUser
-      ? <NavigationAuth cartSize={cartSize} history={history} authUser={authUser} />
-      : <NavigationNonAuth cartSize={cartSize} history={history} />
+      ? <NavigationAuth history={history} authUser={authUser} />
+      : <NavigationNonAuth history={history} />
     }
   </AuthUserContext.Consumer>
 );

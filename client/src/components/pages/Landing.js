@@ -8,7 +8,6 @@ class Landing extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			...this.props.cartData,
 			generalProducts: null,
 			furnitureProducts: null,
 			electronicProducts: null,
@@ -35,8 +34,9 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Furniture</h5>
 					<hr />
-					<ProductsList products={this.state.furnitureProducts}
-						onAddToCart={this.props.onAddToCart}/>
+					<ProductsList
+						products={this.state.furnitureProducts}
+					/>
 					<a name="electronics">{' '}</a>
 					<Parallax
 						className="imageSize h100"
@@ -44,8 +44,9 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Electronics</h5>
 					<hr />
-					<ProductsList products={this.state.electronicProducts}
-						onAddToCart={this.props.onAddToCart}/>
+					<ProductsList
+						products={this.state.electronicProducts}
+					/>
 					<a name="apparel">{' '}</a>
 					<Parallax
 						className="imageSize h100"
@@ -53,8 +54,9 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Apparel</h5>
 					<hr />
-					<ProductsList products={this.state.apparelProducts}
-						onAddToCart={this.props.onAddToCart}/>
+					<ProductsList
+						products={this.state.apparelProducts}
+					/>
 					<a name="office">{' '}</a>
 					<Parallax
 						className="imageSize h100"
@@ -62,8 +64,9 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">Office Supplies</h5>
 					<hr />
-					<ProductsList products={this.state.officeProducts}
-						onAddToCart={this.props.onAddToCart}/>
+					<ProductsList
+						products={this.state.officeProducts}
+					/>
 					<a name="general">{' '}</a>
 					<Parallax
 						className="imageSize h100"
@@ -71,8 +74,9 @@ class Landing extends Component {
 					/>
 					<h5 className="section-header">General</h5>
 					<hr />
-					<ProductsList products={this.state.generalProducts}
-						onAddToCart={this.props.onAddToCart}/>
+					<ProductsList
+						products={this.state.generalProducts}
+					/>
 				</div>
       </div>
     );

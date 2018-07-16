@@ -500,6 +500,11 @@
 	top: 20px;
 }
 
+.checkoutBox.checkoutBox_scroll_finished {
+	position: relative;
+	/* bottom: 300px; */
+}
+
 .checkout_content {
 	font-size: 15px;
 	text-align: Left;
@@ -693,6 +698,13 @@ form .input-field label {
 
 .product-item .product-img img {
 	width: 500px;
+}
+
+/* Checkout */
+.fixed-totals {
+	position: fixed;
+	width: 25%;
+	top: 125px;
 }
 
 @media only screen and (min-width: 993px) {

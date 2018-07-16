@@ -50,9 +50,7 @@ class MarketplaceProductContainer extends Component {
 	render() {
 		const props = this.props;
 		const { store } = this.context;
-		const state = store.getState();
-
-		console.log('Current State:', state);
+		// const state = store.getState();
 
 		return(
 			<MarketplaceProduct

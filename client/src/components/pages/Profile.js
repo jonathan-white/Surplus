@@ -175,7 +175,14 @@ class NewProduct extends Component {
 
 	render() {
 
-		const {title, description, price, quantity, img_local, img_cloud} = this.state;
+		const {
+			title,
+			description,
+			category,
+			price,
+			quantity,
+			img_local
+		} = this.state;
 
 		const isInvalid = (
 			title === '' ||
@@ -194,8 +201,8 @@ class NewProduct extends Component {
 							<div className="preview">
 								<img
 									id="preview-img"
-									src={this.state.img_local || "https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
-									alt={this.state.title}
+									src={img_local || "https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
+									alt={title}
 								/>
 								<a className="btn-floating btn-large waves-effect waves-light red">
 									<i className="material-icons">add</i>
@@ -210,13 +217,13 @@ class NewProduct extends Component {
 					</form>
 					<form className="row">
 						<Input s={12}	type="text" onChange={this.handleInputChange}
-							label="Title (required)" value={this.state.title} name="title"
+							label="Title (required)" value={title} name="title"
 						/>
 						<Input s={12} type="textarea" onChange={this.handleInputChange}
-							label="Description"	value={this.state.description}	name="description"
+							label="Description"	value={description}	name="description"
 						/>
 						<Input s={12} type='select' label="Cateogry" name="category"
-							value={this.state.category}
+							value={category}
 							onChange={this.handleInputChange} defaultValue="General">
 							<option value='General'>General</option>
 							<option value='Furniture'>Furniture</option>
@@ -225,10 +232,10 @@ class NewProduct extends Component {
 							<option value='Office'>Office Supplies</option>
 						</Input>
 						<Input s={12}	type="number" step="0.01" min="0" onChange={this.handleInputChange}
-							label="Price per unit" value={this.state.price} name="price"
+							label="Price per unit" value={price} name="price"
 						/>
 						<Input s={12}	type="number" onChange={this.handleInputChange}
-							label="Quantity" value={this.state.quantity}	name="quantity"
+							label="Quantity" value={quantity}	name="quantity"
 						/>
 						<button disabled={isInvalid}	className="btn center-align" onClick={this.handleFormSubmit}>
 							Submit
@@ -249,24 +256,30 @@ class UserProduct extends Component {
 	};
 
 	render() {
+		const {
+			title,
+			quantity,
+			img_cloud
+		} = this.props.product;
+
 		const { rating } = this.state;
 		const price = this.props.product.price.toFixed(2);
 
 		return (
 			<div className="item-container">
 				<div className="row img-holder">
-					<img className="product-img" src={this.props.product.img_cloud ||
+					<img className="product-img" src={img_cloud ||
 					"https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png"}
-						alt={this.props.product.title} />
+						alt={title} />
 				</div>
 				<div className="row">
 					<div>
-						<span className="product-title">{this.props.product.title}</span>
+						<span className="product-title">{title}</span>
 					</div>
 				</div>
 				<div className="row">
 					<div className="price">Price/unit: ${price}</div>
-					<div>Stock: <span className="quantity">{this.props.product.quantity}</span></div>
+					<div>Stock: <span className="quantity">{quantity}</span></div>
 					<div className={`rating stars-${rating}`} title="User Rating"></div>
 				</div>
 				<div className="close" title="Remove Product" onClick={() => this.props.handleProductDelete(this.props.product._id)}>
