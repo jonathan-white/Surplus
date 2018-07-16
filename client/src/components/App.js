@@ -16,6 +16,7 @@ import SearchResults from "./pages/Results";
 import AboutUs from './pages/About';
 import AllProductsPage from "./pages/AllProducts";
 import Product from "./pages/Product";
+import Vision from "./pages/Vision";
 import NoMatch from './pages/404';
 import './App.css';
 
@@ -46,7 +47,8 @@ const App = () => {
           <Route exact path={routes.SEARCH} component={() =>
 						<SearchResults key={currentTime}/>}/>
 					<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
-					<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
+					<Route exact path={routes.VISION} component={() => <Vision />}/>
+          <Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
 					<Route exact path={routes.PRODUCT} component={(props) =>
 						<Product productId={props.match.params.id} />} />
           <Route component={NoMatch} />
