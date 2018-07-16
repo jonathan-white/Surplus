@@ -56,7 +56,7 @@ class Checkout extends Component {
             <div>
               <div className="checkout-now">
                 <a href={routes.CHECKOUT} className="btn-checkout">
-                  <i class="fas fa-lock"></i>
+                  <i className="fas fa-lock"></i>
                   {"  "}
                   Checkout Now
                 </a>

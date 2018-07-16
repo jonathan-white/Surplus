@@ -35,11 +35,11 @@ class App extends React.Component {
 		? { ...JSON.parse(localStorage.getItem('sessionData')) }
 		: { sessionId: '', shoppingCart: [], });
 
-    this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.onAddToCart = this.onAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   };
 
-  handleAddToCart = (product) => {
+  onAddToCart = (product) => {
     this.setState((prevState) => ({
       shoppingCart: [...prevState.shoppingCart, product]
     }));
@@ -76,9 +76,9 @@ class App extends React.Component {
           <Navigation cartSize={this.state.shoppingCart.length} />
           <Switch>
             <Route exact path={routes.LANDING} component={() => <LandingPage
-              handleAddToCart={this.handleAddToCart}/>} />
+              onAddToCart={this.onAddToCart}/>} />
             <Route exact path={routes.HOME} component={() => <HomePage
-              handleAddToCart={this.handleAddToCart}/>} />
+              onAddToCart={this.onAddToCart}/>} />
             <Route exact path={routes.ACCOUNT} component={() => <AccountPage />}/>
             <Route exact path={routes.CART} component={() => <ShoppingCart
               handleRemoveFromCart={this.handleRemoveFromCart}

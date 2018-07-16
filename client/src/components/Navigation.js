@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from  'react-router-dom';
 import { Navbar, NavItem, Icon, Badge } from 'react-materialize';
 
@@ -6,11 +7,11 @@ import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import { auth } from '../firebase';
 
-const Navigation = (props) => (
+const Navigation = ({ history, cartSize}) => (
   <AuthUserContext.Consumer>
     { authUser => authUser
-      ? <NavigationAuth cartSize={props.cartSize} history={props.history} authUser={authUser} />
-      : <NavigationNonAuth cartSize={props.cartSize} history={props.history} />
+      ? <NavigationAuth cartSize={cartSize} history={history} authUser={authUser} />
+      : <NavigationNonAuth cartSize={cartSize} history={history} />
     }
   </AuthUserContext.Consumer>
 );
@@ -24,6 +25,17 @@ class NavigationAuth extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   };
+
+  componentDidMount() {
+    const { store } = this.context;
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate()
+    );
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,8 +52,11 @@ class NavigationAuth extends Component {
   };
 
   render() {
+    const { store } = this.context;
+    const state = store.getState();
+
     return (
-      <Navbar href={routes.HOME} name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
+      <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
           <form className="searchForm" onSubmit={this.handleSearch}>
             <input
@@ -60,7 +75,7 @@ class NavigationAuth extends Component {
         </NavItem>
         <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
-          <Badge className="cart-badge">{this.props.cartSize}</Badge>
+          <Badge className="cart-badge">{state.length}</Badge>
         </NavItem>
         <NavItem onClick={auth.doSignOut}>
           Sign Out
@@ -68,6 +83,9 @@ class NavigationAuth extends Component {
       </Navbar>
     );
   };
+};
+NavigationAuth.contextTypes = {
+  store: PropTypes.object
 };
 
 class NavigationNonAuth extends Component {
@@ -79,6 +97,17 @@ class NavigationNonAuth extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   };
+
+  componentDidMount() {
+    const { store } = this.context;
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate()
+    );
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -95,6 +124,9 @@ class NavigationNonAuth extends Component {
   };
 
   render() {
+    const { store } = this.context;
+    const state = store.getState();
+
     return (
       <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
         <li>
@@ -112,7 +144,7 @@ class NavigationNonAuth extends Component {
         </li>
         <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
-          <Badge className="cart-badge">{this.props.cartSize}</Badge>
+          <Badge className="cart-badge">{state.length}</Badge>
         </NavItem>
         <NavItem href={routes.SIGN_IN}>
           Sign In
@@ -120,6 +152,9 @@ class NavigationNonAuth extends Component {
       </Navbar>
     );
   };
+};
+NavigationNonAuth.contextTypes = {
+  store: PropTypes.object
 };
 
 export default withRouter(Navigation);

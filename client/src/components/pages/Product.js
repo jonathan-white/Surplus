@@ -21,13 +21,19 @@ class Product extends Component {
     const { title, description, price, quantity, img_cloud, ratings } = this.state.product;
     return (
       <div className="product-item">
-        <div className="product-title">
-          <h3>{title}</h3>
+        <div className="product-left">
+          <div className="product-title">
+            <h3>{title}</h3>
+          </div>
+          <div className="product-img">
+            <img src={img_cloud} alt={title} />
+          </div>
         </div>
-        <div className="product-img">
-          <img src={img_cloud} alt={title} />
+        <div className="product-right">
+          <h5>Description:</h5>
+          <p>{description}</p>
         </div>
-      </div>
+        </div>
     );
   };
 };

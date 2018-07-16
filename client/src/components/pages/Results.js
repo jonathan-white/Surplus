@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from  'react-router-dom';
 import API from "../../utils/API";
-import { MarketplaceProductList } from '../MarketplaceProduct';
+import { ProductsList } from '../MarketplaceProduct';
 import moment from "moment";
 
 class SearchResults extends Component {
@@ -26,7 +26,7 @@ class SearchResults extends Component {
     const currentTime = moment();
     return(
       <div className="results-container">
-        <MarketplaceProductList products={this.state.results} key={currentTime} />
+        <ProductsList products={this.state.results} key={currentTime} />
       </div>
     )
   }

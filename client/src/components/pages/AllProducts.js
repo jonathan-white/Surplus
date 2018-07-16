@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MarketplaceProductList } from "../MarketplaceProduct";
+import { ProductsList } from "../MarketplaceProduct";
 import API from "../../utils/API";
 
 class AllProducts extends Component {
@@ -23,8 +23,7 @@ class AllProducts extends Component {
 				<div className="container">
 					<h5 className="section-header">All Products</h5>
 					<hr />
-					<MarketplaceProductList products={this.state.products}
-						handleAddToCart={this.props.handleAddToCart}/>
+					<ProductsList products={this.state.products}/>
 				</div>
       </div>
     );

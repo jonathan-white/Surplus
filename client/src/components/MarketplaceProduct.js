@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { Pagination } from 'react-materialize';
 
 // Presentational Component
@@ -27,17 +28,54 @@ const MarketplaceProduct = ({
 		<button
 			disabled={product.quantity < 1}
 			className={`btn green add-to-cart-btn`}
-			onClick={onAddToCart}
+			onClick={() => onAddToCart()}
 		>
 			Add to Cart
 		</button>
 	</div>
 );
 
+class MarketplaceProductContainer extends Component {
+	componentDidMount() {
+		const { store } = this.context;
+		this.unsubscribe = store.subscribe(() =>
+			this.forceUpdate()
+		);
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe();
+	}
+
+	render() {
+		const props = this.props;
+		const { store } = this.context;
+		const state = store.getState();
+
+		console.log('Current State:', state);
+
+		return(
+			<MarketplaceProduct
+				product={props.product}
+				onAddToCart={() => {
+					store.dispatch({
+	            type: 'ADD_TO_CART',
+	            product: props.product,
+							qty: 1
+					});
+					localStorage.setItem('cart',JSON.stringify(store.getState()));
+				}}
+			/>
+		);
+	};
+};
+MarketplaceProductContainer.contextTypes = {
+  store: PropTypes.object
+};
+
 // Presentational Component
-const MarketplaceProductList = ({
-	products,
-	onAddToCart
+const ProductsList = ({
+	products
 }) => (
   <div>
     <div className="row productslist">
@@ -45,9 +83,10 @@ const MarketplaceProductList = ({
 				? <i className="fas fa-spinner fa-spin fa-5x"></i>
 				: products.length
 					? products.map(product =>
-						<MarketplaceProduct
-							onAddToCart={onAddToCart}
-							product={product} key={product._id} />)
+						<MarketplaceProductContainer
+							key={product._id}
+							product={product}
+						/>)
 					: `We are currently adding more products. Check back later!`
 			}
     </div>
@@ -58,5 +97,5 @@ const MarketplaceProductList = ({
 export default MarketplaceProduct;
 
 export {
-	MarketplaceProductList,
+	ProductsList,
 }
