@@ -8,13 +8,10 @@
 	font-weight: 600;
 }
 
-.carousel .carousel-item {
-	width: 500px;
-	height: 300px;
-}
-
-.carousel .carousel-item img {
-  height: 100%;
+.title {
+	color: #1f2963;
+	font-weight: 600;
+	font-family: Oswald, sans-serif;
 }
 
 /*Cart*/
@@ -782,6 +779,19 @@ form .input-field label {
 	color: blue;
 }
 
+/* Help Center */
+.helpCenter .faq-question {
+	font-style: italic;
+	color: rgba(102, 0, 255, 1);
+}
+
+.helpCenter .faq-answer {
+	font-size: 1.25rem;
+}
+
+.helpCenter .faq-answer span {
+	font-weight: 600;
+}
 
 @media only screen and (min-width: 993px) {
 	.container {

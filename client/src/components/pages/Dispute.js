@@ -5,7 +5,7 @@ import * as routes from '../../constants/routes';
 const DisputePage = () => (
   <div className="disputePage container">
     <Row>
-      <h1>File A Dispute</h1>
+      <h5 className="center-align title">File A Dispute</h5>
     </Row>
     <Row>
       <Col s={6}>
