@@ -18,6 +18,7 @@ import AllProductsPage from "./pages/AllProducts";
 import Product from "./pages/Product";
 import NoMatch from './pages/404';
 import './App.css';
+import DisputePG from './pages/Dispute';
 
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
@@ -46,6 +47,7 @@ const App = () => {
           <Route exact path={routes.SEARCH} component={() =>
 						<SearchResults key={currentTime}/>}/>
 					<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
+          <Route exact path={routes.DISPUTE} component={() => <DisputePG />}/>
 					<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
 					<Route exact path={routes.PRODUCT} component={(props) =>
 						<Product productId={props.match.params.id} />} />
