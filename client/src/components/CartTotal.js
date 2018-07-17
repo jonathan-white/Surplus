@@ -20,7 +20,20 @@ class CartTotal extends Component {
 		const { store } = this.context;
 		const state = store.getState();
 
-    // const orderTotal = state.orderTotal;
+    let totalCost;
+    if (state.length) {
+      totalCost = state
+        .map(cartItem => cartItem.cost)
+        .reduce((total, cartItem) => total + cartItem )
+        .toFixed(2);
+    } else {
+      totalCost = 0;
+    }
+
+    const shipping = totalCost * .05;
+    const subtotal = (parseFloat(totalCost) + parseFloat(shipping)).toFixed(2);   
+    const estimateTax = (totalCost * .08).toFixed(2);
+    const orderTotal = (parseFloat(subtotal) + parseFloat(estimateTax)).toFixed(2);
 
     const button = document.querySelector('#submit-button');
     if(button) {
@@ -53,24 +66,24 @@ class CartTotal extends Component {
         <div className={`checkoutBox ${this.props.classToApply}`}>
           <div className="totals-item">
             <span className="total-label">Items ({state.length}):</span>
-            <span className="total-value">$0.00</span>
+            <span className="total-value">${totalCost}</span>
           </div>
           <div className="totals-item">
             <span className="total-label">Shipping:</span>
-            <span className="total-value">$0.00</span>
+            <span className="total-value">${shipping}</span>
           </div>
           <hr />
           <div className="totals-item total-type-subtotal">
             <span className="total-label">Subtotal:</span>
-            <span className="total-value">$0.00</span>
+            <span className="total-value">${subtotal}</span>
           </div>
           <div className="totals-item">
             <span className="total-label">Estimated tax:</span>
-            <span className="total-value">$0.00</span>
+            <span className="total-value">${estimateTax}</span>
           </div>
           <div className="totals-item total-type-grandtotal">
             <span className="total-label">Order Total:</span>
-            <span className="total-value">$0.00</span>
+            <span className="total-value">${orderTotal}</span>
           </div>
           {this.props.stage === "checkout" && (
             <div>
