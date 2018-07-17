@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ProductsList } from "../MarketplaceProduct";
 import API from "../../utils/API";
 import * as routes from '../../constants/routes';
 
@@ -9,7 +10,8 @@ class Product extends Component {
     this.state = {
       productId: this.props.productId,
       product: {},
-      rating: 4
+      rating: 4,
+      relatedItems: null,
     }
   };
 
@@ -31,7 +33,20 @@ class Product extends Component {
 	render() {
 		// const props = this.props;
 		const { store } = this.context;
-		const { title, description, price, img_cloud } = this.state.product;
+		const { title, category, description, price, img_cloud } = this.state.product;
+		
+		if(this.state.relatedItems === null && category) {
+			API.getProductsForCategory(category)
+					.then(res => this.setState({
+						relatedItems: res.data.filter(p => {
+							if(p._id !== this.state.productId){
+								return p;
+							}
+						})
+					}))
+					.catch(err => console.log(err));
+			
+		}
 		return (
 			<div className="product-item">
 				<div className="row">
@@ -71,7 +86,10 @@ class Product extends Component {
 					</div>
 				</div>
 				<div className="row">
-					{/* Display Related Items Here*/}
+					<h5>Related Items</h5>
+					<ProductsList
+						products={this.state.relatedItems}
+					/>
 				</div>
 			</div>
 		);

@@ -6,6 +6,7 @@ var ProductSchema = new Schema({
 	title: {type: String, required: true, index: true},
 	description: {type: String, index: true},
 	price: {type: Number, default: 0.00},
+	old_price: {type: Number, default: 0.00},
 	quantity: Number,
 	img_local: String,
 	img_cloud: String,
