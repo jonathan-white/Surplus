@@ -12,11 +12,9 @@ class SearchResults extends Component {
     };
   }
   componentDidMount() {
-    this.runSearch(this.props.location.search.split("=")[1]);
-  }
-
-  runSearch = (query) => {
+    const query = this.props.location.search.split("=")[1];
     console.log('Running a search for:',query);
+
     API.searchFor(query)
       .then(res => this.setState({ results: res.data }))
       .catch(err => console.log(err));

@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import expect from 'expect';
 import deepFreeze from 'deep-freeze';
-import API from "./utils/API";
+// import API from "./utils/API";
 
 // Reducer
 const product = (state = {}, action) => {
@@ -19,8 +19,6 @@ const product = (state = {}, action) => {
         cost: action.product.price * action.qty
       };
     case 'UPDATE_QUANTITY':
-      // console.log('action:', action);
-      // console.log('state:',state);
       if(state.product._id !== action.product._id) {
         return state;
       }
@@ -29,8 +27,6 @@ const product = (state = {}, action) => {
         qty: action.qty,
         cost: action.product.price * action.qty
       };
-    // case 'REMOVE_FROM_CART':
-    //   return state;
     default:
       return state;
   }
@@ -56,11 +52,11 @@ const cart = (state = JSON.parse(localStorage.getItem('cart')) || [], action) =>
   }
 };
 
-const loadProducts = () => {
-  API.getProducts()
-    .then(results=> results.data)
-    .catch(err => []);
-};
+// const loadProducts = () => {
+//   API.getProducts()
+//     .then(results=> results.data)
+//     .catch(err => []);
+// };
 
 const testRemoveFromCart = () => {
   const stateBefore = [

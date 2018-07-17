@@ -6,6 +6,7 @@ import { Pagination } from 'react-materialize';
 const MarketplaceProduct = ({
 	product,
 	onAddToCart,
+	isSelected,
 	discount=Math.floor(Math.random() * ((product.price * .8) - (product.price * .1) + (product.price * .1)))
 }) => (
 	<div id={product._id} className={`item-container ${product.quantity < 1 && 'sold-out'}`}>
@@ -28,16 +29,25 @@ const MarketplaceProduct = ({
 			<div className={`rating stars-4`}></div>
 		</a>
 		<button
-			disabled={product.quantity < 1}
+			disabled={product.quantity < 1 || isSelected}
 			className={`btn green add-to-cart-btn`}
 			onClick={() => onAddToCart()}
 		>
 			Add to Cart
 		</button>
+		{ isSelected && 
+			<i className="fas fa-check-circle fa-3x in-cart"></i>
+		}
 	</div>
 );
 
 class MarketplaceProductContainer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isSelected: false,
+		}
+	}
 	componentDidMount() {
 		const { store } = this.context;
 		this.unsubscribe = store.subscribe(() =>
@@ -64,7 +74,9 @@ class MarketplaceProductContainer extends Component {
 							qty: 1
 					});
 					localStorage.setItem('cart',JSON.stringify(store.getState()));
+					this.setState({ isSelected: true });
 				}}
+				isSelected={this.state.isSelected}
 			/>
 		);
 	};

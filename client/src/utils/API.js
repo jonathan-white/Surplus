@@ -91,9 +91,6 @@ export default {
   deleteCart: (id) => {
     return axios.delete("/api/cart/" + id);
   },
-  // verifyReCaptcha: (data) => {
-  //   return axios.post('https://cors-anywhere.herokuapp.com/https://www.google.com/recaptcha/api/siteverify',data);
-  // },
   verifyReCaptcha: (data) => {
     return axios.get(
       'https://cors-anywhere.herokuapp.com/https://www.google.com/recaptcha/api/siteverify',{

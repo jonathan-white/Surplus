@@ -25,9 +25,9 @@ class Home extends Component {
   };
 
   render() {
-    return (
+		return (
 			<div className="App">
-        <HeroSlider/>
+				<HeroSlider/>
 				<div className="container">
 					<a name="furniture">{' '}</a>
 					<Parallax
@@ -80,9 +80,9 @@ class Home extends Component {
 						products={this.state.generalProducts}
 					/>
 				</div>
-      </div>
-    );
-  };
+			</div>
+		);
+	};
 };
 
 const authCondition = (authUser) => !!authUser;
