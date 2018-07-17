@@ -91,13 +91,26 @@ export default {
   deleteCart: (id) => {
     return axios.delete("/api/cart/" + id);
   },
+  // verifyReCaptcha: (data) => {
+  //   return axios.post('https://cors-anywhere.herokuapp.com/https://www.google.com/recaptcha/api/siteverify',data);
+  // },
   verifyReCaptcha: (data) => {
-    return axios.post('https://www.google.com/recaptcha/api/siteverify',data);
+    return axios.get(
+      'https://cors-anywhere.herokuapp.com/https://www.google.com/recaptcha/api/siteverify',{
+      params: data,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+      }
+    });
   },
 
   getSessionID: () => {
     return axios.get("/api/session");
   },
+  getIP: () => {
+    return axios.get("/api/ip-address");
+  },
+
   searchFor: (query) => {
     return axios.get(`/api/search?q=${query}`);
   }

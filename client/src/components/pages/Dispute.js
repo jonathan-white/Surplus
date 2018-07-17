@@ -5,7 +5,7 @@ import * as routes from '../../constants/routes';
 const DisputePage = () => (
   <div className="disputePage container">
     <Row>
-      <h5 className="center-align title">File A Dispute</h5>
+      <h5 className="center-align title">Submit A Dispute</h5>
     </Row>
     <Row>
       <Col s={6}>
@@ -13,7 +13,7 @@ const DisputePage = () => (
           <Input label="What order are you disputing?" name="order" s={12} />
           <Input type="textarea" label="Reason for the Dispute" name="reason" s={12} />
           <Input type="email" label="Email" name="email" s={12} />
-          <Input type="submit" value="Submit" className="btn" />
+          <Input type="submit" value="Submit" className="btn indigo darker-4" />
         </form>
       </Col>
       <Col className="center-align" s={6}>

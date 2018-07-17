@@ -19,4 +19,8 @@ router.get("/session", (req, res) => {
   res.json(req.sessionID);
 });
 
+router.get("/ip-address", (req, res) => {
+	res.json(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
+});
+
 module.exports = router;

@@ -59,7 +59,7 @@ class SignInForm extends Component {
           <Input s={12} type="password" onChange={this.handleInputChange}
             label="Password" value={password} name="password"
           />
-          <button disabled={isInvalid} className="btn" type="submit">Sign In</button>
+          <button disabled={isInvalid} className="btn indigo darker-4" type="submit">Sign In</button>
           {error && <p>{error.message}</p>}
           <PasswordForgetLink />
           <SignUpLink />

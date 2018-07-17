@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from "react-materialize";
 
 const helpCenter = () => (
-	<div className="helpCenter">
+	<div className="helpCenter container">
 		<h5 className="center-align title">Help Center</h5>
 		<div className="row">
 			<div className="col s6">
@@ -18,7 +18,7 @@ const helpCenter = () => (
 						<option value='4'>Never recieved item</option>
 						<option value='5'>Can't checkout</option>
 					</Input>
-					<Input type="submit" value="Submit" className="btn"/>
+					<Input type="submit" value="Submit" className="btn indigo darker-4"/>
 				</form>
 			</div>
 			<div className="col s6">

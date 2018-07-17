@@ -231,13 +231,13 @@ class NewProduct extends Component {
 							<option value='Apparel'>Apparel</option>
 							<option value='Office'>Office Supplies</option>
 						</Input>
-						<Input s={12}	type="number" step="0.01" min="0" onChange={this.handleInputChange}
+						<Input s={12} type="number" step="0.01" min="0" onChange={this.handleInputChange}
 							label="Price per unit" value={price} name="price"
 						/>
-						<Input s={12}	type="number" onChange={this.handleInputChange}
-							label="Quantity" value={quantity}	name="quantity"
+						<Input s={12} type="number" onChange={this.handleInputChange}
+							label="Quantity" value={quantity} name="quantity"
 						/>
-						<button disabled={isInvalid}	className="btn center-align" onClick={this.handleFormSubmit}>
+						<button disabled={isInvalid} className="btn center-align indigo darker-4" onClick={this.handleFormSubmit}>
 							Submit
 						</button>
 					</form>

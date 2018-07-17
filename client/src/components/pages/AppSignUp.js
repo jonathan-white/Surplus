@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Link, withRouter } from  'react-router-dom';
-
+import { Input } from "react-materialize";
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
-
-import { Input } from "react-materialize";
 import API from "../../utils/API";
+import Recaptcha from 'react-recaptcha';
 
 const SignUpPage = ({history}) => (
   <div>
@@ -19,6 +18,7 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   error: null,
+  isVerified: false,
 };
 
 class SignUpForm extends Component {
@@ -29,36 +29,39 @@ class SignUpForm extends Component {
 
   handleFormSubmit = (event) => {
 
-    const { name, email, passwordOne } = this.state;
-    const { history } = this.props;
+    if(this.state.isVerified) {
+      const { name, email, passwordOne } = this.state;
+      const { history } = this.props;
 
-    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-        API.createAccount({ userId: authUser.user.uid, name: name, email: email })
-          .then(res => {
-            this.setState(() => ({ ...INITIAL_STATE }));
-            history.push(routes.ACCOUNT);
-          })
-          .catch(error => this.setState({ error: error }));
-      })
-      .catch(error => this.setState({ error: error }));
+      auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+        .then(authUser => {
+          API.createAccount({ userId: authUser.user.uid, name: name, email: email })
+            .then(res => {
+              this.setState(() => ({ ...INITIAL_STATE }));
+              history.push(routes.ACCOUNT);
+            })
+            .catch(error => this.setState({ error: error }));
+        })
+        .catch(error => this.setState({ error: error }));
+    }
 
     event.preventDefault();
 	};
 
-	handleInputChange = event => {
+	handleInputChange = (event) => {
 		const { name, value } = event.target;
 		this.setState({ [name]: value });
 	};
 
   render() {
-    const { name, email, passwordOne, passwordTwo, error } = this.state;
+    const { name, email, passwordOne, passwordTwo, error, isVerified } = this.state;
 
     const isInvalid = (
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      name === ''
+      name === '' ||
+      isVerified === false
     );
 
     return (
@@ -76,8 +79,26 @@ class SignUpForm extends Component {
           <Input s={12} type="password" onChange={this.handleInputChange}
             label="Confirm Password" value={passwordTwo} name="passwordTwo"
           />
-          <div className="g-recaptcha" data-sitekey="6Lc-omEUAAAAAHb0j9_cStOCYvYktrenZci4zghk"></div>
-          <button disabled={isInvalid} className="btn" type="submit">Sign Up</button>
+          <Recaptcha 
+            sitekey="6Lc-omEUAAAAAHb0j9_cStOCYvYktrenZci4zghk"
+            render="explicit"
+            verifyCallback={(response) => {
+              API.verifyReCaptcha({
+                secret: process.env.REACT_APP_RECAPTCHA_SECRET,
+                response: response
+              })
+              .then(res => {
+                // Check if Recaptcha is successful
+                if(res.data.success) {
+                  this.setState({ isVerified: true });
+                } else {
+                  // We have a robot...
+                }
+              })
+              .catch(err => console.log(err));
+            }}
+          />
+          <button disabled={isInvalid} className="btn indigo darker-4" type="submit">Sign Up</button>
           {error && <p>{error.message}</p>}
         </form>
       </div>

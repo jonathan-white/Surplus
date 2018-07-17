@@ -26,9 +26,13 @@ import DisputePG from './pages/Dispute';
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
 import moment from "moment";
+import API from "../utils/API";
 
 const App = () => {
 	const currentTime = moment();
+  // API.getIP()
+  //   .then(res => console.log(res.data))
+  //   .catch(err => console.log(err));
   return(
     <Router>
       <div>
