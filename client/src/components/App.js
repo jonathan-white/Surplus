@@ -19,7 +19,9 @@ import Product from "./pages/Product";
 import Vision from "./pages/Vision";
 // import Orders from "./pages/Orders";
 import NoMatch from './pages/404';
+import HelpCenter from './pages/HelpCenter';
 import './App.css';
+import DisputePG from './pages/Dispute';
 
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
@@ -43,8 +45,11 @@ const App = () => {
           <Route exact path={routes.PASSWORD_CHANGE} component={() => <ChangePasswordPage />} />
           <Route exact path={routes.SEARCH} component={() => <SearchResults key={currentTime}/>} />
 					<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
+          <Route exact path={routes.HELP} component={() => <HelpCenter />}/>
+          <Route exact path={routes.DISPUTE} component={() => <DisputePG />}/>
+					<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
 					<Route exact path={routes.VISION} component={() => <Vision />}/>
-          <Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
+
 					<Route exact path={routes.PRODUCT} component={(props) =>
 						<Product productId={props.match.params.id} />} />
           {/*<Route exact path={routes.ORDERS} component={() => <Orders />} />*/}

@@ -701,6 +701,70 @@ form .input-field label {
 }
 
 /*Our Vision*/
+.our-vision h5 {
+	color: #1f2963;
+	font-weight: 200;
+	font-family: Oswald, sans-serif;
+    font: bolder 7vw 'Alfa Slab One';
+    text-align: center;
+    margin: 0 auto;
+    background: linear-gradient(-45deg, #FFFF00, #12DB12, #23A6D5, #23D5AB) center;
+    background-size: 200% 200%;
+	-webkit-animation: Gradient 5s ease infinite;
+	-moz-animation: Gradient 5s ease infinite;
+	animation: Gradient 5s ease infinite;
+    margin: auto;
+    width: 75vw;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    padding-top: 4vw;
+}
+
+.our-vision h1 {
+	color: black;
+	font-weight: 200;
+	font-family: Oswald, sans-serif;
+    font: bolder 3vw 'Alfa Slab One';
+    text-align: center;
+    margin: 0 auto 4vw auto;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
 
 
 
