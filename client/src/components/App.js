@@ -17,6 +17,7 @@ import AboutUs from './pages/About';
 import AllProductsPage from "./pages/AllProducts";
 import Product from "./pages/Product";
 import NoMatch from './pages/404';
+import HelpCenter from './pages/HelpCenter';
 import './App.css';
 
 import * as routes from '../constants/routes';
@@ -46,6 +47,7 @@ const App = () => {
           <Route exact path={routes.SEARCH} component={() =>
 						<SearchResults key={currentTime}/>}/>
 					<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
+          <Route exact path={routes.HELP} component={() => <HelpCenter />}/>
 					<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
 					<Route exact path={routes.PRODUCT} component={(props) =>
 						<Product productId={props.match.params.id} />} />
