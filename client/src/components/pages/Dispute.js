@@ -10,14 +10,9 @@ const DisputePG = () => (
     
       <h1>File A Dispute</h1>
       <h7>What order are you disputing?</h7>
-      <Input id="first_name" type="text" class="validate"></Input>
-      <label for="first_name">Order Number</label>
-
-      <h7>Reason for the Dispute</h7>
-      <Input id="first_name" type="text"></Input>
-      <label for="first_name">Type Here</label>
-
     
+      <h7>Reason for the Dispute</h7>
+     
       <Row>
           <Input placeholder="Order Number" s={6} label="Order Number" />
          
