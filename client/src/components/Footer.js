@@ -17,12 +17,12 @@ const Footer = () => (
             <li>
               <a href={routes.VISION} className="footerLink">Our Vision</a>
             </li>
-            <li>
+{/*            <li>
               <a href={routes.CAREERS} className="footerLink">Careers</a>
             </li>
             <li>
               <a href={routes.INVEST} className="footerLink">Investor Relations</a>
-            </li>
+            </li>*/}
           </ul>
         </div>
         <div>
@@ -39,9 +39,9 @@ const Footer = () => (
             <li>
               <a href={routes.SIGN_UP} className="footerLink">Sign Up</a>
             </li>
-            <li>
+{/*            <li>
               <a href={routes.GETTING_STARTED} className="footerLink">Getting Started</a>
-            </li>
+            </li>*/}
             <li>
               <a href={routes.HELP} className="footerLink">Support</a>
             </li>
@@ -53,9 +53,9 @@ const Footer = () => (
             <li>
               <a href={routes.ACCOUNT} className="footerLink">Your Account</a>
             </li>
-            <li>
+{/*            <li>
               <a href={routes.ORDERS} className="footerLink">Your Orders</a>
-            </li>
+            </li>*/}
             <li>
               <a href={routes.HELP} className="footerLink">Help Center</a>
             </li>

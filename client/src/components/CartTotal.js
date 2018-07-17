@@ -42,7 +42,7 @@ class CartTotal extends Component {
         container: '#dropin-container',
         paypal: {
           flow: 'checkout',
-          amount: '10.00',
+          amount: orderTotal,
           currency: 'USD'
         }
       },function(createErr,instance){
@@ -89,7 +89,13 @@ class CartTotal extends Component {
           {this.props.stage === "checkout" && (
             <div>
               <div id="dropin-container"></div>
-              <button id="submit-button">Request payment method</button>
+              <div className="submit-order">
+                <button id="submit-button" className="btn-checkout">
+                  <i className="fas fa-lock"></i>
+                    {"  "}
+                  Submit Order
+                </button>
+              </div>
             </div>
           )}
           {this.props.stage === "cart" && (

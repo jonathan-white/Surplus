@@ -30,6 +30,10 @@
 	text-align: center;
 }
 
+.submit-order {
+	text-align: center;
+}
+
 .btn-checkout {
 	background-color: rgba(31, 196, 53,1);
 	border: none;
@@ -353,7 +357,15 @@
 	border-radius: 5px;
 }
 
-.item-container .rating {
+.in-cart {
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	color: rgba(0, 207, 0, 1);
+}
+
+/* Rating System */
+.rating {
 	background-image: url(https://storage.googleapis.com/surplus-6507a.appspot.com/assets/ratings.png);
 	background-position: 80% 10%;
 	height: 25px;
@@ -393,13 +405,6 @@
 }
 .rating.stars-5 {
 	background-position-y: 90%;
-}
-
-.in-cart {
-	position: absolute;
-	right: 20px;
-	bottom: 20px;
-	color: rgba(0, 207, 0, 1);
 }
 
 /*Users*/
@@ -696,12 +701,35 @@ form .input-field label {
 	font-family: Oswald, sans-serif;
 }
 
+/* Product */
+
 .product-item .product-img {
 	margin: 30px;
+	border: 1px solid #ddd;
+	padding: 5px;
 }
 
 .product-item .product-img img {
-	width: 500px;
+	width: 100%;
+}
+
+.product-item .col-right {
+	position: relative;
+	height: 200px;
+}
+
+.product-item .add-to-cart {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+    width: 90%;
+    text-align: right;
+}
+
+.product-item .add-to-cart .cart-icon {
+	position: absolute;
+    left: 10px;
 }
 
 /*Our Vision*/
