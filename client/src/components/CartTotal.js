@@ -30,7 +30,7 @@ class CartTotal extends Component {
       totalCost = 0;
     }
 
-    const shipping = totalCost * .05;
+    const shipping = (totalCost * .05).toFixed(2);
     const subtotal = (parseFloat(totalCost) + parseFloat(shipping)).toFixed(2);   
     const estimateTax = (totalCost * .08).toFixed(2);
     const orderTotal = (parseFloat(subtotal) + parseFloat(estimateTax)).toFixed(2);
@@ -49,6 +49,7 @@ class CartTotal extends Component {
         if(createErr) {
           console.log('Error While Creating Payment:',createErr);
         } else {
+          console.log(button);
           console.log('Payment Instance:',instance);
           button.addEventListener('click',function(){
             console.log('Payment button clicked');

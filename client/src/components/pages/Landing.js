@@ -7,6 +7,7 @@ import API from "../../utils/API";
 class Landing extends Component {
 	constructor(props){
 		super(props);
+
 		this.state = {
 			generalProducts: null,
 			furnitureProducts: null,
@@ -17,12 +18,17 @@ class Landing extends Component {
 	};
 
   componentDidMount = () => {
+  	console.log('render')
 		API.getProducts()
-			.then(results=> this.setState(results.data))
+			.then(results=> {
+				this.setState(results.data);
+
+			})
 			.catch(err => console.log(err));
   };
 
   render() {
+
     return (
       <div className="App">
         <HeroSlider/>
