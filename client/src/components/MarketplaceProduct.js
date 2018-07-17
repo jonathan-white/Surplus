@@ -17,7 +17,7 @@ const MarketplaceProduct = ({
 			</div>
 			<div className="product-title">{product.title}</div>
 			<div className="product-price">
-				<span className="current-price">Sale ${product.price.toFixed(2)}</span>
+				<span className="current-price">Sale ${product.price ? product.price.toFixed(2): null}</span>
 				{"  "}
 				<span className={`old-price reduction-${discount}`}>
 					${(parseFloat(product.price) + discount).toFixed(2)}
