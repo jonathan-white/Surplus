@@ -18,13 +18,11 @@ class Landing extends Component {
 	};
 
   componentDidMount = () => {
-  	console.log('render')
 		API.getProducts()
-			.then(results=> {
-				this.setState(results.data);
-
-			})
-			.catch(err => console.log(err));
+		.then(results=> {
+			this.setState(results.data);
+		})
+		.catch(err => console.log(err));
   };
 
   render() {

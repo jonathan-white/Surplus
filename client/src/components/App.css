@@ -730,6 +730,10 @@ form .input-field label {
     margin: 0 auto 4vw auto;
 }
 
+.our-vision .tagline {
+	padding: 0 20%;
+}
+
 @-webkit-keyframes Gradient {
 	0% {
 		background-position: 0% 50%
@@ -766,14 +770,18 @@ form .input-field label {
 	}
 }
 
-
-
 /* Checkout */
 .fixed-totals {
 	position: fixed;
 	width: 25%;
 	top: 125px;
 }
+
+/* Dispute Page */
+.disputePage .link {
+	color: blue;
+}
+
 
 @media only screen and (min-width: 993px) {
 	.container {
