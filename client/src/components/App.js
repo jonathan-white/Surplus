@@ -20,6 +20,7 @@ import Vision from "./pages/Vision";
 import NoMatch from './pages/404';
 import HelpCenter from './pages/HelpCenter';
 import './App.css';
+import DisputePG from './pages/Dispute';
 
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
@@ -49,7 +50,11 @@ const App = () => {
 						<SearchResults key={currentTime}/>}/>
 					<Route exact path={routes.ABOUT} component={() => <AboutUs />}/>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Route exact path={routes.HELP} component={() => <HelpCenter />}/>
+=======
+          <Route exact path={routes.DISPUTE} component={() => <DisputePG />}/>
+>>>>>>> 4cd57e8f0d1ddc3567c72e3189d297cd662f8270
 					<Route exact path={routes.PRODUCTS} component={() => <AllProductsPage />} />
 =======
 					<Route exact path={routes.VISION} component={() => <Vision />}/>
