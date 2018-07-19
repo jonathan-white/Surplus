@@ -60,8 +60,7 @@ class SignUpForm extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      name === '' ||
-      isVerified === false
+      name === ''
     );
 
     return (
@@ -89,6 +88,7 @@ class SignUpForm extends Component {
               })
               .then(res => {
                 // Check if Recaptcha is successful
+                // console.log(res.data);
                 if(res.data.success) {
                   this.setState({ isVerified: true });
                 } else {
