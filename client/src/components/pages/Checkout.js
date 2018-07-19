@@ -9,55 +9,29 @@ class Checkout extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      email: "",
-      billing_firstName: "",
-      billing_lastName: "",
-      billing_address1: "",
-      billing_address2: "",
-      billing_country: "USA",
-      billing_state: "OH",
-      billing_city: "",
-      billing_zipcode: "",
-      billing_phone: "",
-      shipping_firstName: "",
-      shipping_lastName: "",
-      shipping_address1: "",
-      shipping_address2: "",
-      shipping_country: "",
-      shipping_state: "",
-      shipping_city: "",
-      shipping_zipcode: "",
-      shipping_phone: "",
-      activeClass: "",
-      sameAddress: false,
+	  email: "",
+	  billing_firstName: "",
+	  billing_lastName: "",
+	  billing_address1: "",
+	  billing_address2: "",
+	  billing_country: "USA",
+	  billing_state: "OH",
+	  billing_city: "",
+	  billing_zipcode: "",
+	  billing_phone: "",
+	  shipping_firstName: "",
+	  shipping_lastName: "",
+	  shipping_address1: "",
+	  shipping_address2: "",
+	  shipping_country: "",
+	  shipping_state: "",
+	  shipping_city: "",
+	  shipping_zipcode: "",
+	  shipping_phone: "",
+	  activeClass: "",
+	  sameAddress: false,
 		}
 	};
-
-  componentDidMount = () => {
-    // window.addEventListener('scroll', (event) => {
-		// 	const scrollPosY = window.pageYOffset || document.body.scrollTop;
-		// 	const scrollBottom = document.body.offsetHeight - 600;
-		// 	let classToApply = "";
-		// 	if(scrollPosY > 50 && scrollPosY <= scrollBottom) {
-		// 		classToApply = "checkoutBox_scrolled";
-		// 		const elem = document.querySelector('.checkoutBox_scrolled');
-		// 		if(elem) {
-		// 			elem.style.top = '20px';
-		// 		}
-		// 	} else if (scrollPosY > scrollBottom) {
-		// 		classToApply = "checkoutBox_scroll_finished";
-		// 		const elem = document.querySelector('.checkoutBox_scroll_finished');
-		// 		if(elem) {
-		// 			elem.style.top = `${window.pageYOffset - 200}px`;
-		// 		}
-		// 	} else {
-		// 		classToApply = ""
-		// 	}
-    //   this.setState({
-    //     activeClass: classToApply
-    //   })
-    // });
-  }
 
   handleInputChange = (event) => {
     const {value, name} = event.target;
