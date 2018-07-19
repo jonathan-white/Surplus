@@ -8,6 +8,9 @@ const MarketplaceProduct = ({
 	onAddToCart,
 	isSelected
 }) => {
+	// const ratings = product.ratings || [0];
+	// const rating = ratings.reduce((total, r) => total + r);
+	// console.log(rating);
 	return (
 		<div id={product._id} className={`item-container ${product.quantity < 1 && 'sold-out'}`}>
 			<a href={`products/${product._id}`}>
@@ -23,7 +26,7 @@ const MarketplaceProduct = ({
 					</span>
 					{"  "}
 					<span className="old-price">
-						${(parseFloat(product.old_price)).toFixed(2)}
+						${(product.price + product.old_price).toFixed(2)}
 					</span>
 				</div>
 				<div className={`rating stars-4-5`}></div>
