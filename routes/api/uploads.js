@@ -2,7 +2,6 @@ const router = require("express").Router();
 const multer = require("multer");
 const bodyParser = require('body-parser');
 const path = require("path");
-// const Storage = require('@google-cloud/storage');
 
 router.use(bodyParser.json());
 

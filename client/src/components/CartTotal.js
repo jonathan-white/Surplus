@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import { Modal } from 'react-materialize';
 import dropin from 'braintree-web-drop-in';
 import * as routes from '../constants/routes';
 import * as f from '../constants/functions';
@@ -91,11 +92,17 @@ class CartTotal extends Component {
             <div>
               <div id="dropin-container"></div>
               <div className="submit-order">
-                <button id="submit-button" className="btn-checkout">
-                  <i className="fas fa-lock"></i>
-                    {"  "}
-                  Submit Order
-                </button>
+                <Modal
+                  header='Order Submitted'
+                  trigger={
+                    <button id="submit-button" className="btn-checkout">
+                      <i className="fas fa-lock"></i>
+                        {"  "}
+                      Submit Order
+                    </button>
+                  }>
+                  <p>Your order has been submitted! You will receive a confirmation email shortly.</p>
+                </Modal>
               </div>
             </div>
           )}

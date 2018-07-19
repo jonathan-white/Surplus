@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the productsController
 module.exports = {
   checkout: function(req, res) {
     db.Cart

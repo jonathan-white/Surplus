@@ -43,6 +43,7 @@ class Product extends Component {
 							if(p._id !== this.state.productId){
 								return p;
 							}
+							return null;
 						})
 					}))
 					.catch(err => console.log(err));

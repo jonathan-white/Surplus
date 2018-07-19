@@ -12,32 +12,32 @@ const About = () => (
       <h5>Our Founders</h5>
       <div className="foundersList">
         <div className="founder">
-          {/* <img src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png" alt="Jonathan White"/> */}
-          <img src="images/jon.png" alt="Jonathan White"/>
+          <img src="images/jon.png" width="200" alt="Jonathan White"/>
           <div>
             <h2>Jonathan White</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
-            <p>Jonathan's bio goes here...</p>
+            <p>Jonathan is a freelance Full-Stack web developer with a passion for building applications that help make mundane tasks more efficient and meaningful.</p>
+            <p>He has been a part of the teams that have created the 
+              <a href="https://jonathan-white.github.io/Mindful/" target="_blank" rel="noopener noreferrer"> Mindful</a> and 
+              <a href="https://drymemes.herokuapp.com/" target="_blank" rel="noopener noreferrer">Dry Memes</a> apps.</p> 
           </div>
         </div>
         <hr />
         <div className="founder">
-          {/* <img src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png" alt="Denny Reever"/> */}
-          <img src="images/dennyela.png" alt="Denny Reever"/>
+          <img src="images/dennyela.png" width="200" alt="Denny Reever"/>
           <div>
             <h2>Dennyela Reever</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
             <p> Hi, my name is Dennyela. I live in Cleveland where I'm a Full-Stack Software Engineer. 
                 In my spare time I love traveling, watching movies, listening to music, cooking, bloging, and to write software that benefits the entire web community.
-                I created Liri Bot, Floof (dog addoption app), and worked with amazing indivisuals to build this lovely community for business to business deals. 
+                I created Liri Bot, Floof (dog addoption app), and worked with amazing individuals to build this lovely community for business to business deals. 
                 I value honesty, respect, passion, and being genuine. I believe in making tomorrow a better place than today. 
             </p>
           </div>
         </div>
         <hr />
         <div className="founder">
-          {/* <img src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png" alt="Kevin Beeler"/> */}
-          <img src="images/kevin.png" alt="Kevin Beeler"/>
+          <img src="images/kevin.png" width="200" alt="Kevin Beeler"/>
           <div>
             <h2>Kevin Beeler</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
@@ -50,12 +50,11 @@ const About = () => (
         </div>
         <hr />
         <div className="founder">
-          {/* <img src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png" alt="Marton Kondray"/> */}
-          <img src="images/marton.png" alt="Marton Kondray"/>
+          <img src="images/marton.png" width="200" alt="Marton Kondray"/>
           <div>
             <h2>Marton Kondray</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
-            <p>Marton's bio goes here...</p>
+            <p>Marton is a full-stack web developer and graduate of the Case Wester Reserve Full Stack Coding Boot Camp.</p>
           </div>
         </div>
       </div>

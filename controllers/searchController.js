@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the productsController
 module.exports = {
   search: function(req, res) {
     // Search by queryterm if req.query exists

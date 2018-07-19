@@ -78,19 +78,6 @@ export default {
     return axios.get("/api/users/" + id);
   },
 
-  // Cart APIs
-  createCart: (cartData) => {
-    return axios.post("/api/cart", cartData);
-  },
-  getCart: (sessionId) => {
-    return axios.get("/api/cart/" + sessionId);
-  },
-  updateCart: (cartId, cartData) => {
-    return axios.put("/api/cart/" + cartId, cartData);
-  },
-  deleteCart: (id) => {
-    return axios.delete("/api/cart/" + id);
-  },
   verifyReCaptcha: (data) => {
     return axios.get(
       'https://cors-anywhere.herokuapp.com/https://www.google.com/recaptcha/api/siteverify',{
