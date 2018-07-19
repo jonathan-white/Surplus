@@ -7,7 +7,7 @@ const NoMatch = () => (
     <a href={routes.LANDING}>
       <h1>Sorry</h1>
       <h4>we couldn't find that page</h4>
-      <h5>Try searcing or go to <span className="link">Surplus Market's home page</span></h5>
+      <h5>Try searcing or navigate to <span className="link">Surplus Market's home page</span></h5>
     </a>
   </div>
 );
