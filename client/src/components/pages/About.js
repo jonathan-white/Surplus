@@ -23,11 +23,15 @@ const About = () => (
         <hr />
         <div className="founder">
           {/* <img src="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/placeholder.png" alt="Denny Reever"/> */}
-          <img src="images/denny.png" alt="Denny Reever"/>
+          <img src="images/dennyela.png" alt="Denny Reever"/>
           <div>
-            <h2>Denny Reever</h2>
+            <h2>Dennyela Reever</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
-            <p>Denny's bio goes here...</p>
+            <p> Hi, my name is Dennyela. I live in Cleveland where I'm a Full-Stack Software Engineer. 
+                In my spare time I love traveling, watching movies, listening to music, cooking, bloging, and to write software that benefits the entire web community.
+                I created Liri Bot, Floof (dog addoption app), and worked with amazing indivisuals to build this lovely community for business to business deals. 
+                I value honesty, respect, passion, and being genuine. I believe in making tomorrow a better place than today. 
+            </p>
           </div>
         </div>
         <hr />
