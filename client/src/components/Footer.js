@@ -42,9 +42,7 @@ const Footer = () => (
 {/*            <li>
               <a href={routes.GETTING_STARTED} className="footerLink">Getting Started</a>
             </li>*/}
-            <li>
-              <a href={routes.HELP} className="footerLink">Support</a>
-            </li>
+            
           </ul>
         </div>
         <div>
