@@ -61,7 +61,7 @@ class Product extends Component {
 						</div>
 						<div className={`rating stars-${this.state.rating}`}></div>
 						<div>
-							<p>Sale ${price ? price.toFixed(2) : "0.00"}</p>
+							<p>${price ? price.toFixed(2) : "0.00"}</p>
 						</div>
 						<div>
 							<h5>Description:</h5>

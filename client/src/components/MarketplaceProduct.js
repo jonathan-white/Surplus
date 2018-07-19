@@ -21,13 +21,16 @@ const MarketplaceProduct = ({
 				</div>
 				<div className="product-title">{product.title}</div>
 				<div className="product-price">
-					<span className="current-price">
-						Sale ${product.price ? product.price.toFixed(2): null}
-					</span>
-					{"  "}
-					<span className="old-price">
-						${(product.price + product.old_price).toFixed(2)}
-					</span>
+					{
+						product.old_price > 0 ?
+						(<SalePrice price={product.price} discount={product.old_price} />) : 
+						(
+							<span className="nodiscount-price">
+								${product.price ? product.price.toFixed(2): null}
+							</span>
+						) 
+					
+					}
 				</div>
 				<div className={`rating stars-4-5`}></div>
 			</a>
@@ -44,6 +47,21 @@ const MarketplaceProduct = ({
 		</div>
 	)
 };
+
+const SalePrice = ({ 
+	price, 
+	discount 
+}) => (
+	<div>
+	<span className="current-price">
+		Sale ${price ? price.toFixed(2): null}
+	</span>
+	{"  "}
+	<span className="old-price">
+		${(price + discount).toFixed(2)}
+	</span>
+	</div>
+);
 
 class MarketplaceProductContainer extends Component {
 	constructor(props) {
