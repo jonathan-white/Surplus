@@ -54,7 +54,8 @@ const About = () => (
           <div>
             <h2>Marton Kondray</h2>
             <h6 className="indigo-text">Full-stack web developer</h6>
-            <p>Marton is a full-stack web developer and graduate of the Case Wester Reserve Full Stack Coding Boot Camp.</p>
+            <p>Marton is a full-stack web developer and graduate of the Case Western Reserve Full Stack Coding Boot Camp.  He has worked on several projects using Express or similar back-end Node.js web application frameworks.  His skills include knowledge of HTTP standards, API best practices, REST, web security and authentication, and basics of building scalable solutions.</p>
+            <p>In his free time, Marton enjoys camping, canoeing, and going to Cleveland Indians games.  You can often spot him shooting photography and videography in the Cleveland Metroparks.</p>
           </div>
         </div>
       </div>
