@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Input } from "react-materialize";
 import AuthUserContext from '../AuthUserContext';
 import PasswordChangeForm from './PasswordChange';
-
 import API from "../../utils/API";
-
 import withAuthorization from '../withAuthorization';
+import * as f from '../../constants/functions';
 
 const AccountPage = () => (
 	<AuthUserContext.Consumer>
@@ -273,7 +272,7 @@ const UserProduct = (props) => {
 				</div>
 			</div>
 			<div className="row">
-				<div className="price">Price/unit: ${price}</div>
+				<div className="price">Price/unit: ${f.formatMoney(price,2,'.',',')}</div>
 				<div>Stock: <span className="quantity">{quantity}</span></div>
 				<div className={`rating stars-${rating}`} title="User Rating"></div>
 			</div>

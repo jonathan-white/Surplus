@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import dropin from 'braintree-web-drop-in';
 import * as routes from '../constants/routes';
+import * as f from '../constants/functions';
 
 class CartTotal extends Component {
   componentDidMount() {
@@ -67,24 +68,24 @@ class CartTotal extends Component {
         <div className={`checkoutBox ${this.props.classToApply}`}>
           <div className="totals-item">
             <span className="total-label">Items ({state.length}):</span>
-            <span className="total-value">${totalCost}</span>
+            <span className="total-value">${f.formatMoney(totalCost, 2,'.',',')}</span>
           </div>
           <div className="totals-item">
             <span className="total-label">Shipping:</span>
-            <span className="total-value">${shipping}</span>
+            <span className="total-value">${f.formatMoney(shipping, 2,'.',',')}</span>
           </div>
           <hr />
           <div className="totals-item total-type-subtotal">
             <span className="total-label">Subtotal:</span>
-            <span className="total-value">${subtotal}</span>
+            <span className="total-value">${f.formatMoney(subtotal, 2,'.',',')}</span>
           </div>
           <div className="totals-item">
             <span className="total-label">Estimated tax:</span>
-            <span className="total-value">${estimateTax}</span>
+            <span className="total-value">${f.formatMoney(estimateTax, 2,'.',',')}</span>
           </div>
           <div className="totals-item total-type-grandtotal">
             <span className="total-label">Order Total:</span>
-            <span className="total-value">${orderTotal}</span>
+            <span className="total-value">${f.formatMoney(orderTotal, 2,'.',',')}</span>
           </div>
           {this.props.stage === "checkout" && (
             <div>

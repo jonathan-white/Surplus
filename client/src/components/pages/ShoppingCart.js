@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from "react-materialize";
 import CartTotal from "../CartTotal";
+import * as f from '../../constants/functions';
 
 // Container Component
 class ShoppingCart extends Component {
@@ -109,7 +110,7 @@ const CartItem = ({ cartItem, index }, { store }) => {
 						<div className="item-num"><span className="item-label">Item Number:</span> {cartItem.product._id}</div>
 					</div>
 					<div className="col s3">
-						<div className="row item-price">${state[index].cost}</div>
+						<div className="row item-price">${f.formatMoney(state[index].cost,2,'.',',')}</div>
 						<div>
 							<Input
 								type='select'

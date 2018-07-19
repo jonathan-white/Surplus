@@ -4,6 +4,7 @@ import { Input } from "react-materialize";
 import CartTotal from "../CartTotal";
 import States from "../../utils/states.json";
 import Countries from "../../utils/countries.json";
+import * as f from '../../constants/functions';
 
 class Checkout extends Component {
 	constructor(props) {
@@ -180,7 +181,7 @@ const OrderItem = (props) => (
           <div className="item-qty"><span className="item-label">Quantity:</span> {props.cartItem.qty}</div>
         </div>
         <div className="col s3">
-          <div className="row item-price">${props.cartItem.cost}</div>
+          <div className="row item-price">${f.formatMoney(props.cartItem.cost,2,'.',',')}</div>
         </div>
       </div>
       <div className="row bottom-half">

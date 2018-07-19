@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ProductsList } from "../MarketplaceProduct";
 import API from "../../utils/API";
 import * as routes from '../../constants/routes';
+import * as f from '../../constants/functions';
 
 class Product extends Component {
   constructor(props){
@@ -61,7 +62,7 @@ class Product extends Component {
 						</div>
 						<div className={`rating stars-${this.state.rating}`}></div>
 						<div>
-							<p>${price ? price.toFixed(2) : "0.00"}</p>
+							<p>${price ? f.formatMoney(price,2,'.',',') : "0.00"}</p>
 						</div>
 						<div>
 							<h5>Description:</h5>

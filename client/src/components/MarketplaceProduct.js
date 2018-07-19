@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import * as f from '../constants/functions';
 // import { Pagination } from 'react-materialize';
 
 // Presentational Component
@@ -8,9 +9,6 @@ const MarketplaceProduct = ({
 	onAddToCart,
 	isSelected
 }) => {
-	// const ratings = product.ratings || [0];
-	// const rating = ratings.reduce((total, r) => total + r);
-	// console.log(rating);
 	return (
 		<div id={product._id} className={`item-container ${product.quantity < 1 && 'sold-out'}`}>
 			<a href={`products/${product._id}`}>
@@ -26,7 +24,7 @@ const MarketplaceProduct = ({
 						(<SalePrice price={product.price} discount={product.old_price} />) : 
 						(
 							<span className="nodiscount-price">
-								${product.price ? product.price.toFixed(2): null}
+								${product.price ? f.formatMoney(product.price,2,'.',',') : null}
 							</span>
 						) 
 					
@@ -54,11 +52,11 @@ const SalePrice = ({
 }) => (
 	<div>
 	<span className="current-price">
-		Sale ${price ? price.toFixed(2): null}
+		Sale ${price ? f.formatMoney(price,2,'.',',') : null}
 	</span>
 	{"  "}
 	<span className="old-price">
-		${(price + discount).toFixed(2)}
+		${f.formatMoney((price + discount),2,'.',',')}
 	</span>
 	</div>
 );
