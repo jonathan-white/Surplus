@@ -58,9 +58,9 @@ class Checkout extends Component {
 };
 
 const CheckoutForm = ({
-	...props,
-	handleInputChange,
-	handleSameAddress
+  handleInputChange,
+	handleSameAddress,
+	...props
 }, { store }) => {
 	const state = store.getState();
 
