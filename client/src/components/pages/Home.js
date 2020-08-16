@@ -28,57 +28,48 @@ class Home extends Component {
 		return (
 			<div className="App">
 				<HeroSlider/>
-				<div className="container">
-					<a name="furniture">{' '}</a>
+					<div className="container">
 					<Parallax
 						className="imageSize h100"
-						imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/section_furniture.jpg"
+						image={<img alt="" src={process.env.REACT_APP_STORAGE + 
+							"/assets/section_furniture.jpg"}/>}
 					/>
-					<h5 className="section-header">Furniture</h5>
+					<h5 name="furniture" className="section-header">Furniture</h5>
 					<hr />
-					<ProductsList
-						products={this.state.furnitureProducts}
-					/>
-					<a name="electronics">{' '}</a>
+					<ProductsList products={this.state.furnitureProducts} />
 					<Parallax
 						className="imageSize h100"
-						imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/section_electronics.jpg"
+						image={<img alt="" src={process.env.REACT_APP_STORAGE + 
+							"/assets/section_electronics.jpg"}/>}
 					/>
 					<h5 className="section-header">Electronics</h5>
 					<hr />
-					<ProductsList
-						products={this.state.electronicProducts}
-					/>
-					<a name="apparel">{' '}</a>
+					<ProductsList products={this.state.electronicProducts} />
+					
 					<Parallax
 						className="imageSize h100"
-						imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/section_apparel.jpg"
+						image={<img alt="" src={process.env.REACT_APP_STORAGE + 
+							"/assets/section_apparel.jpg"}/>}
 					/>
 					<h5 className="section-header">Apparel</h5>
 					<hr />
-					<ProductsList
-						products={this.state.apparelProducts}
-					/>
-					<a name="office">{' '}</a>
+					<ProductsList products={this.state.apparelProducts}	/>
 					<Parallax
 						className="imageSize h100"
-						imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/section_office.jpg"
+						image={<img alt="" src={process.env.REACT_APP_STORAGE + 
+							"/assets/section_office.jpg"}/>}
 					/>
 					<h5 className="section-header">Office Supplies</h5>
 					<hr />
-					<ProductsList
-						products={this.state.officeProducts}
-					/>
-					<a name="general">{' '}</a>
+					<ProductsList products={this.state.officeProducts} />
 					<Parallax
 						className="imageSize h100"
-						imageSrc="https://storage.googleapis.com/surplus-6507a.appspot.com/assets/section_general.jpg"
+						image={<img alt="" src={process.env.REACT_APP_STORAGE + 
+							"/assets/section_general.jpg"}/>}
 					/>
 					<h5 className="section-header">General</h5>
 					<hr />
-					<ProductsList
-						products={this.state.generalProducts}
-					/>
+					<ProductsList products={this.state.generalProducts} />
 				</div>
 			</div>
 		);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from  'react-router-dom';
+import 'materialize-css'
 import { Navbar, NavItem, Icon, Badge } from 'react-materialize';
 
 import AuthUserContext from './AuthUserContext';
@@ -56,20 +57,25 @@ class NavigationAuth extends Component {
     const state = store.getState();
 
     return (
-      <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
-        <li>
-          <form className="searchForm" onSubmit={this.handleSearch}>
-            <input
-              value={this.state.searchTerms}
-              className="searchbox"
-              name="searchTerms"
-              type="text"
-              placeholder="Search..."
-              onChange={this.handleChange}
-            />
-            <input className="searchBtn" type="submit" value="Go" />
-          </form>
-        </li>
+      <Navbar 
+        alignLinks="right" 
+        brand="Surplus Market" 
+        id="auth-nav"
+        className="indigo darker-4"
+        menuIcon={<Icon>menu</Icon>}
+        options={{
+          draggable: true,
+          edge: 'left',
+          inDuration: 250,
+          onCloseEnd: null,
+          onCloseStart: null,
+          onOpenEnd: null,
+          onOpenStart: null,
+          outDuration: 200,
+          preventScrolling: true
+        }}
+        search
+      >
         <NavItem href={routes.ACCOUNT}>
           <Icon>person</Icon>
         </NavItem>
@@ -128,20 +134,26 @@ class NavigationNonAuth extends Component {
     const state = store.getState();
 
     return (
-      <Navbar name="top" brand='Surplus Market' className="indigo darker-4" right style={{height: '75px'}}>
-        <li>
-          <form className="searchForm" onSubmit={this.handleSearch}>
-            <input
-              value={this.state.searchTerms}
-              className="searchbox"
-              name="searchTerms"
-              type="text"
-              placeholder="Search..."
-              onChange={this.handleChange}
-            />
-            <input className="searchBtn" type="submit" value="Go" />
-          </form>
-        </li>
+      <Navbar 
+        alignLinks="right" 
+        brand="Surplus Market" 
+        id="nonauth-nav"
+        className="indigo darker-4"
+        menuIcon={<Icon>menu</Icon>}
+        options={{
+          draggable: true,
+          edge: 'left',
+          inDuration: 250,
+          onCloseEnd: null,
+          onCloseStart: null,
+          onOpenEnd: null,
+          onOpenStart: null,
+          outDuration: 200,
+          preventScrolling: true
+        }}
+        search
+        centerChildren
+      >
         <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
           <Badge className="cart-badge">{state.length}</Badge>
