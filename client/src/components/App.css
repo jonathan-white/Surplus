@@ -174,53 +174,6 @@
 	display: inline;
 }
 
-/*Navigation*/
-.navitem-shopping-cart {
-	position: relative;
-}
-
-.navitem-shopping-cart .cart-badge {
-	position: absolute;
-	top: 0;
-	left: 0;
-	color: #12c7ff;
-}
-
-.nav-wrapper .searchbox {
-	width: 500px;
-	background-color: #fff;
-	margin: 0;
-	padding: 0 10px;
-	color: #000;
-	border-top-left-radius: 8px;
-	border-bottom-left-radius: 8px;
-}
-
-.searchBtn {
-	position: relative;
-  background-color: #1f2963;
-  border: 0;
-	height: 44.5px;
-	top: 0;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-	outline: none;
-}
-
-.searchBtn:focus {
-	background-color: #708ec8;
-}
-
-.nav-wrapper .material-icons {
-	-webkit-transition: transform 500ms ease;
-	-o-transition: transform 500ms ease;
-	transition: transform 500ms ease;
-}
-
-.nav-wrapper .material-icons:hover {
-	transform: translateY(-5px);
-}
-
 .productslist .row {
 	margin-bottom: 0;
 }

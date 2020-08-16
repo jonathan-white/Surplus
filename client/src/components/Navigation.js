@@ -7,6 +7,7 @@ import { Navbar, NavItem, Icon, Badge } from 'react-materialize';
 import AuthUserContext from './AuthUserContext';
 import * as routes from '../constants/routes';
 import { auth } from '../firebase';
+import './Navigation.css'
 
 const Navigation = ({ history }) => (
   <AuthUserContext.Consumer>
@@ -59,8 +60,7 @@ class NavigationAuth extends Component {
     return (
       <Navbar 
         alignLinks="right" 
-        brand="Surplus Market" 
-        id="auth-nav"
+        brand={<a className="brand-logo" href="#">Surplus Market<Icon>store</Icon></a>}
         className="indigo darker-4"
         menuIcon={<Icon>menu</Icon>}
         options={{
@@ -136,10 +136,8 @@ class NavigationNonAuth extends Component {
     return (
       <Navbar 
         alignLinks="right" 
-        brand="Surplus Market" 
-        id="nonauth-nav"
+        brand={<a className="brand-logo" href="/">Surplus Market<Icon>store</Icon></a>}
         className="indigo darker-4"
-        menuIcon={<Icon>menu</Icon>}
         options={{
           draggable: true,
           edge: 'left',
@@ -151,9 +149,20 @@ class NavigationNonAuth extends Component {
           outDuration: 200,
           preventScrolling: true
         }}
-        search
-        centerChildren
       >
+        <li>
+          <form className="searchForm" onSubmit={this.handleSearch}>
+            <input
+              value={this.state.searchTerms}
+              className="searchbox"
+              name="searchTerms"
+              type="text"
+              placeholder="Search..."
+              onChange={this.handleChange}
+            />
+            <input className="searchBtn" type="submit" value="Go" />
+          </form>
+        </li>
         <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
           <Badge className="cart-badge">{state.length}</Badge>
