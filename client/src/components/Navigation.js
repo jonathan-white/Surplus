@@ -150,19 +150,17 @@ class NavigationNonAuth extends Component {
           preventScrolling: true
         }}
       >
-        <li>
-          <form className="searchForm" onSubmit={this.handleSearch}>
-            <input
-              value={this.state.searchTerms}
-              className="searchbox"
-              name="searchTerms"
-              type="text"
-              placeholder="Search..."
-              onChange={this.handleChange}
-            />
-            <input className="searchBtn" type="submit" value="Go" />
-          </form>
-        </li>
+        <form className="searchForm" onSubmit={this.handleSearch}>
+          <input
+            value={this.state.searchTerms}
+            className="searchbox"
+            name="searchTerms"
+            type="text"
+            placeholder="Search..."
+            onChange={this.handleChange}
+          />
+          <input className="searchBtn" type="submit" value="Go" />
+        </form>
         <NavItem href={routes.CART} className="navitem-shopping-cart">
           <Icon>shopping_cart</Icon>
           <Badge className="cart-badge">{state.length}</Badge>

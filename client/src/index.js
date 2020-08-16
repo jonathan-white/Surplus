@@ -58,45 +58,45 @@ const cart = (state = JSON.parse(localStorage.getItem('cart')) || [], action) =>
 //     .catch(err => []);
 // };
 
-const testRemoveFromCart = () => {
-  const stateBefore = [
-    {
-      product: {
-        _id: 0
-      },
-      qty: 1,
-      cost: 30
-    },
-    {
-      product: {
-        _id: 1
-      },
-      qty: 2,
-      cost: 50
-    }
-  ];
-  const action = {
-    type: 'REMOVE_FROM_CART',
-    index: 0
-  };
-  const stateAfter = [
-    {
-      product: {
-        _id: 1
-      },
-      qty: 2,
-      cost: 50
-    }
-  ];
+// const testRemoveFromCart = () => {
+//   const stateBefore = [
+//     {
+//       product: {
+//         _id: 0
+//       },
+//       qty: 1,
+//       cost: 30
+//     },
+//     {
+//       product: {
+//         _id: 1
+//       },
+//       qty: 2,
+//       cost: 50
+//     }
+//   ];
+//   const action = {
+//     type: 'REMOVE_FROM_CART',
+//     index: 0
+//   };
+//   const stateAfter = [
+//     {
+//       product: {
+//         _id: 1
+//       },
+//       qty: 2,
+//       cost: 50
+//     }
+//   ];
 
-  deepFreeze(stateBefore);
+//   deepFreeze(stateBefore);
 
-  expect(
-    cart(stateBefore, action)
-  ).toEqual(stateAfter);
-};
-testRemoveFromCart();
-console.log('All tests passed.');
+//   expect(
+//     cart(stateBefore, action)
+//   ).toEqual(stateAfter);
+// };
+// testRemoveFromCart();
+// console.log('All tests passed.');
 
 // Context Provider
 class Provider extends Component {
