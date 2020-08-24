@@ -4,10 +4,10 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "braintree-web-drop-in": "^1.23.0",
     "braintree-web-drop-in-react": "^1.1.1",
-    "firebase": "^7.17.1",
+    "firebase": "^7.19.0",
     "materialize-css": "^1.0.0",
     "moment": "^2.27.0",
     "prop-types": "^15.7.2",
