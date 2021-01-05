@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "braintree-web-drop-in": "^1.23.0",
     "braintree-web-drop-in-react": "^1.1.1",
     "firebase": "^7.19.0",
