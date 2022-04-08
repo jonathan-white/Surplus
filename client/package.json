@@ -9,7 +9,7 @@
     "braintree-web-drop-in-react": "^1.1.1",
     "firebase": "^7.19.0",
     "materialize-css": "^1.0.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
